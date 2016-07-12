@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="css/auto.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <form class="input-search">
+    <div class="input-fill">
+      <div class="col l12">
+        <div class="row">
+          <div class="input-field col l6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col l6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-date">
+      <label for="date">First Name</label>
+      <input type="date" class="datepicker" id="date">
+    </div>
+  </form>
+  </body>
+
+
+  <script type="text/javascript">
+  //Datepicker
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+  </script>
+</html>

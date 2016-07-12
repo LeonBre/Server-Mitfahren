@@ -1,0 +1,34 @@
+body{
+	background-image:url("https://photos-1.dropbox.com/t/2/AACoCdafli7yaf_FB5jzkNqIkRU-YguuX-fkIC9ryPjDDg/12/183234153/jpeg/32x32/3/1468357200/0/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?size_mode=3&size=2048x1536&dl=0");
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+
+.input-fill{
+	background-color: #FFF;
+
+	width: 60% ;
+ 	margin-left: auto ;
+ 	margin-right: auto ;
+	margin-top: 15%;
+	border-radius: 15px;
+	font-weight: bold;
+
+	// Cut-out text effect
+  background: #fff;
+  color: #000;
+  mix-blend-mode: lighten;
+}
+
+.input-date{
+	background-color: #FFF;
+
+	width: 60% ;
+ 	margin-left: auto ;
+ 	margin-right: auto ;
+	margin-top: 2%;
+	border-radius: 15px;
+	font-weight: bold;
+}
