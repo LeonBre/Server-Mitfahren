@@ -1,5 +1,5 @@
 body{
-	background-image:url("https://photos-1.dropbox.com/t/2/AACoCdafli7yaf_FB5jzkNqIkRU-YguuX-fkIC9ryPjDDg/12/183234153/jpeg/32x32/3/1468357200/0/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?size_mode=3&size=2048x1536&dl=0");
+	background-image:url("https://photos-1.dropbox.com/t/2/AADVQzL41paWd1su4BW2AQO7M8cHqaxrKFE7eBxLrvWVpQ/12/183234153/jpeg/32x32/1/_/1/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?dl=0&size=2048x1536&size_mode=3");
 	background-repeat:no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -8,8 +8,8 @@ body{
 
 .input-fill{
 	background-color: #FFF;
-
-	width: 60% ;
+	display: block;
+	width: 60%;
  	margin-left: auto ;
  	margin-right: auto ;
 	margin-top: 15%;
@@ -22,13 +22,9 @@ body{
   mix-blend-mode: lighten;
 }
 
-.input-date{
-	background-color: #FFF;
-
-	width: 60% ;
- 	margin-left: auto ;
- 	margin-right: auto ;
-	margin-top: 2%;
-	border-radius: 15px;
-	font-weight: bold;
+.ui-widget{
+	z-index: -1;
+	background: white;
+	mix-blend-mode: normal;
+	width: 20%;
 }

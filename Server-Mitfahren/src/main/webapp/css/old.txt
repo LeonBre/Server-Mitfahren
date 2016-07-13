@@ -1,0 +1,21 @@
+auto.css:
+
+   .input-field input[type=text]{
+     font-size: 200%;
+     color: black;
+     text-align: center;
+     // Cut-out text effect
+   }
+
+  .picker__date-display{
+    background-color: #123456;
+  }
+
+  .picker__weekday-display{
+    background-color: #123456;
+  }
+
+  .picker__frame{
+    z-index: -1;
+  }
+----------------------------------------------------------
