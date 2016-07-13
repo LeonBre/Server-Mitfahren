@@ -14,17 +14,31 @@ body{
  	margin-right: auto ;
 	margin-top: 15%;
 	border-radius: 15px;
-	font-weight: bold;
+
 
 	// Cut-out text effect
   background: #fff;
   color: #000;
   mix-blend-mode: lighten;
+
+	text-align: center;
 }
 
 .ui-widget{
 	z-index: -1;
 	background: white;
 	mix-blend-mode: normal;
+	border-radius: 15px;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.ui-autocomplete-input{
+	text-align: center
+	width: 50px;
+}
+
+.ui-menu{
 	width: 20%;
 }
