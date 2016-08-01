@@ -1,0 +1,11 @@
+body{
+  	background-image:url("https://photos-1.dropbox.com/t/2/AADVQzL41paWd1su4BW2AQO7M8cHqaxrKFE7eBxLrvWVpQ/12/183234153/jpeg/32x32/1/_/1/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?dl=0&size=2048x1536&size_mode=3");
+}
+
+.searchForm{
+  margin-top: 15%;
+  background-color: white;
+  padding: 12px;
+  padding-bottom: 0px;
+  border-radius: 15px;
+}
