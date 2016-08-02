@@ -1,4 +1,4 @@
-package apiv1.models;
+package entities;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class DriveService {
 	}
 	
 	public void find(int id){
-		em.find(apiv1.models.Drive.class, id);
+		em.find(entities.Drive.class, id);
 	}
 	
 	 /**

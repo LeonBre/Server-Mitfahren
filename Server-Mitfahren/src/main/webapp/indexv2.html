@@ -122,14 +122,21 @@
           date: $date.val(),
         };
 
+        information = JSON.stringify(information)
+        console.log("To Server: " + JSON.stringify(information));
+
         $.ajax({
           type: 'POST',
           url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
           data: information,
-          succes: function(possibleDrives) {
-            console.log(possibleDrives)
+          success: function(possibleDrives) {
+            console.log("From Server: ", possibleDrives)
+            console.log("Test")
+          },
+          error: function() {
+            console.log("Error");
           }
-        })
+        });
     }
     });
 

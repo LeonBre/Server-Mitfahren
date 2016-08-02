@@ -1,4 +1,4 @@
-package apiv1.models;
+package entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
