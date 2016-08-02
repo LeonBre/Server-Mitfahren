@@ -3,10 +3,15 @@ package apiv1.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,15 +22,22 @@ public class Drive {
 	private int driveId;
 	
 	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "cityId", insertable = false, updatable = false)
 	private City destination;
 	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "cityId", insertable = false, updatable = false)
 	private City arrival;
 	@NotNull
+	@Column(name = "DATE")
 	private Date date;
 	//@NotNull
+	@ManyToOne
+	@JoinColumn(name = "driverId", insertable = false, updatable = false)
 	private User driver;
 	
-	private List<User> passengers;
+	//private List<User> passengers;
 	
 	public Drive (City destination, City arrival, Date date, User driver){
 		this.destination = destination;
@@ -63,12 +75,12 @@ public class Drive {
 	public void setDriver(User driver) {
 		this.driver = driver;
 	}
-	public List<User> getPassengers() {
-		return passengers;
-	}
-	public void setPassengers(List<User> passengers) {
-		this.passengers = passengers;
-	}
+//	public List<User> getPassengers() {
+//		return passengers;
+//	}
+//	public void setPassengers(List<User> passengers) {
+//		this.passengers = passengers;
+//	}
 
 	
 }

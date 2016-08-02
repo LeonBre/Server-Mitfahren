@@ -1,8 +1,21 @@
 package apiv1.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class City {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int cityId;
+	
 	String name;
 	String pictureUrl;
+	
+	public City(){}
 	
 	public City(String name){
 		this.name = name;

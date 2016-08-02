@@ -124,7 +124,7 @@
 
         $.ajax({
           type: 'POST',
-          url: destinationURL + '/Server-Mitfahren/apiv1/searchPossibleDrives',
+          url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
           data: information,
           succes: function(possibleDrives) {
             console.log(possibleDrives)
