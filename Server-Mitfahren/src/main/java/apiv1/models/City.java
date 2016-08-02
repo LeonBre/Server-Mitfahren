@@ -1,15 +1,15 @@
 package apiv1.models;
 
-public class PossibleCity {
+public class City {
 	String name;
 	String pictureUrl;
 	
-	public PossibleCity(String name){
+	public City(String name){
 		this.name = name;
 		this.pictureUrl = null;
 	}
 	
-	public PossibleCity(String name, String pictureUrl){
+	public City(String name, String pictureUrl){
 		this.name = name;
 		this.pictureUrl = pictureUrl;
 	}
