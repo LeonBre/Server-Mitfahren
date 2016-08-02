@@ -53,14 +53,15 @@
           <div class="row">
           <div class="col s6 offset-s3">
             <!-- Search input DATE-->
-            <input type="date" class="datepicker">
+            <input type="date" class="datepicker" id="datepicker-date">
             <label for="datepicker">Zeit</label>
           </div>
         </div>
         <div class="row">
           <div class="col s4 offset-s5">
             <!-- Submit Buttom -->
-            <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+            <button class="btn-large waves-effect waves-light" id="button-sendInformation"
+            type="submit" name="action">Submit
               <i class="material-icons right">send</i>
             </button>
           </div>
@@ -75,7 +76,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
   <script type="text/javascript">
+  var destinationURL = "http://localhost:8080"
   var possibleCities = new Array();
+
+  var $destination = $('#autocomplete-input-von');
+  var $arrival = $('#autocomplete-input-nach');
+  var $date = $('#datepicker-date');
 
     $(document).ready(function() {
 
@@ -86,21 +92,45 @@
 
       $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/Server-Mitfahren/apiv1/possibleCities',
+        url: destinationURL + '/Server-Mitfahren/apiv1/possibleCities',
         success: function(cities){
           console.log(cities)
           $.each(cities, function(i, city) {
             possibleCities[city.name] = city.pictureUrl;
           })
-          $('#autocomplete-input-nach').autocomplete({
+          $destination.autocomplete({
              data : possibleCities
            });
-         $('#autocomplete-input-von').autocomplete({
+         $arrival.autocomplete({
             data : possibleCities
           });
         }
       });
 
+    });
+
+    $('#button-sendInformation').on('click', function() {
+      var dateIsValid = $date.val() != null;
+
+      if(    $destination.val() != null
+          && $arrival.val() != null
+          && dateIsValid) {
+
+        var information = {
+          destination: $destination.val(),
+          arrival: $arrival.val(),
+          date: $date.val(),
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: destinationURL + '/Server-Mitfahren/apiv1/searchPossibleDrives',
+          data: information,
+          succes: function(possibleDrives) {
+            console.log(possibleDrives)
+          }
+        })
+    }
     });
 
   </script>
