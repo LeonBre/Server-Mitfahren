@@ -27,7 +27,8 @@ public class DriveService {
 	   * @param uuid UUID of the beacon.
 	   * @return One beacon instance with the unique uuid.
 	   */
-	  public List<Drive> findByDestinationArrival(String destination, String arrival) {
+	  @SuppressWarnings("unchecked")
+	public List<Drive> findByDestinationArrival(String destination, String arrival) {
 	    List<Drive> drive = null;
 	    try {
 	      drive = (List<Drive>)em.createQuery("SELECT e FROM Drive e WHERE e.destination.name LIKE :destinationParamter "

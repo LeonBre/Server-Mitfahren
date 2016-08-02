@@ -22,7 +22,7 @@ public class Drive {
 	private City arrival;
 	@NotNull
 	private Date date;
-	@NotNull
+	//@NotNull
 	private User driver;
 	
 	private List<User> passengers;
