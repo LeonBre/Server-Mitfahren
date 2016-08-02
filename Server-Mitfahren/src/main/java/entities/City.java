@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Object wich represents a city.
+ * It has a name and picture URL wich is shown on the autocomplete text.
+ * @author Leon Johann Brettin
+ *
+ */
 @Entity
 public class City {
 	

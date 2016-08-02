@@ -22,12 +22,24 @@ import entities.Drive;
 import entities.DriveService;
 import helper.JsonHelper;
 
+/**
+ * Rest Api from the Server.
+ * It serves as an interface for the client.
+ * @author Leon Johann Brettin
+ *
+ */
 @Path("/")
 public class RestApi {
 	
 	@Inject
 	DriveService driveService;
 	
+	/**
+	 * First Method to send all cities for the Autocomplete Code.
+	 * The client gets all possible cities and when existing, a picture for that city.
+	 * It will be loaded on the client, when the webpage is opened.
+	 * @return List of all cities for the Autocomplete.
+	 */
 	@GET
 	@Path("/possibleCities")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +51,13 @@ public class RestApi {
 		return possibleCities;
 	}
 	
+	/**
+	 * Method to send a List of results from a given search input.
+	 * When the Users presses the search button and the input is valid this method is called.
+	 * It searches for all possible drives that matches to the input.
+	 * @param input Json with destination, arrival, date.
+	 * @return List of possible results.
+	 */
 	@POST
 	@Path("/possibleDrives")
 	@Produces(MediaType.APPLICATION_JSON)

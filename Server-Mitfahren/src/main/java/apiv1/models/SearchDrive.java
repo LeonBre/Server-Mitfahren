@@ -1,5 +1,10 @@
 package apiv1.models;
 
+/**
+ * Model for the search input to search a drive.
+ * @author Leon Johann Brettin
+ *
+ */
 public class SearchDrive {
 
 	public String destination;

@@ -6,18 +6,41 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/*TODO: Check if findByDestinationArrival works right
+ * 
+ */
+
+/**
+ * Service to interact with the stored drives.
+ * @author Leon Johann Brettin
+ *
+ */
 @Stateless
 public class DriveService {
 	
+	/**
+	 * Manager who directly interarcts with the database.
+	 */
 	@PersistenceContext
 	protected EntityManager em;
 	
+	/**
+	 * This Constructor is needed for Hypernate or the Persistence API.
+	 */
 	public DriveService(){}
 	
+	/**
+	 * Stores or updates a drive in the database.
+	 * @param drive
+	 */
 	public void persists(Drive drive){
 		em.persist(drive);
 	}
 	
+	/**
+	 * Finds a drive in the database with the help of the id.
+	 * @param id
+	 */
 	public void find(int id){
 		em.find(entities.Drive.class, id);
 	}
