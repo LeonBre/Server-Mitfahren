@@ -19,7 +19,7 @@ public class DriveService {
 	}
 	
 	public void find(int id){
-		em.find(Drive.class, id);
+		em.find(apiv1.models.Drive.class, id);
 	}
 	
 	 /**
