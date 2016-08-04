@@ -54,10 +54,8 @@ public class DriveService {
 	public List<Drive> findByDestinationArrival(String destination, String arrival) {
 	    List<Drive> drive = null;
 	    try {
-	      drive = (List<Drive>)em.createQuery("SELECT e FROM drive WHERE e.destination LIKE :destinationParamter "
-	      		+ "AND e.arrival like :arrivalParameter")
-	        .setParameter("destinationParameter", destination)
-	        .setParameter("arrivalParameter", arrival)
+	      drive = (List<Drive>)em.createQuery("FROM Drive d WHERE d.destination = '" + destination + "' "
+	      		+ "AND d.arrival = '" + arrival + "'")
 	        .getResultList();
 	      
 	    } catch (javax.persistence.NoResultException noResultException) {
