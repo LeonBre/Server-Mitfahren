@@ -69,7 +69,7 @@ public class DriveService {
 	public List<Drive> findAllDrives() {
 		  List<Drive> drive = null;
 		    try {
-		      drive = (List<Drive>)em.createQuery("FROM Drive e")
+		      drive = (List<Drive>)em.createQuery("SELECT e FROM Drive e")
 		        .getResultList();
 		      
 		    } catch (javax.persistence.NoResultException noResultException) {

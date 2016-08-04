@@ -51,7 +51,7 @@ public class Drive {
 	@Column(name = "DATE")
 	private Date date;
 	//@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
 	private MitfahrenUser driver;
 	
