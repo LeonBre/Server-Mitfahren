@@ -20,6 +20,8 @@ import apiv1.models.SearchDrive;
 import entities.City;
 import entities.Drive;
 import entities.DriveService;
+import entities.MitfahrenUser;
+import entities.MitfahrenUserService;
 import helper.JsonHelper;
 
 /**
@@ -33,6 +35,8 @@ public class RestApi {
 	
 	@Inject
 	DriveService driveService;
+	@Inject
+	MitfahrenUserService userService;
 	
 	/**
 	 * First Method to send all cities for the Autocomplete Code.
@@ -67,4 +71,16 @@ public class RestApi {
 		return drive;
 	}
 	
+	@GET
+	@Path("/testDatabase")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Drive> testDatabase() {
+		MitfahrenUser testUser = new MitfahrenUser("Max Mustermann", "1234", "5678");
+		userService.persists(testUser);
+		
+		Drive drive = new Drive("Leer", "Spetzerfehn", 
+				new Date(System.currentTimeMillis()),testUser);
+		driveService.persists(drive);
+		return driveService.findByDestinationArrival("Leer", "Spetzerfehn");
+	}
 }

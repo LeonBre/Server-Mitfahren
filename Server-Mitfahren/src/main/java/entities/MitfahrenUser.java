@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class User {
+public class MitfahrenUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,15 @@ public class User {
     @ElementCollection(targetClass=Integer.class)
 	private Collection<Integer> asPassengerList;
 	
-	public User(){
-		
+	public MitfahrenUser(){}
+
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber) {
+		this.username = username;
+		this.hashPassword = hashPassword;
+		this.telephoneNumber = telephoneNumber;
+		this.asDriverList = new LinkedList<>();
+		this.asPassengerList = new LinkedList<>();
 	}
+	
+	
 }

@@ -21,7 +21,7 @@ public class DriveService {
 	/**
 	 * Manager who directly interarcts with the database.
 	 */
-	@PersistenceContext
+	@PersistenceContext(unitName = "Mitfahren")
 	protected EntityManager em;
 	
 	/**
@@ -41,8 +41,8 @@ public class DriveService {
 	 * Finds a drive in the database with the help of the id.
 	 * @param id
 	 */
-	public void find(int id){
-		em.find(entities.Drive.class, id);
+	public Drive find(int id){
+		return em.find(entities.Drive.class, id);
 	}
 	
 	 /**
@@ -54,8 +54,8 @@ public class DriveService {
 	public List<Drive> findByDestinationArrival(String destination, String arrival) {
 	    List<Drive> drive = null;
 	    try {
-	      drive = (List<Drive>)em.createQuery("SELECT e FROM drive e WHERE e.destination.name LIKE :destinationParamter "
-	      		+ "AND e.arrival.name like :arrivalParameter")
+	      drive = (List<Drive>)em.createQuery("SELECT e FROM drive WHERE e.destination LIKE :destinationParamter "
+	      		+ "AND e.arrival like :arrivalParameter")
 	        .setParameter("destinationParameter", destination)
 	        .setParameter("arrivalParameter", arrival)
 	        .getResultList();
