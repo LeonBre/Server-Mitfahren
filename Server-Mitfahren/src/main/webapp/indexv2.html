@@ -75,11 +75,12 @@
 
     <div class="card horizontal">
       <div class="card-image">
-        <div class="userpicture">
+        <div class="userpicture ">
         <img src="http://lorempixel.com/100/190/nature/10">
       </div>
         <h5>TestUser</h5>
       </div>
+
       <div class="card-stacked">
         <div class="card-content">
           <p>Braunschweig</p>
@@ -87,18 +88,30 @@
         <div class="card-content">
           <p>Gießen</p>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+        <div class="card-content">
+          <div class="row">
+            <div class="col l6">
+              <p>20. August 2016<p>
+            </div>
+            <div class="col l6">
+              <p>15:45</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      </div>
     </div>
+
 </div>
 
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
   <script type="text/javascript">
   var destinationURL = "http://localhost:8080"
   var possibleCities = new Array();
