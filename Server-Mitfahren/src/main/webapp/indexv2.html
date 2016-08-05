@@ -32,7 +32,6 @@
     </nav>
 
 
-
   <div class="container">
     <div class="searchForm">
     <div class="row">
@@ -70,7 +69,32 @@
       </div>
     </div>
   </div>
-  </div>
+</div>
+
+  <div class="resultCards">
+
+    <div class="card horizontal">
+      <div class="card-image">
+        <div class="userpicture">
+        <img src="http://lorempixel.com/100/190/nature/10">
+      </div>
+        <h5>TestUser</h5>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Braunschweig</p>
+        </div>
+        <div class="card-content">
+          <p>Gießen</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -128,15 +152,16 @@
         $.ajax({
           type: 'POST',
           url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
+          dataType: 'json',
           data: information,
-          success: function(possibleDrives) {
-            console.log("From Server: ", possibleDrives)
-            console.log("Test")
+          succes: function(possibleDrives) {
+            console.log("From Server: ", JSON.stringify(possibleDrives))
+            console.log
           },
           error: function() {
             console.log("Error");
           }
-        });
+        })
     }
     });
 

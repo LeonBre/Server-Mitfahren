@@ -9,3 +9,29 @@ body{
   padding-bottom: 0px;
   border-radius: 15px;
 }
+
+.card{
+  width: 70%;
+  padding: 12px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+.card-content{
+    font-weight: bold;
+    font-size: 25px;
+}
+.card-image{
+    text-align: center;
+    font-weight: italic;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+}
+.resultCards{
+  padding-top: 40px;
+}
