@@ -24,6 +24,9 @@ body{
     text-align: center;
     font-weight: italic;
 }
+.card-reveal{
+  float: none;
+}
 
 .userpicture {
     display: -webkit-flex;
