@@ -31,19 +31,13 @@ public class SearchConverter {
 		
 		ArrayList<Drive> matchingTimeResults = new ArrayList<>();
 		for(Drive drive:databaseResults) {
-			Calendar timeCalender = drive.getCalendar();
-//			if(compareCalenderDates(timeCalendar, cal2)){
-//				
-//			}
+			Calendar resultCalender = drive.getCalendar();
+			if(CalendarHelper.compareCalenderDates(searchTime, resultCalender)){
+				matchingTimeResults.add(drive);
+			}
 		}
-		Calendar testcalendar = Calendar.getInstance();
-		testcalendar.set(2016, 8, 6);
-		System.out.println(CalendarHelper.compareCalenderDates(testcalendar, searchTime));
-		System.out.println("TestCalendar :" + testcalendar.get(Calendar.DAY_OF_YEAR));
-		System.out.println("SearchTime :" + searchTime.get(Calendar.DAY_OF_YEAR));
-		System.out.println("Date :" + searchedDrive.getDate());
+		
+		//Matching Time Results must be made to a list of answerDrives
 		return null;
 	}
-	
-	
 }
