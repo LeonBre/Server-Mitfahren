@@ -1,5 +1,6 @@
 package apiv1.converters;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -33,13 +34,11 @@ public class SearchConverter {
 //				
 //			}
 		}
+		Calendar testcalendar = Calendar.getInstance();
 		
 		System.out.println("Date :" + searchedDrive.getDate());
 		return null;
 	}
 	
-	private boolean compareCalenderDates(Calendar cal1, Calendar cal2) {
-		return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
-	}
+	
 }
