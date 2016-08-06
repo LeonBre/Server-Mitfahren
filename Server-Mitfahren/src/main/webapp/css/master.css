@@ -1,5 +1,5 @@
 body{
-  	background-image:url("https://photos-1.dropbox.com/t/2/AADVQzL41paWd1su4BW2AQO7M8cHqaxrKFE7eBxLrvWVpQ/12/183234153/jpeg/32x32/1/_/1/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?dl=0&size=2048x1536&size_mode=3");
+  	//background-image:url("https://photos-1.dropbox.com/t/2/AADVQzL41paWd1su4BW2AQO7M8cHqaxrKFE7eBxLrvWVpQ/12/183234153/jpeg/32x32/1/_/1/2/background.jpg/EMOWmIsBGK8XIAIoAg/DJsrTaUMpliln3Wxfnwa9ElDUpD-aduZlz1mqidkCkA?dl=0&size=2048x1536&size_mode=3");
 }
 
 .searchForm{
@@ -37,4 +37,8 @@ body{
 }
 .resultCards{
   padding-top: 40px;
+}
+#resultList li{
+  opacity: 0;
+  z-index: -1;
 }

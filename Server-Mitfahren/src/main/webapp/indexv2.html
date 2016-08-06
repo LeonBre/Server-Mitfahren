@@ -72,8 +72,10 @@
 </div>
 
   <div class="resultCards">
-
-    <div class="card horizontal" onclick="console.log('bla')">
+    <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#resultList')">Click Me</a>
+    <ul id="resultList">
+      <li>
+    <div class="card horizontal" onclick="window.location = 'http://www.yoururl.com';">
       <div class="card-image">
         <div class="userpicture">
         <img src="http://lorempixel.com/100/190/nature/10">
@@ -95,6 +97,32 @@
         <p>15:55</p>
       </div>
     </div>
+  </li>
+  <li>
+    <div class="card horizontal" onclick="window.location = 'http://www.yoururl.com';">
+      <div class="card-image">
+        <div class="userpicture">
+        <img src="http://lorempixel.com/100/190/nature/10">
+      </div>
+        <h5>TestUser</h5>
+      </div>
+      <div class="card-stacked" >
+        <div class="card-content">
+          <p>Braunschweig</p>
+        </div>
+        <div class="card-content">
+          <p>Gießen</p>
+        </div>
+        <div class="card-content">
+              <p>20. August 2016<p>
+        </div>
+      </div>
+      <div class="card-content">
+        <p>15:55</p>
+      </div>
+    </div>
+  </li>
+  </ul>
 </div>
 
 
@@ -108,6 +136,7 @@
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
   var $date = $('#datepicker-date');
+
 
     $(document).ready(function() {
 
@@ -158,7 +187,7 @@
           data: information,
           succes: function(possibleDrives) {
             console.log("From Server: ", JSON.stringify(possibleDrives))
-            console.log
+            showPossibleDrives(possibleDrives)
           },
           error: function() {
             console.log("Error");
@@ -166,6 +195,10 @@
         })
     }
     });
+
+    function showPossibleDrives(possibleDrives){
+
+    }
 
   </script>
 </body>
