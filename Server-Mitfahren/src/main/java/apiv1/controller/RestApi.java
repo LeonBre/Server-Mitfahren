@@ -68,6 +68,16 @@ public class RestApi {
 	public SearchDrive postPossibleDrives(String input){
 		JsonElement jElement = new JsonParser().parse(input);
 		SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
+		
+		//Username
+		//Userpicture
+		
+		//DriveId
+		//Destination
+		//Arrival
+		//Date
+		//Time
+		
 		return drive;
 	}
 	
