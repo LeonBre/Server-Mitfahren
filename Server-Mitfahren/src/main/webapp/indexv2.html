@@ -99,7 +99,7 @@
     </div>
   </li>
   <li>
-    <div class="card horizontal" onclick="window.location = 'http://www.yoururl.com';">
+    <div class="card horizontal" onclick="window.location = '';">
       <div class="card-image">
         <div class="userpicture">
         <img src="http://lorempixel.com/100/190/nature/10">
@@ -183,7 +183,7 @@
         $.ajax({
           type: 'POST',
           url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
-          dataType: 'json',
+          contentType: "application/json",
           data: information,
           succes: function(possibleDrives) {
             console.log("From Server: ", JSON.stringify(possibleDrives))

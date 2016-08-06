@@ -13,14 +13,18 @@ import entities.DriveService;
 
 public class SearchConverter {
 
-	@Inject
 	DriveService driveService;
+	
+	public SearchConverter(DriveService driveService) {
+		this.driveService = driveService;
+	}
 	
 	public List<AnswerDrive> getSearchedDrives(SearchDrive searchedDrive){
 		String searchDestination = searchedDrive.getDestination();
 		String searchArrival = searchedDrive.getArrival();
 		
-		List<Drive> databaseResults = driveService.findByDestinationArrival(searchDestination, searchArrival);
+		List<Drive> databaseResults = driveService
+				.findByDestinationArrival(searchDestination, searchArrival);
 		
 		ArrayList<Drive> matchingTimeResults = new ArrayList<>();
 		for(Drive drive:databaseResults) {

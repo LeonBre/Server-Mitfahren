@@ -11,6 +11,8 @@ public class SearchDrive {
 	public String arrival;
 	public String date;
 	
+	public SearchDrive(){}
+	
 	public SearchDrive(String destination, String arrival, String date) {
 		this.destination = destination;
 		this.arrival = arrival;

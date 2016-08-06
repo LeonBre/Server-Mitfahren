@@ -67,11 +67,12 @@ public class RestApi {
 	@POST
 	@Path("/possibleDrives")
 	@Produces(MediaType.APPLICATION_JSON)
-	public SearchDrive postPossibleDrives(String input){
-		JsonElement jElement = new JsonParser().parse(input);
-		SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
-		SearchConverter convert = new SearchConverter();
-		convert.getSearchedDrives(drive);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public SearchDrive postPossibleDrives(SearchDrive input){
+		//JsonElement jElement = new JsonParser().parse(input);
+		//SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
+		SearchConverter convert = new SearchConverter(driveService);
+		convert.getSearchedDrives(input);
 		//Username
 		//Userpicture
 		
@@ -81,7 +82,7 @@ public class RestApi {
 		//Date
 		//Time
 		
-		return drive;
+		return null;
 	}
 	
 	@GET
