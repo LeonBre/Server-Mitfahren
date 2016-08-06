@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class CalendarHelper {
 
-	public boolean compareCalenderDates(Calendar cal1, Calendar cal2) {
+	public static boolean compareCalenderDates(Calendar cal1, Calendar cal2) {
 		return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 	}
@@ -19,8 +19,8 @@ public class CalendarHelper {
 		Calendar converted = Calendar.getInstance();
 		
 		String [] splittetDate = calendarString.split(" ");
-		int day = Integer.parseInt(splittetDate[0].split(",")[0]);
-		int month = getMonthAsInt(splittetDate[1]);
+		int day = Integer.parseInt(splittetDate[0]);
+		int month = getMonthAsInt(removeLastComma(splittetDate[1]));
 		int year = Integer.parseInt(splittetDate[2]);
 		
 		converted.set(year, month, day);
@@ -54,7 +54,7 @@ public class CalendarHelper {
 		case "December":
 			return 12;
 		default:
-			System.out.println("Something wrong in CalendarHelper");
+			System.out.println("Something wrong in CalendarHelper :" + month);
 			return 1;
 		}
 	}
@@ -62,5 +62,12 @@ public class CalendarHelper {
 	public static String theMonth(int month){
 	    String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    return monthNames[month];
+	}
+	
+	public static String removeLastComma(String str) {
+	    if (str != null && str.length() > 0 && str.charAt(str.length()-1)==',') {
+	      str = str.substring(0, str.length()-1);
+	    }
+	    return str;
 	}
 }
