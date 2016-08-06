@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Object wich represents a drive.
  * It has a destination city, an arrival city,
- * a date, when the drive starts,
+ * a calendar, when the drive starts,
  * a user, who is the driver of the drive and
  * a List of passengers.
  * @author Leon Johann Brettin
@@ -48,8 +48,8 @@ public class Drive {
 	@NotNull
 	private String arrival;
 	@NotNull
-	@Column(name = "DATE")
-	private Date date;
+	@Column(name = "calendar")
+	private Calendar calendar;
 	//@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
@@ -68,10 +68,10 @@ public class Drive {
 	 */
 	public Drive(){}
 
-	public Drive(String destination, String arrival, Date date, MitfahrenUser driver) {
+	public Drive(String destination, String arrival, Calendar calendar, MitfahrenUser driver) {
 		this.destination = destination;
 		this.arrival = arrival;
-		this.date = date;
+		this.calendar = calendar;
 		this.driver = driver;
 	}
 
@@ -104,17 +104,17 @@ public class Drive {
 	}
 
 	/**
-	 * @return the date
+	 * @return the calendar
 	 */
-	public Date getDate() {
-		return date;
+	public Calendar getCalendar() {
+		return calendar;
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param calendar the calendar to set
 	 */
-	public void setDate(Date date) {
-		this.date = date;
+	public void setcalendar(Calendar calendar) {
+		this.calendar = calendar;
 	}
 
 	/**

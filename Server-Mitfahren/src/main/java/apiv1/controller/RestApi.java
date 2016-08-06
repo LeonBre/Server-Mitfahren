@@ -1,5 +1,6 @@
 package apiv1.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import apiv1.converters.SearchConverter;
 import apiv1.models.SearchDrive;
 import entities.City;
 import entities.Drive;
@@ -68,7 +70,8 @@ public class RestApi {
 	public SearchDrive postPossibleDrives(String input){
 		JsonElement jElement = new JsonParser().parse(input);
 		SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
-		
+		SearchConverter convert = new SearchConverter();
+		convert.getSearchedDrives(drive);
 		//Username
 		//Userpicture
 		
@@ -87,9 +90,10 @@ public class RestApi {
 	public List<Drive> testDatabase() {
 		MitfahrenUser testUser = new MitfahrenUser("Max Mustermann", "1234", "5678");
 		userService.persists(testUser);
-		
+		Calendar nowCalendar = Calendar.getInstance();
+		nowCalendar.setTimeInMillis(System.currentTimeMillis());
 		Drive drive = new Drive("Leer", "Spetzerfehn", 
-				new Date(System.currentTimeMillis()),testUser);
+				nowCalendar,testUser);
 		driveService.persists(drive);
 		return driveService.findByDestinationArrival("Leer", "Spetzerfehn");
 	}
