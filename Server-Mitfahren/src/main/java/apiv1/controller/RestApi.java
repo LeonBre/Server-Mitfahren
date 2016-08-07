@@ -18,6 +18,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import apiv1.converters.SearchConverter;
+import apiv1.models.AnswerDrive;
 import apiv1.models.SearchDrive;
 import entities.City;
 import entities.Drive;
@@ -68,21 +69,11 @@ public class RestApi {
 	@Path("/possibleDrives")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public SearchDrive postPossibleDrives(SearchDrive input){
+	public List<AnswerDrive> postPossibleDrives(SearchDrive searchInput){
 		//JsonElement jElement = new JsonParser().parse(input);
 		//SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
 		SearchConverter convert = new SearchConverter(driveService);
-		convert.getSearchedDrives(input);
-		//Username
-		//Userpicture
-		
-		//DriveId
-		//Destination
-		//Arrival
-		//Date
-		//Time
-		
-		return null;
+		return convert.getSearchedDrives(searchInput);
 	}
 	
 	@GET
@@ -93,7 +84,7 @@ public class RestApi {
 		userService.persists(testUser);
 		Calendar nowCalendar = Calendar.getInstance();
 		nowCalendar.setTimeInMillis(System.currentTimeMillis());
-		Drive drive = new Drive("Leer", "Spetzerfehn", 
+		Drive drive = new Drive("Braunschweig", "Hannover", 
 				nowCalendar,testUser);
 		driveService.persists(drive);
 		return driveService.findByDestinationArrival("Leer", "Spetzerfehn");

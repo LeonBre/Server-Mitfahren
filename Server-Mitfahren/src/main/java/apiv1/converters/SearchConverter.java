@@ -1,11 +1,8 @@
 package apiv1.converters;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import apiv1.models.AnswerDrive;
 import apiv1.models.SearchDrive;
@@ -21,6 +18,12 @@ public class SearchConverter {
 		this.driveService = driveService;
 	}
 	
+	/**
+	 * Method to get from a searched Input, given through a Searchdrive, 
+	 * a List of found Drives from the Database, with matches to the Search.
+	 * @param searchedDrive Input Values for the Search.
+	 * @return A List of matching Drives in the right Format.
+	 */
 	public List<AnswerDrive> getSearchedDrives(SearchDrive searchedDrive){
 		String searchDestination = searchedDrive.getDestination();
 		String searchArrival = searchedDrive.getArrival();
@@ -29,6 +32,7 @@ public class SearchConverter {
 		List<Drive> databaseResults = driveService
 				.findByDestinationArrival(searchDestination, searchArrival);
 		
+		//Search for Matching Results
 		ArrayList<Drive> matchingTimeResults = new ArrayList<>();
 		for(Drive drive:databaseResults) {
 			Calendar resultCalender = drive.getCalendar();
@@ -36,11 +40,11 @@ public class SearchConverter {
 				matchingTimeResults.add(drive);
 			}
 		}
-		
-		//Matching Time Results must be made to a list of answerDrives
+		System.out.println("Matching Results:" + matchingTimeResults.size());
 		if(matchingTimeResults.isEmpty())
 			return null;
 		
+		//convert List
 		ArrayList<AnswerDrive> answerDrives = new ArrayList<>();
 		for(Drive drive:matchingTimeResults) {
 			String driverName = drive.getDriver().getUsername();
@@ -62,6 +66,10 @@ public class SearchConverter {
 					searchArrival,
 					date,
 					time);
+			
+			answerDrives.add(matchingDrive);
 		}
+		
+		return answerDrives;
 	}
 }
