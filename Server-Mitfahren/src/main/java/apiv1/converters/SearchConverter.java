@@ -38,6 +38,30 @@ public class SearchConverter {
 		}
 		
 		//Matching Time Results must be made to a list of answerDrives
-		return null;
+		if(matchingTimeResults.isEmpty())
+			return null;
+		
+		ArrayList<AnswerDrive> answerDrives = new ArrayList<>();
+		for(Drive drive:matchingTimeResults) {
+			String driverName = drive.getDriver().getUsername();
+			String driverPictureUrl = drive.getDriver().getPictureUrl();
+			int driveId = drive.getDriveId();
+			
+			Calendar driveCalender = drive.getCalendar();
+			String date = driveCalender.get(Calendar.DAY_OF_MONTH) + ", " 
+							+ CalendarHelper.getMonthAsString(driveCalender.get(Calendar.MONTH))
+							+ " " + driveCalender.get(Calendar.YEAR);
+			
+			String time = driveCalender.get(Calendar.HOUR_OF_DAY) + ":" 
+							+ driveCalender.get(Calendar.MINUTE); 
+			
+			AnswerDrive matchingDrive = new AnswerDrive(driverName,
+					driverPictureUrl, 
+					driveId, 
+					searchDestination,
+					searchArrival,
+					date,
+					time);
+		}
 	}
 }

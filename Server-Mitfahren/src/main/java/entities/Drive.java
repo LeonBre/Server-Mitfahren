@@ -74,16 +74,38 @@ public class Drive {
 		this.calendar = calendar;
 		this.driver = driver;
 	}
+	
+	
+	/**
+	 * @return the driveId
+	 */
+	public int getDriveId() {
+		return driveId;
+	}
 
 	/**
-	 * @return the destinationId
+	 * @param driveId the driveId to set
+	 */
+	public void setDriveId(int driveId) {
+		this.driveId = driveId;
+	}
+
+	/**
+	 * @param calendar the calendar to set
+	 */
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
+
+	/**
+	 * @return the destination
 	 */
 	public String getDestination() {
 		return destination;
 	}
 
 	/**
-	 * @param destinationId the destinationId to set
+	 * @param destinationId the destination to set
 	 */
 	public void setDestination(String destinationId) {
 		this.destination = destinationId;
