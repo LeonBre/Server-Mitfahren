@@ -30,6 +30,12 @@ public class CalendarHelper {
 		return converted;
 	}
 
+	/**
+	 * Returns the number of a month.
+	 * Example: When you put in "January" as a parameter you get 0.
+	 * @param month Month String.
+	 * @return number of that month.
+	 */
 	public static int getMonthAsInt(String month) {
 		switch (month) {
 		case "January":
@@ -62,12 +68,18 @@ public class CalendarHelper {
 		}
 	}
 	
+	/**
+	 * Returns the Month string for a month number.
+	 * @param month Integer wich represents a month.
+	 * @return String of the month.
+	 */
 	public static String getMonthAsString(int month){
 	    String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    return monthNames[month];
 	}
 	
-	public static String removeLastComma(String str) {
+	
+	private static String removeLastComma(String str) {
 	    if (str != null && str.length() > 0 && str.charAt(str.length()-1)==',') {
 	      str = str.substring(0, str.length()-1);
 	    }

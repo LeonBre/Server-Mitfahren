@@ -8,6 +8,11 @@ import javax.inject.Inject;
 import entities.DriveService;
 import entities.MitfahrenUserService;
 
+/**
+ * Helper class to do methods on startup.
+ * @author Leon Johann Brettin
+ *
+ */
 @Singleton
 @Startup
 public class StartupHelper {
@@ -16,6 +21,10 @@ public class StartupHelper {
 	MitfahrenUserService userService;
 	@Inject
 	DriveService driveService;
+	/**
+	 * Startup Method
+	 * In this method the database helper persists some testing data.
+	 */
 	@PostConstruct
 	public void startup() {
 		DatabaseHelper dbHelper = new DatabaseHelper(userService, driveService);

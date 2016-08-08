@@ -15,8 +15,8 @@ public class DatabaseHelper {
 	DriveService driveService;
 	
 	/**
-	 * @param userService
-	 * @param driveService
+	 * @param userService Service to interact with the Database on MitfahrenUser objects.
+	 * @param driveService Service to interact with the Database on Drive objects.
 	 */
 	public DatabaseHelper(MitfahrenUserService userService, DriveService driveService) {
 		super();
@@ -25,7 +25,9 @@ public class DatabaseHelper {
 	}
 
 
-
+	/**
+	 * Stores test data in the database.
+	 */
 	public void storeTestData() {
 		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567");
 		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344");
@@ -48,8 +50,8 @@ public class DatabaseHelper {
 				nowCalendar,testUser1);
 		driveService.persists(drive1);
 		driveService.persists(drive2);
-		driveService.persists(drive5);
-		driveService.persists(drive4);
 		driveService.persists(drive3);
+		driveService.persists(drive4);
+		driveService.persists(drive5);
 	}
 }

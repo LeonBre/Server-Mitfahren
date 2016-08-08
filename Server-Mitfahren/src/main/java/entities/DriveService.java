@@ -64,17 +64,4 @@ public class DriveService {
 	    return drive;
 	  }
 	  
-	  
-	  @SuppressWarnings("unchecked")
-	public List<Drive> findAllDrives() {
-		  List<Drive> drive = null;
-		    try {
-		      drive = (List<Drive>)em.createQuery("SELECT e FROM Drive e")
-		        .getResultList();
-		      
-		    } catch (javax.persistence.NoResultException noResultException) {
-		      System.out.println("No Entity found");
-		    }
-		    return drive;
-	  }
 }
