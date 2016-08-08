@@ -72,32 +72,8 @@
 </div>
 
   <div class="resultCards">
-    <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#resultList')">Click Me</a>
     <ul id="resultList">
-      <li>
-    <div class="card horizontal" onclick="window.location = 'http://www.yoururl.com';">
-      <div class="card-image">
-        <div class="userpicture">
-        <img src="http://lorempixel.com/100/190/nature/10">
-      </div>
-        <h5>TestUser</h5>
-      </div>
-      <div class="card-stacked" >
-        <div class="card-content">
-          <p>Braunschweig</p>
-        </div>
-        <div class="card-content">
-          <p>Gießen</p>
-        </div>
-        <div class="card-content">
-              <p>20. August 2016<p>
-        </div>
-      </div>
-      <div class="card-content">
-        <p>15:55</p>
-      </div>
-    </div>
-  </li>
+
   </ul>
 </div>
 
@@ -175,13 +151,17 @@
     });
 
     function showPossibleDrives(possibleDrives){
+      if(possibleDrives == null) {
+        makeToast("Leider keine Fahrt gefunden.")
+      } else {
+      $resultList.empty()
       $.each(possibleDrives, function(i, drive) {
         $resultList.append(
           createPossibleDriveListString(drive)
         );
       })
-
-
+      Materialize.showStaggeredList('#resultList')
+    }
     }
 
     function createPossibleDriveListString(drive) {
@@ -218,6 +198,9 @@
       return listItem
     }
 
+    function makeToast(toast) {
+      Materialize.toast(toast, 3000, 'rounded')
+    }
   </script>
 </body>
 

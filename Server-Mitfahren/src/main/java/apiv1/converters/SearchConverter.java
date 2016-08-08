@@ -51,7 +51,7 @@ public class SearchConverter {
 			int driveId = drive.getDriveId();
 			
 			Calendar driveCalender = drive.getCalendar();
-			String date = driveCalender.get(Calendar.DAY_OF_MONTH) + ", " 
+			String date = driveCalender.get(Calendar.DAY_OF_MONTH) + ". " 
 							+ CalendarHelper.getMonthAsString(driveCalender.get(Calendar.MONTH))
 							+ " " + driveCalender.get(Calendar.YEAR);
 			
@@ -68,7 +68,6 @@ public class SearchConverter {
 			
 			answerDrives.add(matchingDrive);
 		}
-		System.out.println("AnswerDrives" + answerDrives.size());
 		return answerDrives;
 	}
 }
