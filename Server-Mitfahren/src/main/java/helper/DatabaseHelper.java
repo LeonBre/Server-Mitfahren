@@ -48,8 +48,8 @@ public class DatabaseHelper {
 				nowCalendar,testUser1);
 		driveService.persists(drive1);
 		driveService.persists(drive2);
-		driveService.persists(drive3);
-		driveService.persists(drive4);
 		driveService.persists(drive5);
+		driveService.persists(drive4);
+		driveService.persists(drive3);
 	}
 }

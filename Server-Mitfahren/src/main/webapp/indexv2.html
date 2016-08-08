@@ -83,6 +83,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script type="text/javascript">
   var destinationURL = "http://localhost:8080"
+  var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html"
   var nullPictureUsername = 'http://lorempixel.com/100/190/nature/10';
   var possibleCities = new Array();
 
@@ -172,8 +173,10 @@
       var driveArrival = drive.arrival
       var driveDate = drive.date
       var driveTime = drive.time
+      var driveId = drive.driveId
 
-      listItem = '<li><div class="card horizontal" onclick="window.location = ;">'
+      listItem = '<li><div class="card horizontal" '
+                  + 'onclick="window.location=\'' + driveUrl + '?driveId=' + driveId +'\';">'
                     + '<div class="card-image">'
                       + '<div class="userpicture">'
                         + '<img src="' + userPictureUrl + '">'
