@@ -25,6 +25,7 @@ import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
+import helper.DatabaseHelper;
 import helper.JsonHelper;
 
 /**
@@ -80,12 +81,8 @@ public class RestApi {
 	@Path("/testDatabase")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Drive> testDatabase() {
-		MitfahrenUser testUser = new MitfahrenUser("Max Mustermann", "1234", "5678");
-		userService.persists(testUser);
-		Calendar nowCalendar = Calendar.getInstance();
-		Drive drive = new Drive("Braunschweig", "Hannover", 
-				nowCalendar,testUser);
-		driveService.persists(drive);
+		DatabaseHelper dbHelper = new DatabaseHelper(userService, driveService);
+		dbHelper.storeTestData();
 		return driveService.findByDestinationArrival("Braunschweig", "Hannover");
 	}
 }
