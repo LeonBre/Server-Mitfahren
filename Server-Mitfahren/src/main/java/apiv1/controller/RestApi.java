@@ -87,6 +87,6 @@ public class RestApi {
 		Drive drive = new Drive("Braunschweig", "Hannover", 
 				nowCalendar,testUser);
 		driveService.persists(drive);
-		return driveService.findByDestinationArrival("Leer", "Spetzerfehn");
+		return driveService.findByDestinationArrival("Braunschweig", "Hannover");
 	}
 }

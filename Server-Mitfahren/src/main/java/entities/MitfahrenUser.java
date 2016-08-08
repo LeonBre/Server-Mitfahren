@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,11 +30,11 @@ public class MitfahrenUser {
 	private String pictureUrl;
 	
 	@Column
-    @ElementCollection(targetClass=Integer.class)
+    @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
 	private Collection<Integer> asDriverList;
 	
 	@Column
-    @ElementCollection(targetClass=Integer.class)
+    @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
 	private Collection<Integer> asPassengerList;
 	
 	public MitfahrenUser(){}
