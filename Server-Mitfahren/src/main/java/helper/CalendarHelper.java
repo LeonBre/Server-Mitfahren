@@ -5,6 +5,9 @@ import java.util.Calendar;
 public class CalendarHelper {
 
 	public static boolean compareCalenderDates(Calendar cal1, Calendar cal2) {
+		System.out.println("Year--Cal1:" + cal1.get(Calendar.YEAR) + "--Cal2:" + cal2.get(Calendar.YEAR) );
+		System.out.println("Day--Cal1:" + cal1.get(Calendar.DAY_OF_YEAR) + "--Cal2:" + cal2.get(Calendar.DAY_OF_YEAR));
+		
 		return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 	}
@@ -30,32 +33,32 @@ public class CalendarHelper {
 	public static int getMonthAsInt(String month) {
 		switch (month) {
 		case "January":
-			return 1;
+			return 0;
 		case "February":
-			return 2;
+			return 1;
 		case "March":
-			return 3;
+			return 2;
 		case "April":
-			return 4;
+			return 3;
 		case "May":
-			return 5;
+			return 4;
 		case "June":
-			return 6;
+			return 5;
 		case "July":
-			return 7;
+			return 6;
 		case "August":
-			return 8;
+			return 7;
 		case "September":
-			return 9;
+			return 8;
 		case "October":
-			return 10;
+			return 9;
 		case "November":
-			return 11;
+			return 10;
 		case "December":
-			return 12;
+			return 11;
 		default:
 			System.out.println("Something wrong in CalendarHelper :" + month);
-			return 1;
+			return 0;
 		}
 	}
 	

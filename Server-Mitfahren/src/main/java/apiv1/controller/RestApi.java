@@ -83,7 +83,6 @@ public class RestApi {
 		MitfahrenUser testUser = new MitfahrenUser("Max Mustermann", "1234", "5678");
 		userService.persists(testUser);
 		Calendar nowCalendar = Calendar.getInstance();
-		nowCalendar.setTimeInMillis(System.currentTimeMillis());
 		Drive drive = new Drive("Braunschweig", "Hannover", 
 				nowCalendar,testUser);
 		driveService.persists(drive);

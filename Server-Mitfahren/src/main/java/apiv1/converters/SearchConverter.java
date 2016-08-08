@@ -31,7 +31,8 @@ public class SearchConverter {
 		
 		List<Drive> databaseResults = driveService
 				.findByDestinationArrival(searchDestination, searchArrival);
-		
+		System.out.println("searchDestination:" + searchDestination);
+		System.out.println("searchArrival" + searchArrival);
 		//Search for Matching Results
 		ArrayList<Drive> matchingTimeResults = new ArrayList<>();
 		for(Drive drive:databaseResults) {
