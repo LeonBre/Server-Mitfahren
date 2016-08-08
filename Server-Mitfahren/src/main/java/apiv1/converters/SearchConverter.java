@@ -31,8 +31,6 @@ public class SearchConverter {
 		
 		List<Drive> databaseResults = driveService
 				.findByDestinationArrival(searchDestination, searchArrival);
-		System.out.println("searchDestination:" + searchDestination);
-		System.out.println("searchArrival" + searchArrival);
 		//Search for Matching Results
 		ArrayList<Drive> matchingTimeResults = new ArrayList<>();
 		for(Drive drive:databaseResults) {
@@ -41,10 +39,10 @@ public class SearchConverter {
 				matchingTimeResults.add(drive);
 			}
 		}
-		System.out.println("Matching Results:" + matchingTimeResults.size());
+		
 		if(matchingTimeResults.isEmpty())
 			return null;
-		
+		System.out.println("Matching Results:" + matchingTimeResults.size());
 		//convert List
 		ArrayList<AnswerDrive> answerDrives = new ArrayList<>();
 		for(Drive drive:matchingTimeResults) {
@@ -70,7 +68,7 @@ public class SearchConverter {
 			
 			answerDrives.add(matchingDrive);
 		}
-		
+		System.out.println("AnswerDrives" + answerDrives.size());
 		return answerDrives;
 	}
 }

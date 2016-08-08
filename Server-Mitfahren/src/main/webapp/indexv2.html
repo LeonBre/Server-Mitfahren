@@ -98,30 +98,6 @@
       </div>
     </div>
   </li>
-  <li>
-    <div class="card horizontal" onclick="window.location = '';">
-      <div class="card-image">
-        <div class="userpicture">
-        <img src="http://lorempixel.com/100/190/nature/10">
-      </div>
-        <h5>TestUser</h5>
-      </div>
-      <div class="card-stacked" >
-        <div class="card-content">
-          <p>Braunschweig</p>
-        </div>
-        <div class="card-content">
-          <p>Gießen</p>
-        </div>
-        <div class="card-content">
-              <p>20. August 2016<p>
-        </div>
-      </div>
-      <div class="card-content">
-        <p>15:55</p>
-      </div>
-    </div>
-  </li>
   </ul>
 </div>
 
@@ -131,12 +107,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script type="text/javascript">
   var destinationURL = "http://localhost:8080"
+  var nullPictureUsername = 'http://lorempixel.com/100/190/nature/10';
   var possibleCities = new Array();
 
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
   var $date = $('#datepicker-date');
 
+  var $resultList = $('#resultList');
 
     $(document).ready(function() {
 
@@ -185,7 +163,7 @@
           url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
           contentType: "application/json",
           data: information,
-          succes: function(possibleDrives) {
+          success: function(possibleDrives) {
             console.log("From Server: ", JSON.stringify(possibleDrives))
             showPossibleDrives(possibleDrives)
           },
@@ -197,7 +175,47 @@
     });
 
     function showPossibleDrives(possibleDrives){
+      $.each(possibleDrives, function(i, drive) {
+        $resultList.append(
+          createPossibleDriveListString(drive)
+        );
+      })
 
+
+    }
+
+    function createPossibleDriveListString(drive) {
+
+      var userPictureUrl = (drive.userPictureUrl == null) ? nullPictureUsername : drive.userPictureUrl
+      var userName = drive.username
+      var driveDestination = drive.destination
+      var driveArrival = drive.arrival
+      var driveDate = drive.date
+      var driveTime = drive.time
+
+      listItem = '<li><div class="card horizontal" onclick="window.location = ;">'
+                    + '<div class="card-image">'
+                      + '<div class="userpicture">'
+                        + '<img src="' + userPictureUrl + '">'
+                      + '</div>'
+                      + '<h5>' + userName + '</h5>'
+                    + '</div>'
+                    + '<div class="card-stacked" >'
+                      + '<div class="card-content">'
+                        + '<p>' + driveDestination + '</p>'
+                      + '</div>'
+                      + '<div class="card-content">'
+                        + '<p>' + driveArrival + '</p>'
+                      + '</div>'
+                      + '<div class="card-content">'
+                        + '<p>' + driveDate + '<p>'
+                      + '</div>'
+                    + '</div>'
+                    + '<div class="card-content">'
+                      + '<p>' + driveTime + '</p>'
+                    + '</div>'
+                  + '</div></li>'
+      return listItem
     }
 
   </script>
