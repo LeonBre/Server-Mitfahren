@@ -19,6 +19,7 @@ import com.google.gson.JsonParser;
 
 import apiv1.converters.SearchConverter;
 import apiv1.models.AnswerDrive;
+import apiv1.models.DriveDetail;
 import apiv1.models.SearchDrive;
 import entities.City;
 import entities.Drive;
@@ -75,6 +76,15 @@ public class RestApi {
 		//SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
 		SearchConverter convert = new SearchConverter(driveService);
 		return convert.getSearchedDrives(searchInput);
+	}
+	
+	@POST
+	@Path("/driveDetails")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public DriveDetail postDriveDetails(int DriveId) {
+		
+		return null;
 	}
 	
 	@GET
