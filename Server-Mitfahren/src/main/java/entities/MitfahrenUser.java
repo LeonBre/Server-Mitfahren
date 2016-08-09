@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -36,6 +38,18 @@ public class MitfahrenUser {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="COLLUMNID")
 	private List<UserComment> userComments;
+
+	
+	 @ManyToMany(
+		        targetEntity=Drive.class,
+		        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+		    )
+		    @JoinTable(
+		        name="MITFAHRENUSER_DRIVE",
+		        joinColumns=@JoinColumn(name="DRIVEID"),
+		        inverseJoinColumns=@JoinColumn(name="USERID")
+		    )
+	private List<Drive> passengerDrives;
 	
 	
 	@Column
@@ -67,15 +81,22 @@ public class MitfahrenUser {
 		this.userComments = new LinkedList<>();
 	}
 
+	/**
+	 * Adds a comment to this user.
+	 * The rating of the user is updated.
+	 * @param comment Comment on the user.
+	 * @param rating Rating of the Ride/on the User.
+	 * @param userId UserId of the author of the comments.
+	 */
 	public void addComment(String comment, float rating, int userId) {
 		UserComment newComment = new UserComment(comment, rating, userId);
 		userComments.add(newComment);
 		//refresh User Rating
-		int newRating = 0;
+		float newRating = 0;
 		for(int i = 0; i < userComments.size(); i++) {
 			newRating += userComments.get(i).getCommentRating();
 		}
-		userRating = newRating/userComments.size();
+		userRating = (float)newRating/(float)userComments.size();
 	}
 	
 	

@@ -16,10 +16,10 @@ public class DriveDetail {
 	private String date;
 	private String time;
 	
-	private int userRating; //implement this
+	private int userRating; 
 	private int seats;		//implement this
 	private List<Passenger> passengers;
-	private List<Comment> userComments; //implement this
+	private List<Comment> userComments; 
 }
 
 class Passenger{
@@ -29,6 +29,6 @@ class Passenger{
 
 class Comment{
 	public String comment;
-	public int commentRating;
+	public float commentRating;
 	public String username;
 }

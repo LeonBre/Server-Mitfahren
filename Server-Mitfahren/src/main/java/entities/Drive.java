@@ -3,6 +3,7 @@ package entities;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -54,6 +56,13 @@ public class Drive {
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
 	private MitfahrenUser driver;
+	
+	@ManyToMany(
+	        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+	        mappedBy = "passengerDrives",
+	        targetEntity = MitfahrenUser.class
+	    )
+	private List<MitfahrenUser> passengers;
 	
 	/* This works !!!!!!
 	@ManyToOne(fetch = FetchType.LAZY)
