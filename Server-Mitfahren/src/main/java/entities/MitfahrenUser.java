@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class MitfahrenUser {
 	
 	private float userRating;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="COLLUMNID")
 	private List<UserComment> userComments;
 	
@@ -53,6 +54,7 @@ public class MitfahrenUser {
 		this.telephoneNumber = telephoneNumber;
 		this.asDriverList = new LinkedList<>();
 		this.asPassengerList = new LinkedList<>();
+		this.userComments = new LinkedList<>();
 	}
 	
 	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl) {
@@ -62,9 +64,21 @@ public class MitfahrenUser {
 		this.asDriverList = new LinkedList<>();
 		this.asPassengerList = new LinkedList<>();
 		this.pictureUrl = pictureUrl;
+		this.userComments = new LinkedList<>();
 	}
 
-
+	public void addComment(String comment, float rating, int userId) {
+		UserComment newComment = new UserComment(comment, rating, userId);
+		userComments.add(newComment);
+		//refresh User Rating
+		int newRating = 0;
+		for(int i = 0; i < userComments.size(); i++) {
+			newRating += userComments.get(i).getCommentRating();
+		}
+		userRating = newRating/userComments.size();
+	}
+	
+	
 	public int getUserId() {
 		return userId;
 	}

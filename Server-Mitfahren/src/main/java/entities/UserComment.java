@@ -13,12 +13,12 @@ class UserComment{
 	private int commentId;
 	
 	private String comment;
-	private int commentRating;
+	private float commentRating;
 	private int commenterId;
 	
 	public UserComment(){}
 	
-	public UserComment(String comment, int commentRating, int commenterId) {
+	public UserComment(String comment, float commentRating, int commenterId) {
 		super();
 		this.comment = comment;
 		this.commentRating = commentRating;
@@ -48,13 +48,13 @@ class UserComment{
 	/**
 	 * @return the commentRating
 	 */
-	public int getCommentRating() {
+	public float getCommentRating() {
 		return commentRating;
 	}
 	/**
 	 * @param commentRating the commentRating to set
 	 */
-	public void setCommentRating(int commentRating) {
+	public void setCommentRating(float commentRating) {
 		this.commentRating = commentRating;
 	}
 	/**
