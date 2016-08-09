@@ -41,15 +41,15 @@ public class DatabaseHelper {
 		userService.persists(testUser4);
 		Calendar nowCalendar = Calendar.getInstance();
 		Drive drive1 = new Drive("Braunschweig", "Hannover", 
-				nowCalendar,testUser1);
+				nowCalendar,testUser1, 4);
 		Drive drive2 = new Drive("Gießen", "Lübeck", 
-				nowCalendar,testUser1);
+				nowCalendar,testUser1, 4);
 		Drive drive3 = new Drive("Berlin", "München", 
-				nowCalendar,testUser1);
+				nowCalendar,testUser1, 4);
 		Drive drive4 = new Drive("Braunschweig", "Hannover", 
-				nowCalendar,testUser1);
+				nowCalendar,testUser1, 3);
 		Drive drive5 = new Drive("Hannover", "Braunschweig", 
-				nowCalendar,testUser1);
+				nowCalendar,testUser1, 2);
 		driveService.persists(drive1);
 		driveService.persists(drive2);
 		driveService.persists(drive3);

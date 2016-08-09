@@ -58,7 +58,7 @@ public class Drive {
 	
 	@ManyToMany(
 	        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-	        mappedBy = "asPassengerDrives",
+	        mappedBy = "asPassengerList",
 	        targetEntity = MitfahrenUser.class
 	    )
 	private List<MitfahrenUser> passengers;
