@@ -59,7 +59,7 @@ public class Drive {
 	
 	@ManyToMany(
 	        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-	        mappedBy = "passengerDrives",
+	        mappedBy = "asPassengerDrives",
 	        targetEntity = MitfahrenUser.class
 	    )
 	private List<MitfahrenUser> passengers;
@@ -70,7 +70,6 @@ public class Drive {
 	private City testCity;
 	*/
 	
-	//private List<User> passengers;
 	
 	/**
 	 * Need this for the Persistence API.

@@ -36,7 +36,7 @@ public class MitfahrenUser {
 	private float userRating;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="COLLUMNID")
+	@JoinColumn(name="AUTHORID")
 	private List<UserComment> userComments;
 
 	
@@ -49,16 +49,16 @@ public class MitfahrenUser {
 		        joinColumns=@JoinColumn(name="DRIVEID"),
 		        inverseJoinColumns=@JoinColumn(name="USERID")
 		    )
-	private List<Drive> passengerDrives;
+	private List<Drive> asPassengerDrives;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
+	private List<Drive> driverList;
 	
+	 
 	@Column
     @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
 	private Collection<Integer> asDriverList;
-	
-	@Column
-    @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
-	private Collection<Integer> asPassengerList;
 	
 	public MitfahrenUser(){}
 
@@ -67,7 +67,6 @@ public class MitfahrenUser {
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.asDriverList = new LinkedList<>();
-		this.asPassengerList = new LinkedList<>();
 		this.userComments = new LinkedList<>();
 	}
 	
@@ -76,7 +75,6 @@ public class MitfahrenUser {
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.asDriverList = new LinkedList<>();
-		this.asPassengerList = new LinkedList<>();
 		this.pictureUrl = pictureUrl;
 		this.userComments = new LinkedList<>();
 	}
@@ -130,14 +128,6 @@ public class MitfahrenUser {
 
 	public void setAsDriverList(Collection<Integer> asDriverList) {
 		this.asDriverList = asDriverList;
-	}
-
-	public Collection<Integer> getAsPassengerList() {
-		return asPassengerList;
-	}
-
-	public void setAsPassengerList(Collection<Integer> asPassengerList) {
-		this.asPassengerList = asPassengerList;
 	}
 
 	public String getPictureUrl() {
