@@ -36,7 +36,19 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
-      
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
+        contentType: "application/json",
+        data: information,
+        success: function(possibleDrives) {
+          console.log("From Server: ", JSON.stringify(possibleDrives))
+          showPossibleDrives(possibleDrives)
+        },
+        error: function() {
+          console.log("Error");
+        }
+      });
 
     }
 

@@ -2,6 +2,7 @@ package entities;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,6 +29,13 @@ public class MitfahrenUser {
 	private String telephoneNumber;
 	
 	private String pictureUrl;
+	
+	private float userRating;
+	
+	@OneToMany
+	@JoinColumn(name="COLLUMNID")
+	private List<UserComment> userComments;
+	
 	
 	@Column
     @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
@@ -105,3 +115,4 @@ public class MitfahrenUser {
 	
 	
 }
+
