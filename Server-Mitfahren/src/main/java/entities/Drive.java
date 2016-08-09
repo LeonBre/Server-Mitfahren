@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 /**
  * I removed the JPA Validation under Window -> Preferences -> Validation -> JPA Validation
@@ -64,25 +63,39 @@ public class Drive {
 	    )
 	private List<MitfahrenUser> passengers;
 	
-	/* This works !!!!!!
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-	private City testCity;
-	*/
-	
-	
+	private int carSpace;
 	/**
 	 * Need this for the Persistence API.
 	 */
 	public Drive(){}
 
-	public Drive(String destination, String arrival, Calendar calendar, MitfahrenUser driver) {
+	public Drive(String destination, String arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
 		this.destination = destination;
 		this.arrival = arrival;
 		this.calendar = calendar;
 		this.driver = driver;
+		this.passengers = new LinkedList<>();
+		this.carSpace = carSpace;
 	}
 	
+	/**
+	 * Adds a new Passenger to the drive if the car has enough space.
+	 * @param newPassenger User who wants to join the drive.
+	 * @return true if the passenger is added succesfully
+	 * false when the car is full 
+	 */
+	public boolean addPassenger(MitfahrenUser newPassenger) {
+		if(passengers.size() + 1 > carSpace) {
+			return false;
+		} else {
+			passengers.add(newPassenger);
+			return true;
+		}
+	}
+	
+	public List<MitfahrenUser> getPassengers() {
+		return passengers;
+	}
 	
 	/**
 	 * @return the driveId
@@ -159,6 +172,20 @@ public class Drive {
 	 */
 	public void setDriver(MitfahrenUser driver) {
 		this.driver = driver;
+	}
+
+	/**
+	 * @return the carSpace
+	 */
+	public int getCarSpace() {
+		return carSpace;
+	}
+
+	/**
+	 * @param carSpace the carSpace to set
+	 */
+	public void setCarSpace(int carSpace) {
+		this.carSpace = carSpace;
 	}
 
 	
