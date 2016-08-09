@@ -49,16 +49,11 @@ public class MitfahrenUser {
 		        joinColumns=@JoinColumn(name="DRIVEID"),
 		        inverseJoinColumns=@JoinColumn(name="USERID")
 		    )
-	private List<Drive> asPassengerDrives;
+	private List<Drive> asPassengerList;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
-	private List<Drive> driverList;
-	
-	 
-	@Column
-    @ElementCollection(targetClass=Integer.class, fetch=FetchType.EAGER)
-	private Collection<Integer> asDriverList;
+	private List<Drive> asDriverList;
 	
 	public MitfahrenUser(){}
 
@@ -66,17 +61,21 @@ public class MitfahrenUser {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
-		this.asDriverList = new LinkedList<>();
+		this.userRating = 0;
 		this.userComments = new LinkedList<>();
+		this.asPassengerList = new LinkedList<>();
+		this.asDriverList = new LinkedList<>();
 	}
 	
 	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
-		this.asDriverList = new LinkedList<>();
 		this.pictureUrl = pictureUrl;
+		this.userRating = 0;
 		this.userComments = new LinkedList<>();
+		this.asPassengerList = new LinkedList<>();
+		this.asDriverList = new LinkedList<>();
 	}
 
 	/**
@@ -96,47 +95,49 @@ public class MitfahrenUser {
 		}
 		userRating = (float)newRating/(float)userComments.size();
 	}
-	
-	
-	public int getUserId() {
-		return userId;
-	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
+	/**
+	 * @return the username
+	 */
 	public String getUsername() {
 		return username;
 	}
 
+	/**
+	 * @param username the username to set
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	/**
+	 * @return the telephoneNumber
+	 */
 	public String getTelephoneNumber() {
 		return telephoneNumber;
 	}
 
+	/**
+	 * @param telephoneNumber the telephoneNumber to set
+	 */
 	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
 
-	public Collection<Integer> getAsDriverList() {
-		return asDriverList;
-	}
-
-	public void setAsDriverList(Collection<Integer> asDriverList) {
-		this.asDriverList = asDriverList;
-	}
-
+	/**
+	 * @return the pictureUrl
+	 */
 	public String getPictureUrl() {
 		return pictureUrl;
 	}
 
+	/**
+	 * @param pictureUrl the pictureUrl to set
+	 */
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
 	}
+	
 	
 	
 }
