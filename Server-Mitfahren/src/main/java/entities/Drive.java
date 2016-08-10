@@ -45,7 +45,9 @@ public class Drive {
 	private int driveId;
 	
 	@NotNull
-	private String destination;
+	@ManyToOne
+	@JoinColumn
+	private City destination;
 	@NotNull
 	private String arrival;
 	@NotNull
@@ -63,19 +65,21 @@ public class Drive {
 	    )
 	private List<MitfahrenUser> passengers;
 	
-	private int carSpace;
+	private int carSeats;
+	
+	
 	/**
 	 * Need this for the Persistence API.
 	 */
 	public Drive(){}
 
-	public Drive(String destination, String arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
+	public Drive(City destination, String arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
 		this.destination = destination;
 		this.arrival = arrival;
 		this.calendar = calendar;
 		this.driver = driver;
 		this.passengers = new LinkedList<>();
-		this.carSpace = carSpace;
+		this.carSeats = carSpace;
 	}
 	
 	/**
@@ -85,7 +89,7 @@ public class Drive {
 	 * false when the car is full 
 	 */
 	public boolean addPassenger(MitfahrenUser newPassenger) {
-		if(passengers.size() + 1 > carSpace) {
+		if(passengers.size() + 1 > carSeats) {
 			return false;
 		} else {
 			passengers.add(newPassenger);
@@ -121,14 +125,14 @@ public class Drive {
 	/**
 	 * @return the destination
 	 */
-	public String getDestination() {
+	public City getDestination() {
 		return destination;
 	}
 
 	/**
 	 * @param destinationId the destination to set
 	 */
-	public void setDestination(String destinationId) {
+	public void setDestination(City destinationId) {
 		this.destination = destinationId;
 	}
 
@@ -178,14 +182,14 @@ public class Drive {
 	 * @return the carSpace
 	 */
 	public int getCarSpace() {
-		return carSpace;
+		return carSeats;
 	}
 
 	/**
 	 * @param carSpace the carSpace to set
 	 */
 	public void setCarSpace(int carSpace) {
-		this.carSpace = carSpace;
+		this.carSeats = carSpace;
 	}
 
 	

@@ -17,9 +17,32 @@ public class DriveDetail {
 	private String time;
 	
 	private int userRating; 
-	private int seats;		//implement this
+	private int seats;
 	private List<Passenger> passengers;
-	private List<Comment> userComments; 
+	private List<Comment> userComments;
+	
+	public DriveDetail(String username, String destination, String arrival, String date, String time, int userRating,
+			int seats) {
+		this.username = username;
+		this.destination = destination;
+		this.arrival = arrival;
+		this.date = date;
+		this.time = time;
+		this.userRating = userRating;
+		this.seats = seats;
+	} 
+	
+	public void addPassenger(String username, int userId) {
+		Passenger newPassenger = new Passenger();
+		newPassenger.username = username;
+		newPassenger.userId = userId;
+		
+		passengers.add(newPassenger);
+	}
+	
+	public void addComment(String comment, float commentRating, String username, int userId) {
+		userComments.add(new Comment(comment, commentRating, username, userId));
+	}
 }
 
 class Passenger{
@@ -31,4 +54,15 @@ class Comment{
 	public String comment;
 	public float commentRating;
 	public String username;
+	public int userId;
+	
+	public Comment(String comment, float commentRating, String username, int userId) {
+		super();
+		this.comment = comment;
+		this.commentRating = commentRating;
+		this.username = username;
+		this.userId = userId;
+	}
+	
+	
 }

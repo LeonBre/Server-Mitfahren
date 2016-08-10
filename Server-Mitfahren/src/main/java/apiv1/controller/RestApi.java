@@ -22,6 +22,7 @@ import apiv1.models.AnswerDrive;
 import apiv1.models.DriveDetail;
 import apiv1.models.SearchDrive;
 import entities.City;
+import entities.CityService;
 import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUser;
@@ -42,6 +43,8 @@ public class RestApi {
 	DriveService driveService;
 	@Inject
 	MitfahrenUserService userService;
+	@Inject
+	CityService cityService;
 	
 	/**
 	 * First Method to send all cities for the Autocomplete Code.
@@ -91,7 +94,7 @@ public class RestApi {
 	@Path("/testDatabase")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Drive> testDatabase() {
-		DatabaseHelper dbHelper = new DatabaseHelper(userService, driveService);
+		DatabaseHelper dbHelper = new DatabaseHelper(userService, driveService, cityService);
 		dbHelper.storeTestData();
 		return driveService.findByDestinationArrival("Braunschweig", "Hannover");
 	}
