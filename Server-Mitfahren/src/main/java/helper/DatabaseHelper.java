@@ -36,10 +36,14 @@ public class DatabaseHelper {
 		City braunschweig = new City("Braunschweig");
 		City berlin = new City("Berlin");
 		City hannover = new City("Hannover");
+		City lübeck = new City("Lübeck");
+		City münchen = new City("München");
 		
 		cityService.persists(braunschweig);
 		cityService.persists(berlin);
 		cityService.persists(hannover);
+		cityService.persists(lübeck);
+		cityService.persists(münchen);
 		
 		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567");
 		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344");
@@ -52,15 +56,15 @@ public class DatabaseHelper {
 		userService.persists(testUser3);
 		userService.persists(testUser4);
 		Calendar nowCalendar = Calendar.getInstance();
-		Drive drive1 = new Drive(new City("Braunschweig"), "Hannover", 
+		Drive drive1 = new Drive(braunschweig, hannover, 
 				nowCalendar,testUser1, 4);
-		Drive drive2 = new Drive(braunschweig, "Lübeck", 
+		Drive drive2 = new Drive(braunschweig, lübeck, 
 				nowCalendar,testUser1, 4);
-		Drive drive3 = new Drive(berlin, "München", 
+		Drive drive3 = new Drive(berlin, münchen, 
 				nowCalendar,testUser1, 4);
-		Drive drive4 = new Drive(braunschweig, "Hannover", 
+		Drive drive4 = new Drive(braunschweig, hannover, 
 				nowCalendar,testUser1, 3);
-		Drive drive5 = new Drive(hannover, "Braunschweig", 
+		Drive drive5 = new Drive(hannover, braunschweig, 
 				nowCalendar,testUser1, 2);
 		driveService.persists(drive1);
 		driveService.persists(drive2);

@@ -44,12 +44,13 @@ public class Drive {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int driveId;
 	
-	@NotNull
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private City destination;
-	@NotNull
-	private String arrival;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn
+	private City arrival;
 	@NotNull
 	@Column(name = "calendar")
 	private Calendar calendar;
@@ -73,7 +74,7 @@ public class Drive {
 	 */
 	public Drive(){}
 
-	public Drive(City destination, String arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
+	public Drive(City destination, City arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
 		this.destination = destination;
 		this.arrival = arrival;
 		this.calendar = calendar;
@@ -139,14 +140,14 @@ public class Drive {
 	/**
 	 * @return the arrivalId
 	 */
-	public String getArrival() {
+	public City getArrival() {
 		return arrival;
 	}
 
 	/**
 	 * @param arrivalId the arrivalId to set
 	 */
-	public void setArrival(String arrivalId) {
+	public void setArrival(City arrivalId) {
 		this.arrival = arrivalId;
 	}
 
