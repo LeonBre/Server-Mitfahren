@@ -23,11 +23,21 @@
 
     $testDatabase.on('click', function() {
       console.log("Message is send");
+      data = {
+        driveId : 1
+      }
+
+      data = JSON.stringify(data)
       $.ajax({
-        type: 'GET',
-        url: destinationURL + '/Server-Mitfahren/apiv1/testDatabase',
-        success: function(answer){
-          console.log(JSON.stringify(answer))
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/driveDetails',
+        contentType: "application/json",
+        data: data,
+        success: function(answer) {
+          console.log("From Server: ", JSON.stringify(answer))
+        },
+        error: function() {
+          console.log("Error");
         }
       });
     });

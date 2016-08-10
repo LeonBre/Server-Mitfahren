@@ -71,6 +71,20 @@ public class UserComment{
 	public void setCommenterId(int commenterId) {
 		this.commenterId = commenterId;
 	}
+
+	/**
+	 * @return the commenterUserName
+	 */
+	public String getCommenterUserName() {
+		return commenterUserName;
+	}
+
+	/**
+	 * @param commenterUserName the commenterUserName to set
+	 */
+	public void setCommenterUserName(String commenterUserName) {
+		this.commenterUserName = commenterUserName;
+	}
 	
 	
 }
