@@ -1,8 +1,5 @@
 package apiv1.converters;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
 import apiv1.models.DriveDetail;
 import entities.Drive;
 import entities.DriveService;
@@ -17,9 +14,11 @@ import helper.CalendarHelper;
  */
 public class DriveDetailConverter {
 	
-	@Inject
 	DriveService driveService;
 	
+	public DriveDetailConverter(DriveService driveService) {
+		this.driveService = driveService;
+	}
 	
 	/**
 	 * Gets the matching drive out of the database and converts it in a DriveDetail model.

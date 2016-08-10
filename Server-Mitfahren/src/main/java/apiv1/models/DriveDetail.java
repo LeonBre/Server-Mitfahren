@@ -1,5 +1,6 @@
 package apiv1.models;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,18 +11,18 @@ import java.util.List;
  */
 public class DriveDetail {
 
-	private String username;
-	private String destination;
-	private String destinationPictureUrl;
-	private String arrival;
-	private String arrivalPictureUrl;
-	private String date;
-	private String time;
+	public String username;
+	public String destination;
+	public String destinationPictureUrl;
+	public String arrival;
+	public String arrivalPictureUrl;
+	public String date;
+	public String time;
 	
-	private String userRating; 
-	private String seats;
-	private List<Passenger> passengers;
-	private List<Comment> userComments;
+	public String userRating; 
+	public String seats;
+	public List<Passenger> passengers;
+	public List<Comment> userComments;
 	
 
 	
@@ -36,6 +37,9 @@ public class DriveDetail {
 		this.time = time;
 		this.userRating = userRating;
 		this.seats = seats;
+		
+		this.passengers = new LinkedList<>();
+		this.userComments = new LinkedList<>();
 	}
 
 	public void addPassenger(String username, int userId, String userPictureUrl) {

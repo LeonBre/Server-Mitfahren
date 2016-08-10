@@ -80,7 +80,7 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public DriveDetail postDriveDetails(SearchDriveDetail driveId) {
-		DriveDetailConverter convert = new DriveDetailConverter();
+		DriveDetailConverter convert = new DriveDetailConverter(driveService);
 		return convert.convertDriveIdtoAnswerDrive(driveId.getDriveId());
 	}
 	

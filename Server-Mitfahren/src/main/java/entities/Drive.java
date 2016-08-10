@@ -62,7 +62,8 @@ public class Drive {
 	@ManyToMany(
 	        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
 	        mappedBy = "asPassengerList",
-	        targetEntity = MitfahrenUser.class
+	        targetEntity = MitfahrenUser.class,
+	        fetch =FetchType.EAGER
 	    )
 	private List<MitfahrenUser> passengers;
 	
