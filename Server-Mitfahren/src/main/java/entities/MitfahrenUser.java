@@ -1,14 +1,10 @@
 package entities;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -85,8 +81,8 @@ public class MitfahrenUser {
 	 * @param rating Rating of the Ride/on the User.
 	 * @param userId UserId of the author of the comments.
 	 */
-	public void addComment(String comment, float rating, int userId) {
-		UserComment newComment = new UserComment(comment, rating, userId);
+	public void addComment(String comment,String userName, float rating, int userId) {
+		UserComment newComment = new UserComment(comment, userName, rating, userId);
 		userComments.add(newComment);
 		//refresh User Rating
 		float newRating = 0;
@@ -152,7 +148,12 @@ public class MitfahrenUser {
 		this.userId = userId;
 	}
 	
+	public float getUserRating() {
+		return userRating;
+	}
 	
-	
+	public List<UserComment> getUserComments() {
+		return userComments;
+	}
 }
 

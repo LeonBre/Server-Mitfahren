@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-class UserComment{
+public class UserComment{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,14 +14,16 @@ class UserComment{
 	
 	private String comment;
 	private float commentRating;
+	private String commenterUserName;
 	private int commenterId;
 	
 	public UserComment(){}
 	
-	public UserComment(String comment, float commentRating, int commenterId) {
+	public UserComment(String comment, String commenterUserName, float commentRating, int commenterId) {
 		super();
 		this.comment = comment;
 		this.commentRating = commentRating;
+		this.commenterUserName = commenterUserName;
 		this.commenterId = commenterId;
 	}
 

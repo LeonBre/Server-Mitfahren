@@ -78,6 +78,16 @@ public class CalendarHelper {
 	    return monthNames[month];
 	}
 	
+	public static String getCalendaDateAsString(Calendar calendar) {
+		return calendar.get(Calendar.DAY_OF_MONTH) + ". " 
+						+ CalendarHelper.getMonthAsString(calendar.get(Calendar.MONTH))
+						+ " " + calendar.get(Calendar.YEAR);
+	}
+	
+	public static String getCalendarTimeAsString(Calendar calendar) {
+		return calendar.get(Calendar.HOUR_OF_DAY) + ":" 
+				+ calendar.get(Calendar.MINUTE); 
+	}
 	
 	private static String removeLastComma(String str) {
 	    if (str != null && str.length() > 0 && str.charAt(str.length()-1)==',') {

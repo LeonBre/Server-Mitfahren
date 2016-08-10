@@ -12,32 +12,34 @@ public class DriveDetail {
 
 	private String username;
 	private String destination;
+	private String destinationPictureUrl;
 	private String arrival;
+	private String arrivalPictureUrl;
 	private String date;
 	private String time;
 	
-	private int userRating; 
-	private int seats;
+	private String userRating; 
+	private String seats;
 	private List<Passenger> passengers;
 	private List<Comment> userComments;
 	
-	public DriveDetail(String username, String destination, String arrival, String date, String time, int userRating,
-			int seats) {
+
+	
+	public DriveDetail(String username, String destination, String destinationPictureUrl, String arrival,
+			String arrivalPictureUrl, String date, String time, String userRating, String seats) {
 		this.username = username;
 		this.destination = destination;
+		this.destinationPictureUrl = destinationPictureUrl;
 		this.arrival = arrival;
+		this.arrivalPictureUrl = arrivalPictureUrl;
 		this.date = date;
 		this.time = time;
 		this.userRating = userRating;
 		this.seats = seats;
-	} 
-	
-	public void addPassenger(String username, int userId) {
-		Passenger newPassenger = new Passenger();
-		newPassenger.username = username;
-		newPassenger.userId = userId;
-		
-		passengers.add(newPassenger);
+	}
+
+	public void addPassenger(String username, int userId, String userPictureUrl) {
+		passengers.add(new Passenger(username, userId, userPictureUrl));
 	}
 	
 	public void addComment(String comment, float commentRating, String username, int userId) {
@@ -46,8 +48,18 @@ public class DriveDetail {
 }
 
 class Passenger{
-	public String username;
-	public int userId;
+	private String username;
+	private int userId;
+	private String userPictureUrl;
+	
+	public Passenger(String username, int userId, String userPictureUrl) {
+		super();
+		this.username = username;
+		this.userId = userId;
+		this.userPictureUrl = userPictureUrl;
+	}
+	
+	
 }
 
 class Comment{

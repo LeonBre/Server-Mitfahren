@@ -182,7 +182,7 @@ public class Drive {
 	/**
 	 * @return the carSpace
 	 */
-	public int getCarSpace() {
+	public int getCarSeats() {
 		return carSeats;
 	}
 

@@ -49,8 +49,8 @@ public class DatabaseHelper {
 		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344");
 		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456");
 		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235");
-		testUser1.addComment("Fahrt war supi", 5f, testUser2.getUserId());
-		testUser1.addComment("Ich fand die fahrt gewöhnungsbedürftig...", 2f, testUser4.getUserId());
+		testUser1.addComment("Fahrt war supi",testUser2.getUsername(), 5f, testUser2.getUserId());
+		testUser1.addComment("Ich fand die fahrt gewöhnungsbedürftig...",testUser4.getUsername(), 2f, testUser4.getUserId());
 		userService.persists(testUser1);
 		userService.persists(testUser2);
 		userService.persists(testUser3);
