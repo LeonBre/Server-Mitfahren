@@ -89,11 +89,7 @@
 
     <dependencies>
     	<!-- Own Dependencies -->
-    	<dependency>
-	    	<groupId>com.google.code.gson</groupId>
-	    	<artifactId>gson</artifactId>
-	    	<version>2.6.2</version>
-		</dependency>
+    	
 		<!-- End of Own Dependencies -->
         <!-- First declare the APIs we depend on and need for compilation. All
             of them are provided by JBoss WildFly -->
