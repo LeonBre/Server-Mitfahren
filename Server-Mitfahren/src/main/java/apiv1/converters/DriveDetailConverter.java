@@ -25,8 +25,9 @@ public class DriveDetailConverter {
 	 * @param driveId Id of the searched drive.
 	 * @return Model for the Webpage.
 	 */
-	public DriveDetail convertDriveIdtoAnswerDrive(int driveId) {
-		Drive currentDrive = driveService.find(driveId);
+	public DriveDetail convertDriveIdtoAnswerDrive(String driveId) {
+		int driveIdInteger = Integer.parseInt(driveId);
+		Drive currentDrive = driveService.find(driveIdInteger);
 		
 		if(currentDrive == null) {
 			return null;

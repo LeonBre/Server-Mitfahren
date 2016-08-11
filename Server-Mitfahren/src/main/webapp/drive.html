@@ -34,14 +34,15 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript">
+    var destinationURL = "http://localhost:8080"
 
     $(document).ready(function() {
-        console.log("Message is send");
-        data = {
-          driveId : getUrlVars()
+        var urlVarDriveId = getUrlVars()['driveId'];
+        var data = {
+          driveId : urlVarDriveId
         }
 
-        data = JSON.stringify(data)
+        data = JSON.stringify(data);
         $.ajax({
           type: 'POST',
           url: destinationURL + '/Server-Mitfahren/apiv1/driveDetails',
@@ -55,7 +56,7 @@
           }
         });
 
-    }
+    });
 
 
     function getUrlVars() {

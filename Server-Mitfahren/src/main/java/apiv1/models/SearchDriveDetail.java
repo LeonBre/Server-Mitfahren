@@ -2,9 +2,9 @@ package apiv1.models;
 
 public class SearchDriveDetail {
 
-	private int driveId;
+	public String driveId;
 	
-	public SearchDriveDetail(int driveId) {
+	public SearchDriveDetail(String driveId) {
 		this.driveId = driveId;
 	}
 	
@@ -13,14 +13,14 @@ public class SearchDriveDetail {
 	/**
 	 * @return the driveId
 	 */
-	public int getDriveId() {
+	public String getDriveId() {
 		return driveId;
 	}
 
 	/**
 	 * @param driveId the driveId to set
 	 */
-	public void setDriveId(int driveId) {
+	public void setDriveId(String driveId) {
 		this.driveId = driveId;
 	}
 	
