@@ -36,19 +36,24 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
-      $.ajax({
-        type: 'POST',
-        url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
-        contentType: "application/json",
-        data: information,
-        success: function(possibleDrives) {
-          console.log("From Server: ", JSON.stringify(possibleDrives))
-          showPossibleDrives(possibleDrives)
-        },
-        error: function() {
-          console.log("Error");
+        console.log("Message is send");
+        data = {
+          driveId : getUrlVars()
         }
-      });
+
+        data = JSON.stringify(data)
+        $.ajax({
+          type: 'POST',
+          url: destinationURL + '/Server-Mitfahren/apiv1/driveDetails',
+          contentType: "application/json",
+          data: data,
+          success: function(answer) {
+            console.log("From Server: ", JSON.stringify(answer))
+          },
+          error: function() {
+            console.log("Error");
+          }
+        });
 
     }
 

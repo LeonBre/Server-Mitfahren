@@ -44,5 +44,8 @@ public class City {
 	}
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
+		
+		String bla = "asdf";
+		City saäpdifj = new City("Broistedt", "google.de");
 	}
 }

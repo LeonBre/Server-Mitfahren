@@ -69,8 +69,10 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<AnswerDrive> postPossibleDrives(SearchDrive searchInput){
-		//JsonElement jElement = new JsonParser().parse(input);
-		//SearchDrive drive = JsonHelper.convertJElementToSearchDrive(jElement);
+		System.out.println("Von :" + searchInput.destination);
+		System.out.println("Nach :" + searchInput.arrival + "\n Time: " + searchInput.date);
+		
+		
 		SearchConverter convert = new SearchConverter(driveService);
 		return convert.getSearchedDrives(searchInput);
 	}

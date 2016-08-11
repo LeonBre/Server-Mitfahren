@@ -54,8 +54,8 @@ public class DriveService {
 	public List<Drive> findByDestinationArrival(String destination, String arrival) {
 	    List<Drive> drive = null;
 	    try {
-	      drive = (List<Drive>)em.createQuery("FROM Drive d WHERE d.destination = '" + destination + "' "
-	      		+ "AND d.arrival = '" + arrival + "'")
+	      drive = (List<Drive>)em.createQuery("FROM Drive d WHERE d.destination.name = '" + destination + "' "
+	      		+ "AND d.arrival.name = '" + arrival + "'")
 	        .getResultList();
 	      
 	    } catch (javax.persistence.NoResultException noResultException) {
