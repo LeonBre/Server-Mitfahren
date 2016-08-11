@@ -78,17 +78,33 @@ public class CalendarHelper {
 	    return monthNames[month];
 	}
 	
+	/**
+	 * Gets day, month and year out of the calendar and converts it into a String.
+	 * @param calendar object, where you want the date from.
+	 * @return String of the date.
+	 */
 	public static String getCalendaDateAsString(Calendar calendar) {
 		return calendar.get(Calendar.DAY_OF_MONTH) + ". " 
 						+ CalendarHelper.getMonthAsString(calendar.get(Calendar.MONTH))
 						+ " " + calendar.get(Calendar.YEAR);
 	}
 	
+	/**
+	 * Gets hour and minutre out of the calendar and converts it inta a String.
+	 * @param calendar object, where you want the time from.
+	 * @return String of the time.
+	 */
 	public static String getCalendarTimeAsString(Calendar calendar) {
 		return calendar.get(Calendar.HOUR_OF_DAY) + ":" 
 				+ calendar.get(Calendar.MINUTE); 
 	}
 	
+	/**
+	 * Helper class to remove the last character of a String, 
+	 * if the last character is a comma.
+	 * @param str String, where you want to remove the comma from.
+	 * @return String without a comma at the last position.
+	 */
 	private static String removeLastComma(String str) {
 	    if (str != null && str.length() > 0 && str.charAt(str.length()-1)==',') {
 	      str = str.substring(0, str.length()-1);
