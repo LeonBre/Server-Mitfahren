@@ -62,9 +62,9 @@
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class="header center-align">Max Mustermann</h3>
-              <h4 class="header center-align">
-                <i class="small material-icons">star</i> 4.5/5.0</h3>
+              <h3 class="header center-align" id="driverName">Max Mustermann</h3>
+              <h4 class="header center-align" id="driverRating">
+                <i class="small material-icons">star</i> -2.4/5.0</h3>
             </div>
           </div>
         </div>
@@ -123,6 +123,8 @@
     var $arrival = $('#arrivalHeader')
     var $date = $('#dateHeader')
     var $time = $('#timeHeader')
+    var $driverName = $('#driverName')
+    var $driverRating = $('#driverRating')
 
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['driveId'];
@@ -169,6 +171,16 @@
 
       $time.empty();
       $time.append(answer.time);
+
+      $driverName.empty();
+      $driverName.append(answer.username);
+
+      $driverRating.empty();
+      $driverRating.append(getDriverRatingText(answer.userRating));
+    }
+
+    function getDriverRatingText(rating) {
+      return '<i class="small material-icons">star</i> ' + rating + '/5.0</h3>'
     }
 
     function getCityText(cityName, pictureUrl) {
