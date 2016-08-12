@@ -42,3 +42,19 @@ body{
   opacity: 0;
   z-index: -1;
 }
+
+
+.noDrive{
+text-align: center;
+}
+
+.driveContent{
+  margin-top: 5%;
+  background-color: #4db6ac;
+  color: white;
+  margin-left: 8%;
+  margin-right: 8%;
+  padding: 12px;
+  padding-bottom: 0px;
+  border-radius: 15px;
+}
