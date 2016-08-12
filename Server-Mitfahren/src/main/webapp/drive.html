@@ -55,7 +55,7 @@
             </div>
       </div>
       <div class="row">
-        <h3 class="col l1 teal-text"> Fahrer:</h3>
+        <h3 class="col m3 teal-text"> Fahrer:</h3>
         <div class="card horizontal">
           <div class="card-image">
             <img src="http://lorempixel.com/100/190/nature/10">
@@ -69,6 +69,48 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <h3 class="col m3 teal-text"> Plätze:
+        </h3>
+        <h3 class="col m2">2/4</h3>
+        <div class="col m7">
+          <h4 class="header center-align">Mitfahrer</h4>
+          <ul class="collection">
+
+           <li class="collection-item avatar">
+             <img src="images/yuna.jpg" alt="" class="circle">
+             <h5 class="center-align">Karla Kolumna</h5>
+           </li>
+
+           <li class="collection-item avatar">
+             <img src="images/yuna.jpg" alt="" class="circle">
+             <h5 class="center-align">Netter Mitfahrer</h5>
+           </li>
+
+         </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m5 center-align">
+          <button class="btn buttonBuchen waves-effect waves-light" id="button-sendInformation"
+          type="submit" name="action">Fahrt Buchen</button>
+        </div>
+        <div class="col m7 ">
+          <h3 class="teal-text"> Kommentare:</h3>
+          <ul class="collection">
+            <li class="collection-item">"Die Fahrt war gut."
+              <div class="left-align">
+                <i class="tiny material-icons">star</i> 3.0/5.0
+              </div>
+              <div class="right-align">
+              Netter Mitfahrer
+            </div>
+          </ul>
+        </div>
+
+
     </div>
 
 
@@ -76,6 +118,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
+
+    
 
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['driveId'];
@@ -99,13 +143,21 @@
         contentType: "application/json",
         data: data,
         success: function(answer) {
-          console.log("From Server: ", JSON.stringify(answer))
+          console.log("From Server: ", JSON.stringify(answer));
+          storeData(answer)
         },
         error: function() {
           console.log("Error");
         }
       });
     }
+
+    function storeData(answer) {
+
+
+    }
+
+
 
     function getUrlVars() {
         var vars = [], hash;
