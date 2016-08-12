@@ -50,11 +50,22 @@ text-align: center;
 
 .driveContent{
   margin-top: 5%;
-  background-color: #4db6ac;
-  color: white;
   margin-left: 8%;
   margin-right: 8%;
   padding: 12px;
   padding-bottom: 0px;
   border-radius: 15px;
+}
+
+.driveContentHeader{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  background-color: #4db6ac;
+  color: white;
+}
+
+.cityPicture{
+  height: 50px;
+    width: 50px;
+    background-color: powderblue;
 }
