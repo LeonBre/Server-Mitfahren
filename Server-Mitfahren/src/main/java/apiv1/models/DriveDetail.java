@@ -52,9 +52,9 @@ public class DriveDetail {
 }
 
 class Passenger{
-	private String username;
-	private int userId;
-	private String userPictureUrl;
+	public String username;
+	public int userId;
+	public String userPictureUrl;
 	
 	public Passenger(String username, int userId, String userPictureUrl) {
 		super();

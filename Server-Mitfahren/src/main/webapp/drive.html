@@ -71,12 +71,12 @@
       </div>
 
       <div class="row">
-        <h3 class="col m3 teal-text"> Plätze:
+        <h3 class="col m3 teal-text"> Belegt:
         </h3>
-        <h3 class="col m2">2/4</h3>
-        <div class="col m7">
-          <h4 class="header center-align">Mitfahrer</h4>
-          <ul class="collection">
+        <h3 class="col m2" id="seats">2/4</h3>
+        <div class="col m7 " id="mitfahrerList">
+          <h4 class="header center-align" >Mitfahrer</h4>
+          <ul class="collection" id="passengerCollection">
 
            <li class="collection-item avatar">
              <img src="images/yuna.jpg" alt="" class="circle">
@@ -118,6 +118,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
+    var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html"
 
     var $destination = $('#destinationHeader')
     var $arrival = $('#arrivalHeader')
@@ -125,6 +126,10 @@
     var $time = $('#timeHeader')
     var $driverName = $('#driverName')
     var $driverRating = $('#driverRating')
+    var $seats = $('#seats')
+    var $passengers = $('#passengerCollection')
+    var $mitfahrerList = $('#mitfahrerList')
+
 
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['driveId'];
@@ -177,6 +182,33 @@
 
       $driverRating.empty();
       $driverRating.append(getDriverRatingText(answer.userRating));
+
+      $seats.empty();
+      $seats.append(getSeatsText(answer.seats, answer.passengers))
+
+      $passengers.empty();
+      $passengers.append(getPassengersList(answer.passengers));
+    }
+
+    function getPassengersList(passengersList) {
+      if(passengersList.length == 0){
+        $mitfahrerList.empty();
+        return ""
+      }
+
+      returnText = "";
+      for (var i = 0; i < passengersList.length; i++) {
+        returnText += '<li class="collection-item avatar"'
+         + 'onclick="window.location=\'' + userUrl + '?userId=' + passengersList[i].userId +'\';"' + '>'
+          + '<img src="' + passengersList[i].userPictureUrl
+          + '" alt="" class="circle">'
+          +'<h5 class="center-align">' + passengerList[i].username + '</h5></li>'
+      }
+    }
+
+    function getSeatsText(seats, passengerList) {
+        return passengerList.length + "/" + seats;
+
     }
 
     function getDriverRatingText(rating) {
