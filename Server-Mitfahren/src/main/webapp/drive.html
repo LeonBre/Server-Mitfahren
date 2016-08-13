@@ -99,14 +99,17 @@
         </div>
         <div class="col m7 ">
           <h3 class="teal-text"> Kommentare:</h3>
-          <ul class="collection">
+          <ul class="collection" id="commentaryList">
+
             <li class="collection-item">"Die Fahrt war gut."
               <div class="left-align">
                 <i class="tiny material-icons">star</i> 3.0/5.0
               </div>
               <div class="right-align">
-              Netter Mitfahrer
-            </div>
+                <a href="http://google.de">Netter Mitfahrer</a>
+              </div>
+            </li>
+
           </ul>
         </div>
 
@@ -129,6 +132,7 @@
     var $seats = $('#seats')
     var $passengers = $('#passengerCollection')
     var $mitfahrerList = $('#mitfahrerList')
+    var $commentaryList = $('#commentaryList')
 
 
     $(document).ready(function() {
@@ -188,6 +192,28 @@
 
       $passengers.empty();
       $passengers.append(getPassengersList(answer.passengers));
+
+      $commentaryList.empty();
+      $commentaryList.append(getCommentaryList(answer.userComments))
+    }
+
+    function getCommentaryList (commentaryList) {
+      var returnString = ""
+      for (var i = 0; i < commentaryList.length; i++) {
+        returnString += getCommentaryString(commentaryList[i])
+      }
+      return returnString
+    }
+
+    function getCommentaryString(commentary) {
+      return '<li class="collection-item">"' + commentary.comment + '"'
+            + '<div class="left-align">'
+              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
+            + '</div>'
+            + '<div class="right-align">'
+              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
+            + '</div>'
+            + '</li>'
     }
 
     function getPassengersList(passengersList) {
