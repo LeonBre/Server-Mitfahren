@@ -95,8 +95,17 @@ public class CalendarHelper {
 	 * @return String of the time.
 	 */
 	public static String getCalendarTimeAsString(Calendar calendar) {
-		return calendar.get(Calendar.HOUR_OF_DAY) + ":" 
-				+ calendar.get(Calendar.MINUTE); 
+		String timeString = "";
+		timeString += calendar.get(Calendar.HOUR_OF_DAY);
+		timeString += ":";
+		int minute = calendar.get(Calendar.MINUTE);
+		if (minute < 10){
+			timeString += "0" + minute;
+		} else {
+			timeString += minute;
+		}
+		
+		return timeString;
 	}
 	
 	/**
