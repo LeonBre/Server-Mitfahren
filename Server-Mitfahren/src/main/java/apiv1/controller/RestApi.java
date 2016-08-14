@@ -12,11 +12,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import apiv1.converters.DriveDetailConverter;
+import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.SearchConverter;
 import apiv1.models.AnswerDrive;
 import apiv1.models.DriveDetail;
+import apiv1.models.MitfahrenUserDetail;
 import apiv1.models.SearchDrive;
 import apiv1.models.SearchDriveDetail;
+import apiv1.models.SearchMitfahrenUserDetail;
 import entities.City;
 import entities.CityService;
 import entities.Drive;
@@ -84,6 +87,15 @@ public class RestApi {
 	public DriveDetail postDriveDetails(SearchDriveDetail driveId) {
 		DriveDetailConverter convert = new DriveDetailConverter(driveService);
 		return convert.convertDriveIdtoAnswerDrive(driveId.getDriveId());
+	}
+	
+	@POST
+	@Path("/userDetails")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public MitfahrenUserDetail postMitfahrenUserDetails(SearchMitfahrenUserDetail userId) {
+		MitfahrenUserDetailConverter convert = new MitfahrenUserDetailConverter(userService);
+		return convert.convertIdToModel(userId.userId);
 	}
 	
 	@GET
