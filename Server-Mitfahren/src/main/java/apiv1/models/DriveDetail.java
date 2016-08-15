@@ -25,7 +25,18 @@ public class DriveDetail {
 	public List<Comment> userComments;
 	
 
-	
+	/**
+	 * Basic Constructor.
+	 * @param username Username of the driver.
+	 * @param destination Destination of the drive.
+	 * @param destinationPictureUrl PictureUrl of the Destination.
+	 * @param arrival Arrival of the Drive.
+	 * @param arrivalPictureUrl PictureUrl of the Arrival.
+	 * @param date Date when the drive begins.
+	 * @param time Time when the drive begins.
+	 * @param userRating Rating of the Driver
+	 * @param seats Number of free seats.
+	 */
 	public DriveDetail(String username, String destination, String destinationPictureUrl, String arrival,
 			String arrivalPictureUrl, String date, String time, String userRating, String seats) {
 		this.username = username;
@@ -42,20 +53,44 @@ public class DriveDetail {
 		this.userComments = new LinkedList<>();
 	}
 
+	/**
+	 * Adds a new Passenger to the PassengerList.
+	 * @param username Username of the passenger.
+	 * @param userId UserId of the passenger.
+	 * @param userPictureUrl PictureUrl of the passenger.
+	 */
 	public void addPassenger(String username, int userId, String userPictureUrl) {
 		passengers.add(new Passenger(username, userId, userPictureUrl));
 	}
 	
+	/**
+	 * Adds a new Comment to the Commentlist
+	 * @param comment Text of the Comment
+	 * @param commentRating Rating which was given for the drive.
+	 * @param username Username of the commenter.
+	 * @param userId Id of the commenter.
+	 */
 	public void addComment(String comment, float commentRating, String username, int userId) {
 		userComments.add(new Comment(comment, commentRating, username, userId));
 	}
 }
 
+/**
+ * Helper class for the DriveDetail Class
+ * @author Leon Johann Brettin
+ *
+ */
 class Passenger{
 	public String username;
 	public int userId;
 	public String userPictureUrl;
 	
+	/**
+	 * Basic Constructor.
+	 * @param username Username of the Passenger.
+	 * @param userId UserId of the Passenger.
+	 * @param userPictureUrl PictureUrl of the Passenger.
+	 */
 	public Passenger(String username, int userId, String userPictureUrl) {
 		super();
 		this.username = username;
