@@ -1,7 +1,16 @@
 package apiv1.converters;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import apiv1.models.Comment;
 import apiv1.models.MitfahrenUserDetail;
+import apiv1.models.OtherDrive;
+import entities.Drive;
+import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
+import entities.UserComment;
+import helper.CalendarHelper;
 
 public class MitfahrenUserDetailConverter {
 
@@ -12,6 +21,38 @@ public class MitfahrenUserDetailConverter {
 	}
 	
 	public MitfahrenUserDetail convertIdToModel(String userId) {
-		return null;
+		MitfahrenUserDetail output = new MitfahrenUserDetail();
+		MitfahrenUser currentUser = userService.find(Integer.parseInt(userId));
+		
+		output.userId = currentUser.getUserId() + "";
+		output.userName = currentUser.getUsername();
+		output.userRating = currentUser.getUserRating() + "";
+		output.pictureUrl = currentUser.getPictureUrl();
+		
+		List<Comment> userComments = new LinkedList<>();
+		for(UserComment comment: currentUser.getUserComments()) {
+			userComments.add(new Comment(comment.getComment(),
+					comment.getCommentRating(), 
+					comment.getCommenterUserName(), 
+					comment.getCommenterId()));
+		}
+		output.commentList = userComments;
+		
+		
+		List<OtherDrive> otherDrives = new LinkedList<>();
+		for(Drive drive : currentUser.getAsDriverList()) {
+			otherDrives.add(
+					new OtherDrive(
+							drive.getDriveId() + "", 
+							drive.getDestination().getName(), 
+							drive.getArrival().getName(),
+							CalendarHelper.getCalendaDateAsString(drive.getCalendar())
+							)
+			);
+		}
+		output.asDriverList = otherDrives;
+		
+		return output;
 	}
 }
+

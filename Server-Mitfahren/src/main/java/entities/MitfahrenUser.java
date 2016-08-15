@@ -157,5 +157,21 @@ public class MitfahrenUser {
 	public List<UserComment> getUserComments() {
 		return userComments;
 	}
+
+	/**
+	 * @return the asDriverList
+	 */
+	public List<Drive> getAsDriverList() {
+		return asDriverList;
+	}
+
+	/**
+	 * @param asDriverList the asDriverList to set
+	 */
+	public void setAsDriverList(List<Drive> asDriverList) {
+		this.asDriverList = asDriverList;
+	}
+	
+	
 }
 

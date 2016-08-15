@@ -1,6 +1,6 @@
 package apiv1.models;
 
-class Comment{
+public class Comment{
 	public String comment;
 	public float commentRating;
 	public String username;

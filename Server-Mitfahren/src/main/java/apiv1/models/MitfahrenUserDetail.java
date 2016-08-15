@@ -13,10 +13,3 @@ public class MitfahrenUserDetail {
 	public List<OtherDrive> asDriverList;
 	
 }
-
-class OtherDrive {
-	String driveId;
-	String destination;
-	String arrival;
-	String date;
-}
