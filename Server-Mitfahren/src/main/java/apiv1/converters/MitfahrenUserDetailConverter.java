@@ -12,14 +12,30 @@ import entities.MitfahrenUserService;
 import entities.UserComment;
 import helper.CalendarHelper;
 
+/**
+ * Class to Convert a userId in a Detail Model
+ * @author Leon Johann Brettin
+ *
+ */
 public class MitfahrenUserDetailConverter {
 
 	MitfahrenUserService userService;
 	
+	/**
+	 * Basic constructor.
+	 * You need the userService to get the User out of the database.
+	 * @param userService userService to interact with the database.
+	 */
 	public MitfahrenUserDetailConverter (MitfahrenUserService userService) {
 		this.userService = userService;
 	}
 	
+	/**
+	 * Method to get from a given userId 
+	 * a MitfahrenuserDetail Model for the user.html page.
+	 * @param userId UserId of the requested user.
+	 * @return MitfahrenUserDetail model for the user.html page.
+	 */
 	public MitfahrenUserDetail convertIdToModel(String userId) {
 		MitfahrenUserDetail output = new MitfahrenUserDetail();
 		MitfahrenUser currentUser = userService.find(Integer.parseInt(userId));
