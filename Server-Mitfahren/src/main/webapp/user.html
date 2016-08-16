@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>User</title>
+    <meta name="description" content="User Details">
+    <meta name="author" content="Leon Johann Brettin">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    var destinationURL = "http://localhost:8080"
+
+    $(document).ready(function() {
+        var urlVarDriveId = getUrlVars()['userId'];
+        if(urlVarDriveId != null) {
+          requestData(urlVarDriveId)
+        }
+
+
+
+    });
+
+    function requestData(urlVarDriveId) {
+      var data = {
+        userId : urlVarDriveId
+      }
+
+      data = JSON.stringify(data);
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/userDetails',
+        contentType: "application/json",
+        data: data,
+        success: function(answer) {
+          console.log("From Server: ", JSON.stringify(answer));
+          storeData(answer)
+        },
+        error: function() {
+          console.log("Error");
+        }
+      });
+    }
+
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+      }
+    </script>
+  </body>
+</html>

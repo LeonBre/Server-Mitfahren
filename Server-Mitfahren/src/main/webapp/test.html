@@ -24,13 +24,13 @@
     $testDatabase.on('click', function() {
       console.log("Message is send");
       data = {
-        driveId : 1
+        userId : 1
       }
 
       data = JSON.stringify(data)
       $.ajax({
         type: 'POST',
-        url: destinationURL + '/Server-Mitfahren/apiv1/driveDetails',
+        url: destinationURL + '/Server-Mitfahren/apiv1/userDetails',
         contentType: "application/json",
         data: data,
         success: function(answer) {

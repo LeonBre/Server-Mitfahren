@@ -51,7 +51,8 @@ public class DriveDetailConverter {
 		}
 		for(UserComment comment: currentDrive.getDriver().getUserComments()) {
 			driveModel.addComment(comment.getComment(), comment.getCommentRating(), 
-					comment.getCommenterUserName(), comment.getCommenterId());
+					comment.getCommenterUserName(), comment.getCommenterId() + "");
+			System.out.println("CommenterId:" + comment.getCommenterId());
 		}
 		
 		return driveModel;

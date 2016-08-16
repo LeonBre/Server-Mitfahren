@@ -70,7 +70,7 @@ public class DriveDetail {
 	 * @param username Username of the commenter.
 	 * @param userId Id of the commenter.
 	 */
-	public void addComment(String comment, float commentRating, String username, int userId) {
+	public void addComment(String comment, float commentRating, String username, String userId) {
 		userComments.add(new Comment(comment, commentRating, username, userId));
 	}
 }

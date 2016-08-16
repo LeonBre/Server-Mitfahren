@@ -49,7 +49,8 @@ public class MitfahrenUser {
 		    )
 	private List<Drive> asPassengerList;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,
+				fetch=FetchType.EAGER)
 	@JoinColumn
 	private List<Drive> asDriverList;
 	

@@ -39,7 +39,7 @@ public class MitfahrenUserDetailConverter {
 	public MitfahrenUserDetail convertIdToModel(String userId) {
 		MitfahrenUserDetail output = new MitfahrenUserDetail();
 		MitfahrenUser currentUser = userService.find(Integer.parseInt(userId));
-		
+		System.out.println("UserID:" + userId);
 		output.userId = currentUser.getUserId() + "";
 		output.userName = currentUser.getUsername();
 		output.userRating = currentUser.getUserRating() + "";
@@ -50,8 +50,9 @@ public class MitfahrenUserDetailConverter {
 			userComments.add(new Comment(comment.getComment(),
 					comment.getCommentRating(), 
 					comment.getCommenterUserName(), 
-					comment.getCommenterId()));
+					comment.getCommenterId() + ""));
 		}
+		
 		output.commentList = userComments;
 		
 		
