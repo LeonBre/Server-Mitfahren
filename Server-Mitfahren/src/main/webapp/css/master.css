@@ -74,3 +74,18 @@ text-align: center;
   height: 80px;
   width: 200px;
 }
+
+.userContent {
+  margin-top: 5%;
+  margin-left: 8%;
+  margin-right: 8%;
+  padding: 12px;
+  padding-bottom: 0px;
+  border-radius: 15px;
+}
+.userHeader {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  background-color: #4db6ac;
+  color: white;
+}
