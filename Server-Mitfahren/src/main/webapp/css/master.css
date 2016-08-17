@@ -89,3 +89,9 @@ text-align: center;
   background-color: #4db6ac;
   color: white;
 }
+
+.userHeaderPicture{
+  margin: 5px;
+  margin-left: 100px;
+
+}
