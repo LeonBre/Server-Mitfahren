@@ -93,5 +93,11 @@ text-align: center;
 .userHeaderPicture{
   margin: 5px;
   margin-left: 100px;
+}
+.userHeaderRating{
+  text-align: center;
+}
 
+i.material-icons {
+     vertical-align: middle;
 }
