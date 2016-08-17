@@ -35,15 +35,15 @@
 
         <div class="row">
           <div class="col l3">
-            <div class="userpicture userHeaderPicture">
+            <div class="userpicture userHeaderPicture" id="userHeaderPicture">
                 <img src="/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/images/samplePicture.jpg">
             </div>
           </div>
           <div class="col l9">
-            <div class="row">
+            <div class="row" id="userHeaderName">
               <h2 class="header center-align">Max Mustermann</h2>
             </div>
-            <div class="row">
+            <div class="row" id="userHeaderRating">
               <h3 class="header center-align headerUserRating">
                 <i class="medium material-icons">star</i> 4.5/5.0</h3>
             </div>
@@ -99,15 +99,39 @@
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
 
+    var $userHeaderName = $('#userHeaderName')
+    var $userHeaderPicture = $('#userHeaderPicture')
+    var $userHeaderRating = $('#userHeaderRating')
+
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['userId'];
         if(urlVarDriveId != null) {
           requestData(urlVarDriveId)
         }
-
-
-
     });
+
+    function storeData(userInfo) {
+      $userHeaderName.empty();
+      $userHeaderName.append(getUserNameString(userInfo.userName));
+
+      $userHeaderPicture.empty();
+      $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
+
+      $userHeaderRating.empty();
+      $userHeaderRating.append(getUserRatingString(userInfo.userRating));
+    }
+    function getUserRatingString(userRating) {
+      return '<h3 class="header center-align headerUserRating">'
+              + '<i class="medium material-icons">star</i> ' + userRating + '/5.0</h3>'
+    }
+
+    function getUserPictureString(pictureUrl) {
+      return '<img src="' + pictureUrl + '">'
+    }
+
+    function getUserNameString(userName) {
+      return '<h2 class="header center-align">' + userName + '</h2>'
+    }
 
     function requestData(urlVarDriveId) {
       var data = {
