@@ -55,7 +55,7 @@ public class Drive {
 	@Column(name = "calendar")
 	private Calendar calendar;
 	//@NotNull
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn
 	private MitfahrenUser driver;
 	
@@ -82,6 +82,8 @@ public class Drive {
 		this.driver = driver;
 		this.passengers = new LinkedList<>();
 		this.carSeats = carSpace;
+		
+		driver.addDrive(this);
 	}
 	
 	/**

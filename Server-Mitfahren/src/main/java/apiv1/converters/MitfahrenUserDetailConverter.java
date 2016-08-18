@@ -56,6 +56,7 @@ public class MitfahrenUserDetailConverter {
 		
 		
 		List<OtherDrive> otherDrives = new LinkedList<>();
+		System.out.println("As driverList Size:" + currentUser.getAsDriverList().size());
 		for(Drive drive : currentUser.getAsDriverList()) {
 			otherDrives.add(
 					new OtherDrive(

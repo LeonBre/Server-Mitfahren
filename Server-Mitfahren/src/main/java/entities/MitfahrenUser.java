@@ -1,7 +1,9 @@
 package entities;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -52,7 +54,7 @@ public class MitfahrenUser {
 	@OneToMany(cascade=CascadeType.ALL,
 				fetch=FetchType.EAGER)
 	@JoinColumn
-	private List<Drive> asDriverList;
+	private Set<Drive> asDriverList;
 	
 	public MitfahrenUser(){}
 
@@ -63,7 +65,7 @@ public class MitfahrenUser {
 		this.userRating = 0;
 		this.userComments = new LinkedList<>();
 		this.asPassengerList = new LinkedList<>();
-		this.asDriverList = new LinkedList<>();
+		this.asDriverList = new HashSet<>();
 	}
 	
 	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl) {
@@ -74,7 +76,7 @@ public class MitfahrenUser {
 		this.userRating = 0;
 		this.userComments = new LinkedList<>();
 		this.asPassengerList = new LinkedList<>();
-		this.asDriverList = new LinkedList<>();
+		this.asDriverList = new HashSet<>();
 	}
 
 	/**
@@ -94,7 +96,11 @@ public class MitfahrenUser {
 		}
 		userRating = (float)newRating/(float)userComments.size();
 	}
-
+	
+	public void addDrive(Drive drive) {
+		asDriverList.add(drive);
+	}
+	
 	/**
 	 * @return the username
 	 */
@@ -162,14 +168,14 @@ public class MitfahrenUser {
 	/**
 	 * @return the asDriverList
 	 */
-	public List<Drive> getAsDriverList() {
+	public Set<Drive> getAsDriverList() {
 		return asDriverList;
 	}
 
 	/**
 	 * @param asDriverList the asDriverList to set
 	 */
-	public void setAsDriverList(List<Drive> asDriverList) {
+	public void setAsDriverList(Set<Drive> asDriverList) {
 		this.asDriverList = asDriverList;
 	}
 	
