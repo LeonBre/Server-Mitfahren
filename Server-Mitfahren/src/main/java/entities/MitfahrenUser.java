@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,7 @@ public class MitfahrenUser {
 	@OneToMany(cascade=CascadeType.ALL,
 				fetch=FetchType.EAGER)
 	@JoinColumn(name="AUTHORID")
-	private List<UserComment> userComments;
+	private Set<UserComment> userComments;
 
 	
 	 @ManyToMany(
@@ -63,7 +64,7 @@ public class MitfahrenUser {
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.userRating = 0;
-		this.userComments = new LinkedList<>();
+		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
 	}
@@ -74,7 +75,7 @@ public class MitfahrenUser {
 		this.telephoneNumber = telephoneNumber;
 		this.pictureUrl = pictureUrl;
 		this.userRating = 0;
-		this.userComments = new LinkedList<>();
+		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
 	}
@@ -91,8 +92,9 @@ public class MitfahrenUser {
 		userComments.add(newComment);
 		//refresh User Rating
 		float newRating = 0;
-		for(int i = 0; i < userComments.size(); i++) {
-			newRating += userComments.get(i).getCommentRating();
+		Iterator<UserComment> userCommentIterator = userComments.iterator();
+		while (userCommentIterator.hasNext()){
+			newRating += userCommentIterator.next().getCommentRating();
 		}
 		userRating = (float)newRating/(float)userComments.size();
 	}
@@ -161,7 +163,7 @@ public class MitfahrenUser {
 		return userRating;
 	}
 	
-	public List<UserComment> getUserComments() {
+	public Set<UserComment> getUserComments() {
 		return userComments;
 	}
 

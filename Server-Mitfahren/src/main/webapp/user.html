@@ -73,6 +73,7 @@
           </div>
 
           <div class="col l6">
+
             <h3 class="teal-text"> Kommentare:</h3>
             <ul class="collection" id="commentaryList">
 
@@ -99,11 +100,13 @@
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
     var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html";
+    var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html";
 
     var $userHeaderName = $('#userHeaderName')
     var $userHeaderPicture = $('#userHeaderPicture')
     var $userHeaderRating = $('#userHeaderRating')
     var $drivingList = $('#drivingList')
+    var $commentaryList = $('#commentaryList')
 
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['userId'];
@@ -124,8 +127,30 @@
 
       $drivingList.empty();
       $drivingList.append(getDrivingListString(userInfo.asDriverList))
-    }
 
+      $commentaryList.empty();
+      $commentaryList.append(getCommentaryList(userInfo.commentList))
+
+      }
+
+      function getCommentaryList (commentaryList) {
+      var returnString = ""
+      for (var i = 0; i < commentaryList.length; i++) {
+        returnString += getCommentaryString(commentaryList[i])
+      }
+      return returnString
+      }
+
+      function getCommentaryString(commentary) {
+      return '<li class="collection-item">"' + commentary.comment + '"'
+            + '<div class="left-align">'
+              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
+            + '</div>'
+            + '<div class="right-align">'
+              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
+            + '</div>'
+            + '</li>'
+      }
     function getDrivingListString(asDriverList) {
       returnString = "";
       for (var i = 0; i < asDriverList.length; i++) {
