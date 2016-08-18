@@ -98,10 +98,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
+    var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html";
 
     var $userHeaderName = $('#userHeaderName')
     var $userHeaderPicture = $('#userHeaderPicture')
     var $userHeaderRating = $('#userHeaderRating')
+    var $drivingList = $('#drivingList')
 
     $(document).ready(function() {
         var urlVarDriveId = getUrlVars()['userId'];
@@ -119,7 +121,33 @@
 
       $userHeaderRating.empty();
       $userHeaderRating.append(getUserRatingString(userInfo.userRating));
+
+      $drivingList.empty();
+      $drivingList.append(getDrivingListString(userInfo.asDriverList))
     }
+
+    function getDrivingListString(asDriverList) {
+      returnString = "";
+      for (var i = 0; i < asDriverList.length; i++) {
+        returnString += getDriveItemString(asDriverList[i])
+      }
+      return returnString;
+    }
+
+    function getDriveItemString(drive) {
+      return '<li class="collection-item" onclick="' + 'window.location=\'' + driveUrl + '?driveId=' + drive.driveId +'\';"' + '">'
+              + '<div class="row">'
+                + '<div class="col l6 left-align">' + drive.destination + '</div>'
+                + '<div class="col l6 right-align">' + drive.arrival + '</div>'
+              + '</div>'
+              + '<div class="row">'
+                + '<div class="col l6 left-align">' + drive.date + '</div>'
+                + '<div class="col l6 right-align">' + drive.time + '</div>'
+              + '</div></li>'
+
+    }
+
+
     function getUserRatingString(userRating) {
       return '<h3 class="header center-align headerUserRating">'
               + '<i class="medium material-icons">star</i> ' + userRating + '/5.0</h3>'

@@ -62,7 +62,8 @@ public class MitfahrenUserDetailConverter {
 							drive.getDriveId() + "", 
 							drive.getDestination().getName(), 
 							drive.getArrival().getName(),
-							CalendarHelper.getCalendaDateAsString(drive.getCalendar())
+							CalendarHelper.getCalendaDateAsString(drive.getCalendar()),
+							CalendarHelper.getCalendarTimeAsString(drive.getCalendar())
 							)
 			);
 		}
