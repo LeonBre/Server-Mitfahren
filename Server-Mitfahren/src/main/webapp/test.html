@@ -16,6 +16,7 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="resources/rollups/sha512.js"></script>
 
   <script type="text/javascript">
     var destinationURL = "http://localhost:8080";
@@ -23,14 +24,19 @@
 
     $testDatabase.on('click', function() {
       console.log("Message is send");
+
+      var hashWordArray = CryptoJS.SHA512("");
+      var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
+      console.log(base64HashString);
       data = {
-        userId : 1
+        userName : 'Max',
+        userHash : base64HashString
       }
 
       data = JSON.stringify(data)
       $.ajax({
         type: 'POST',
-        url: destinationURL + '/Server-Mitfahren/apiv1/userDetails',
+        url: destinationURL + '/Server-Mitfahren/apiv1/testHash',
         contentType: "application/json",
         data: data,
         success: function(answer) {

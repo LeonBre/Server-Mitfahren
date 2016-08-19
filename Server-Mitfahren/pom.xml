@@ -89,7 +89,11 @@
 
     <dependencies>
     	<!-- Own Dependencies -->
-    	
+    	<dependency>
+		    <groupId>org.bouncycastle</groupId>
+		    <artifactId>bcprov-jdk15on</artifactId>
+		    <version>1.54</version>
+		</dependency>
 		<!-- End of Own Dependencies -->
         <!-- First declare the APIs we depend on and need for compilation. All
             of them are provided by JBoss WildFly -->

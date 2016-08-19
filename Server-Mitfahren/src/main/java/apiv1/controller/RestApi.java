@@ -15,6 +15,7 @@ import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.SearchConverter;
 import apiv1.models.AnswerDrive;
+import apiv1.models.AuthenticationHeader;
 import apiv1.models.DriveDetail;
 import apiv1.models.MitfahrenUserDetail;
 import apiv1.models.SearchDrive;
@@ -26,6 +27,7 @@ import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUserService;
 import helper.DatabaseHelper;
+import helper.HashHelper;
 
 /**
  * Rest Api from the Server.
@@ -71,11 +73,7 @@ public class RestApi {
 	@Path("/possibleDrives")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<AnswerDrive> postPossibleDrives(SearchDrive searchInput){
-		System.out.println("Von :" + searchInput.destination);
-		System.out.println("Nach :" + searchInput.arrival + "\n Time: " + searchInput.date);
-		
-		
+	public List<AnswerDrive> postPossibleDrives(SearchDrive searchInput){		
 		SearchConverter convert = new SearchConverter(driveService);
 		return convert.getSearchedDrives(searchInput);
 	}
@@ -96,6 +94,17 @@ public class RestApi {
 	public MitfahrenUserDetail postMitfahrenUserDetails(SearchMitfahrenUserDetail userId) {
 		MitfahrenUserDetailConverter convert = new MitfahrenUserDetailConverter(userService);
 		return convert.convertIdToModel(userId.userId);
+	}
+	
+	@POST
+	@Path("/testHash")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String testHash(String input) {
+		String ausgabe = HashHelper.get_SHA_512_SecurePassword("", "");
+		System.out.println(ausgabe);
+		System.out.println(input);
+		return input.toString();
 	}
 	
 	@GET
