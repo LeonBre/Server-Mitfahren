@@ -14,18 +14,20 @@ import javax.ws.rs.core.MediaType;
 import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.SearchConverter;
-import apiv1.models.AnswerDrive;
-import apiv1.models.AuthenticationHeader;
-import apiv1.models.DriveDetail;
-import apiv1.models.MitfahrenUserDetail;
-import apiv1.models.SearchDrive;
-import apiv1.models.SearchDriveDetail;
-import apiv1.models.SearchMitfahrenUserDetail;
+import apiv1.models.request.AuthenticationHeader;
+import apiv1.models.request.RequestModel;
+import apiv1.models.request.SearchDrive;
+import apiv1.models.request.SearchDriveDetail;
+import apiv1.models.request.SearchMitfahrenUserDetail;
+import apiv1.models.response.AnswerDrive;
+import apiv1.models.response.DriveDetail;
+import apiv1.models.response.MitfahrenUserDetail;
 import entities.City;
 import entities.CityService;
 import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUserService;
+import helper.AuthenticationHelper;
 import helper.DatabaseHelper;
 import helper.HashHelper;
 
@@ -73,9 +75,13 @@ public class RestApi {
 	@Path("/possibleDrives")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<AnswerDrive> postPossibleDrives(SearchDrive searchInput){		
+	public List<AnswerDrive> postPossibleDrives(RequestModel request){
+		if(request.header == null) {
+			
+		}
+		
 		SearchConverter convert = new SearchConverter(driveService);
-		return convert.getSearchedDrives(searchInput);
+		return convert.getSearchedDrives(request.body);
 	}
 	
 	@POST

@@ -1,6 +1,6 @@
 package apiv1.converters;
 
-import apiv1.models.DriveDetail;
+import apiv1.models.response.DriveDetail;
 import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUser;

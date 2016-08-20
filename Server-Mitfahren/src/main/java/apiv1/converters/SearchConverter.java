@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import apiv1.models.AnswerDrive;
-import apiv1.models.SearchDrive;
+import apiv1.models.request.SearchDrive;
+import apiv1.models.response.AnswerDrive;
 import entities.Drive;
 import entities.DriveService;
 import helper.CalendarHelper;

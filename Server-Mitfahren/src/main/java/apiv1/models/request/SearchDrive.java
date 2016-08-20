@@ -1,11 +1,13 @@
-package apiv1.models;
+package apiv1.models.request;
+
+import apiv1.models.DataBody;
 
 /**
  * Model for the search input to search a drive.
  * @author Leon Johann Brettin
  *
  */
-public class SearchDrive {
+public class SearchDrive extends DataBody{
 
 	public String destination;
 	public String arrival;

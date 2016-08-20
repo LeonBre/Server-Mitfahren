@@ -1,4 +1,4 @@
-package apiv1.models;
+package apiv1.models.response;
 
 public class Comment{
 	public String comment;

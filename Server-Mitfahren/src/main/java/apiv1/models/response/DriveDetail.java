@@ -1,4 +1,4 @@
-package apiv1.models;
+package apiv1.models.response;
 
 import java.util.LinkedList;
 import java.util.List;

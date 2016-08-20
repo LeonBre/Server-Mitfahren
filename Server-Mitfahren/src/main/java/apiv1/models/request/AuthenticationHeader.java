@@ -1,4 +1,6 @@
-package apiv1.models;
+package apiv1.models.request;
+
+import apiv1.models.AuthenticationHash;
 
 public class AuthenticationHeader {
 

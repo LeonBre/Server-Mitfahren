@@ -3,9 +3,9 @@ package apiv1.converters;
 import java.util.LinkedList;
 import java.util.List;
 
-import apiv1.models.Comment;
-import apiv1.models.MitfahrenUserDetail;
-import apiv1.models.OtherDrive;
+import apiv1.models.response.Comment;
+import apiv1.models.response.MitfahrenUserDetail;
+import apiv1.models.response.OtherDrive;
 import entities.Drive;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
