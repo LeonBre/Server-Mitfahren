@@ -1,8 +1,6 @@
 package apiv1.models.request;
 
-import apiv1.models.DataBody;
-
-public class SearchDriveDetail extends DataBody{
+public class SearchDriveDetail {
 
 	public String driveId;
 	
