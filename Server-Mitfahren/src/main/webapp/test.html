@@ -16,13 +16,17 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <script src="resources/rollups/sha512.js"></script>
+  <script src="resources/CryptoJS/rollups/sha512.js"></script>
+  <script src="resources/jquery-cookie/js.cookie.js"></script>
 
   <script type="text/javascript">
     var destinationURL = "http://localhost:8080";
     var $testDatabase = $('#button-testDatabase');
 
     $testDatabase.on('click', function() {
+      Cookies.set('test', 'LeonBrettin');
+      console.log(Cookies.get());
+
       console.log("Message is send");
 
       var hashWordArray = CryptoJS.SHA512("");
