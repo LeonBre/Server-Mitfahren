@@ -104,6 +104,8 @@
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="resources/CryptoJS/rollups/sha512.js"></script>
+  <script src="resources/jquery-cookie/js.cookie.js"></script>
   <script type="text/javascript">
   var destinationURL = "http://localhost:8080"
   var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html"
@@ -151,10 +153,41 @@
       $('#loginModal').openModal();
     })
     $loginButton.on('click', function() {
+      var username = $loginUsername.val()
+
+      //Hash Password
+      var hashWordArray = CryptoJS.SHA512($loginPassword.val());
+      var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
+      //store Data
       var data = {
-        username : $loginUsername,
-        hashedPassword : bla
+        username : username,
+        password : base64HashString
       }
+
+        $loginUsername.val("");
+        $loginPassword.val("");
+        makeToast("Nutzername oder Password ist falsch.")
+
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/authenticate',
+        contentType: "application/json",
+        data: data,
+        success: function(response) {
+          console.log("From Server: ", JSON.stringify(response))
+          if(response.isAuthenticated == true){
+            Cookies.set('username', username);
+            Cookies.set('password', base64HashString)
+          } else{
+            $loginUsername.val("");
+            $loginPassword.val("");
+            makeToast("Nutzername oder Password ist falsch.")
+          }
+        },
+        error: function() {
+          console.log("Error");
+        }
+      });
     })
 
 
