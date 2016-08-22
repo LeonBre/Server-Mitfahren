@@ -35,4 +35,13 @@ public class MitfahrenUserService {
 		return em.find(entities.MitfahrenUser.class, id);
 	}
 	
+	public MitfahrenUser find(String username) {
+		// drive = (List<Drive>)em.createQuery("FROM Drive d WHERE d.destination.name)"
+		System.out.println(username);
+		List<MitfahrenUser> searchedUserList 
+			= (List<MitfahrenUser>) em.createQuery(
+					"FROM " + MitfahrenUser.class.getName() + " m WHERE m.username like '" + username + "'").getResultList();
+		return searchedUserList.get(0);
+	}
+	
 }

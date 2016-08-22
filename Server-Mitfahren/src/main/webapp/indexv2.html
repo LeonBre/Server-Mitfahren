@@ -159,11 +159,15 @@
       var hashWordArray = CryptoJS.SHA512($loginPassword.val());
       var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
       //store Data
+
+      username = "asdf"//remove that line later
+
       var data = {
         username : username,
         password : base64HashString
       }
-
+      data = JSON.stringify(data)
+      
         $loginUsername.val("");
         $loginPassword.val("");
         makeToast("Nutzername oder Password ist falsch.")

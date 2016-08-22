@@ -1,6 +1,7 @@
 package apiv1.validator;
 
 import apiv1.models.request.AuthenticateUserModel;
+import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
 
 public class AuthenticationValidator {
@@ -13,7 +14,10 @@ public class AuthenticationValidator {
 	}
 	
 	public boolean authenticateUser(AuthenticateUserModel userModel) {
+		MitfahrenUser user = userService.find("Max Mustermann");
+		if(user == null)
+			return false;
 		
-		return true;
+		return false;
 	}
 }

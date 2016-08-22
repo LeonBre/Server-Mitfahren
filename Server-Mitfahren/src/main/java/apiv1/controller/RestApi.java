@@ -22,6 +22,7 @@ import apiv1.models.response.AnswerDrive;
 import apiv1.models.response.AuthenticateUserResponse;
 import apiv1.models.response.DriveDetail;
 import apiv1.models.response.MitfahrenUserDetail;
+import apiv1.validator.AuthenticationValidator;
 import entities.City;
 import entities.CityService;
 import entities.Drive;
@@ -102,7 +103,8 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public AuthenticateUserResponse postAuthenticateUser(AuthenticateUserModel request) {
-		
+		AuthenticationValidator validator = new AuthenticationValidator(userService);
+		validator.authenticateUser(request);
 		return null;
 	}
 	
