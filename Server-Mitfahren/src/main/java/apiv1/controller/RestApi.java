@@ -14,10 +14,12 @@ import javax.ws.rs.core.MediaType;
 import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.SearchConverter;
+import apiv1.models.request.AuthenticateUserModel;
 import apiv1.models.request.SearchDrive;
 import apiv1.models.request.SearchDriveDetail;
 import apiv1.models.request.SearchMitfahrenUserDetail;
 import apiv1.models.response.AnswerDrive;
+import apiv1.models.response.AuthenticateUserResponse;
 import apiv1.models.response.DriveDetail;
 import apiv1.models.response.MitfahrenUserDetail;
 import entities.City;
@@ -93,6 +95,15 @@ public class RestApi {
 	public MitfahrenUserDetail postMitfahrenUserDetails(SearchMitfahrenUserDetail userId) {
 		MitfahrenUserDetailConverter convert = new MitfahrenUserDetailConverter(userService);
 		return convert.convertIdToModel(userId.userId);
+	}
+	
+	@POST
+	@Path("/authenticate")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public AuthenticateUserResponse postAuthenticateUser(AuthenticateUserModel request) {
+		
+		return null;
 	}
 	
 	@POST
