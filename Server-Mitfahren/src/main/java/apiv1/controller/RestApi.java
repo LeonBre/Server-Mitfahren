@@ -104,8 +104,8 @@ public class RestApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public AuthenticateUserResponse postAuthenticateUser(AuthenticateUserModel request) {
 		AuthenticationValidator validator = new AuthenticationValidator(userService);
-		validator.authenticateUser(request);
-		return null;
+		boolean isAuthenticated = validator.authenticateUser(request);
+		return new AuthenticateUserResponse(isAuthenticated);
 	}
 	
 	@POST

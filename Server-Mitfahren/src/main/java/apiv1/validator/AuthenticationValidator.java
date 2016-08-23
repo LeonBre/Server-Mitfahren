@@ -17,6 +17,9 @@ public class AuthenticationValidator {
 		MitfahrenUser user = userService.find("Max Mustermann");
 		if(user == null)
 			return false;
+		if(user.getUsername().equals(userModel.username) 
+				&& user.getHashPassword().equals(userModel.password))
+			return true;
 		
 		return false;
 	}

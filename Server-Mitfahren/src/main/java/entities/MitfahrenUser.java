@@ -182,6 +182,20 @@ public class MitfahrenUser {
 	public void setAsDriverList(Set<Drive> asDriverList) {
 		this.asDriverList = asDriverList;
 	}
+
+	/**
+	 * @return the hashPassword
+	 */
+	public String getHashPassword() {
+		return hashPassword;
+	}
+
+	/**
+	 * @param hashPassword the hashPassword to set
+	 */
+	public void setHashPassword(String hashPassword) {
+		this.hashPassword = hashPassword;
+	}
 	
 	
 }
