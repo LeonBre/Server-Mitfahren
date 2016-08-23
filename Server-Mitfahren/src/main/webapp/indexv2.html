@@ -116,6 +116,7 @@
   var $loginButton = $('#loginButton');
   var $loginUsername = $('#loginUsername');
   var $loginPassword = $('#loginPassword');
+  var isLoggedIn = false;
 
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
@@ -128,6 +129,10 @@
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 2 // Creates a dropdown of 15 years to control year
       });
+
+      if(Cookies.get('username') != null && Cookies.get('password') != null){
+        isLoggedIn = true;
+      }
 
       $.ajax({
         type: 'GET',
@@ -150,7 +155,12 @@
 
     //Login
     $navbarLogin.on('click', function() {
-      $('#loginModal').openModal();
+      console.log(isLoggedIn);
+      if(isLoggedIn == false){
+        $('#loginModal').openModal();
+      } else {
+        logout()
+      }
     })
     $loginButton.on('click', function() {
       var username = $loginUsername.val()
@@ -167,10 +177,6 @@
         password : base64HashString
       }
       data = JSON.stringify(data)
-      
-        $loginUsername.val("");
-        $loginPassword.val("");
-        makeToast("Nutzername oder Password ist falsch.")
 
       $.ajax({
         type: 'POST',
@@ -182,6 +188,10 @@
           if(response.isAuthenticated == true){
             Cookies.set('username', username);
             Cookies.set('password', base64HashString)
+            isLoggedIn = true;
+            $('#loginModal').closeModal();
+            $navbarLogin.text('Logout');
+            makeToast("Erfolgreich eingeloggt.")
           } else{
             $loginUsername.val("");
             $loginPassword.val("");
@@ -194,6 +204,13 @@
       });
     })
 
+    function logout(){
+      Cookies.remove('username')
+      Cookies.remove('password')
+      isLoggedIn = false;
+      $navbarLogin.text('Login');
+      makeToast("Erfolgreich ausgeloggt.")
+    }
 
     $('#button-sendInformation').on('click', function() {
       var dateIsValid = ($date.val() != null) && ($date.val() != "");
@@ -279,6 +296,9 @@
     function makeToast(toast) {
       Materialize.toast(toast, 3000, 'rounded')
     }
+
+    //Cookie Plugin from :
+    //https://github.com/js-cookie/js-cookie
   </script>
 </body>
 
