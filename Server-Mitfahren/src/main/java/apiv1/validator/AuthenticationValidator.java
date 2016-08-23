@@ -6,15 +6,7 @@ import entities.MitfahrenUserService;
 
 public class AuthenticationValidator {
 
-	public MitfahrenUserService userService;
-	
-	
-	public AuthenticationValidator (MitfahrenUserService userService) {
-		this.userService = userService;
-	}
-	
-	public boolean authenticateUser(AuthenticateUserModel userModel) {
-		MitfahrenUser user = userService.find("Max Mustermann");
+	public static boolean authenticateUser(MitfahrenUser user, AuthenticateUserModel userModel) {
 		if(user == null)
 			return false;
 		if(user.getUsername().equals(userModel.username) 

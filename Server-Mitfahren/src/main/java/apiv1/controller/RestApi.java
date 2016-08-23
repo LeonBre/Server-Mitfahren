@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import apiv1.converters.AuthenticationConverter;
 import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.SearchConverter;
@@ -103,8 +104,8 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public AuthenticateUserResponse postAuthenticateUser(AuthenticateUserModel request) {
-		AuthenticationValidator validator = new AuthenticationValidator(userService);
-		return validator.authenticateUser(request);
+		AuthenticationConverter converter = new AuthenticationConverter(userService);
+		return converter.convertModelToResponse(request);
 	}
 	
 	@POST
