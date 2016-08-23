@@ -116,7 +116,9 @@
   var $loginButton = $('#loginButton');
   var $loginUsername = $('#loginUsername');
   var $loginPassword = $('#loginPassword');
+
   var isLoggedIn = false;
+  var $navbarRight = $('#nav-mobile')
 
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
@@ -150,7 +152,6 @@
           });
         }
       });
-
     });
 
     //Login
@@ -168,16 +169,15 @@
       //Hash Password
       var hashWordArray = CryptoJS.SHA512($loginPassword.val());
       var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
+
       //store Data
-
-      username = "asdf"//remove that line later
-
       var data = {
         username : username,
         password : base64HashString
       }
       data = JSON.stringify(data)
 
+      //send Data
       $.ajax({
         type: 'POST',
         url: destinationURL + '/Server-Mitfahren/apiv1/authenticate',
@@ -186,12 +186,7 @@
         success: function(response) {
           console.log("From Server: ", JSON.stringify(response))
           if(response.isAuthenticated == true){
-            Cookies.set('username', username);
-            Cookies.set('password', base64HashString)
-            isLoggedIn = true;
-            $('#loginModal').closeModal();
-            $navbarLogin.text('Logout');
-            makeToast("Erfolgreich eingeloggt.")
+            login(username, base64HashString)
           } else{
             $loginUsername.val("");
             $loginPassword.val("");
@@ -203,6 +198,18 @@
         }
       });
     })
+    function login(username, password) {
+      Cookies.set('username', username);
+      Cookies.set('password', password)
+      isLoggedIn = true;
+      $('#loginModal').closeModal();
+      $navbarLogin.text('Logout');
+      makeToast("Erfolgreich eingeloggt.")
+      $navbarRight.append('<li><a id="navbarUsername">'
+                          + username + '</a></li>')
+    }
+
+
 
     function logout(){
       Cookies.remove('username')
@@ -210,6 +217,7 @@
       isLoggedIn = false;
       $navbarLogin.text('Login');
       makeToast("Erfolgreich ausgeloggt.")
+      $('#navbarUsername').remove()
     }
 
     $('#button-sendInformation').on('click', function() {
