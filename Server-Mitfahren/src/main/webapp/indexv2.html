@@ -128,15 +128,18 @@
   var $resultList = $('#resultList');
 
     $(document).ready(function() {
+      //Starts the datepicker.
       $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 2 // Creates a dropdown of 15 years to control year
+        selectMonths: true,
+        selectYears: 2
       });
 
+      //Checks if the user is already logged in.
       if(Cookies.get('username') != null && Cookies.get('password') != null){
         isLoggedIn = true;
       }
 
+      //Gets the information for the autocomplete texts from the server.
       $.ajax({
         type: 'GET',
         url: destinationURL + '/Server-Mitfahren/apiv1/possibleCities',
@@ -155,15 +158,18 @@
       });
     });
 
-    //Login
+    //Navbar Login Code.
     $navbarLogin.on('click', function() {
-      console.log(isLoggedIn);
       if(isLoggedIn == false){
         $('#loginModal').openModal();
       } else {
         logout()
       }
     })
+
+    //Logs the user in.
+    //First it gets the username, then it saves the password as an SHA512 //encripted String
+    //Then it verifies the username, password compination on the server.
     $loginButton.on('click', function() {
       var username = $loginUsername.val()
 
@@ -199,6 +205,7 @@
         }
       });
     })
+    //Makes the Login of a user visible to the website.
     function login(username, password, userId) {
       Cookies.set('username', username);
       Cookies.set('password', password)
@@ -212,7 +219,7 @@
     }
 
 
-
+    //Makes the logout visible to the website.
     function logout(){
       Cookies.remove('username')
       Cookies.remove('password')
