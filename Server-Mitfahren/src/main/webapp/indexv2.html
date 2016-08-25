@@ -159,6 +159,8 @@
     });
 
     //Navbar Login Code.
+    //When the user is not logged in, a click on login opens the login modal.
+    //when the usr is logged in, a click on login logs the user out.
     $navbarLogin.on('click', function() {
       if(isLoggedIn == false){
         $('#loginModal').openModal();
@@ -192,8 +194,11 @@
         data: data,
         success: function(response) {
           console.log("From Server: ", JSON.stringify(response))
+          //If the combination is valid the user is able to log in.
           if(response.isAuthenticated == true){
             login(username, base64HashString, response.userId)
+          //if the combination is not valid the username and the password will
+          // be removed and the user will be prompted
           } else{
             $loginUsername.val("");
             $loginPassword.val("");
@@ -206,6 +211,8 @@
       });
     })
     //Makes the Login of a user visible to the website.
+    //A Cookie will be set for the username and the password.
+    //The modal will be closed and the website will change.
     function login(username, password, userId) {
       Cookies.set('username', username);
       Cookies.set('password', password)
@@ -214,12 +221,14 @@
       $navbarLogin.text('Logout');
       makeToast("Erfolgreich eingeloggt.")
       $navbarRight.append('<li><a id="navbarUsername" '
-                          + 'onclick="window.location=\'' + userUrl + '?userId=' + userId +'\';">'
+                          + 'onclick="window.location=\'' + userUrl
+                          + '?userId=' + userId +'\';">'
                           + username + '</a></li>')
     }
 
-
     //Makes the logout visible to the website.
+    //The Cookies will be removed.
+    //The logout will be visible on the website.
     function logout(){
       Cookies.remove('username')
       Cookies.remove('password')
@@ -229,26 +238,29 @@
       $('#navbarUsername').remove()
     }
 
+    //Onclick function for the modal button.
+    //The data on the login modal will be veriefied,
+    //then the information will be put together in da data object, and then it will be send to the server
     $('#button-sendInformation').on('click', function() {
       var dateIsValid = ($date.val() != null) && ($date.val() != "");
       if(    $destination.val() != null
           && $arrival.val() != null
           && dateIsValid) {
 
-        var information = {
+        var data = {
           destination: $destination.val(),
           arrival: $arrival.val(),
           date: $date.val(),
         };
 
-        information = JSON.stringify(information)
-        console.log("To Server: " + JSON.stringify(information));
+        data = JSON.stringify(data)
+        console.log("To Server: " + JSON.stringify(data));
 
         $.ajax({
           type: 'POST',
           url: destinationURL + '/Server-Mitfahren/apiv1/possibleDrives',
           contentType: "application/json",
-          data: information,
+          data: data,
           success: function(possibleDrives) {
             console.log("From Server: ", JSON.stringify(possibleDrives))
             showPossibleDrives(possibleDrives)
@@ -260,6 +272,7 @@
     }
     });
 
+    //Makes all possible drives visible to the user, if there are any drives, who match.
     function showPossibleDrives(possibleDrives){
       if(possibleDrives == null) {
         makeToast("Leider keine Fahrt gefunden.")
@@ -274,6 +287,7 @@
     }
     }
 
+    //Creates an html String for an matching drive.
     function createPossibleDriveListString(drive) {
 
       var userPictureUrl = (drive.userPictureUrl == null) ? nullPictureUsername : drive.userPictureUrl
@@ -310,6 +324,7 @@
       return listItem
     }
 
+    //Makes a toast for the website
     function makeToast(toast) {
       Materialize.toast(toast, 3000, 'rounded')
     }
