@@ -109,83 +109,15 @@
     var $commentaryList = $('#commentaryList')
 
     $(document).ready(function() {
+        //Gets the userID out of the Url and request the data from the server.
         var urlVarDriveId = getUrlVars()['userId'];
         if(urlVarDriveId != null) {
           requestData(urlVarDriveId)
         }
     });
 
-    function storeData(userInfo) {
-      $userHeaderName.empty();
-      $userHeaderName.append(getUserNameString(userInfo.userName));
-
-      $userHeaderPicture.empty();
-      $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
-
-      $userHeaderRating.empty();
-      $userHeaderRating.append(getUserRatingString(userInfo.userRating));
-
-      $drivingList.empty();
-      $drivingList.append(getDrivingListString(userInfo.asDriverList))
-
-      $commentaryList.empty();
-      $commentaryList.append(getCommentaryList(userInfo.commentList))
-
-      }
-
-      function getCommentaryList (commentaryList) {
-      var returnString = ""
-      for (var i = 0; i < commentaryList.length; i++) {
-        returnString += getCommentaryString(commentaryList[i])
-      }
-      return returnString
-      }
-
-      function getCommentaryString(commentary) {
-      return '<li class="collection-item">"' + commentary.comment + '"'
-            + '<div class="left-align">'
-              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
-            + '</div>'
-            + '<div class="right-align">'
-              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
-            + '</div>'
-            + '</li>'
-      }
-    function getDrivingListString(asDriverList) {
-      returnString = "";
-      for (var i = 0; i < asDriverList.length; i++) {
-        returnString += getDriveItemString(asDriverList[i])
-      }
-      return returnString;
-    }
-
-    function getDriveItemString(drive) {
-      return '<li class="collection-item" onclick="' + 'window.location=\'' + driveUrl + '?driveId=' + drive.driveId +'\';"' + '">'
-              + '<div class="row">'
-                + '<div class="col l6 left-align">' + drive.destination + '</div>'
-                + '<div class="col l6 right-align">' + drive.arrival + '</div>'
-              + '</div>'
-              + '<div class="row">'
-                + '<div class="col l6 left-align">' + drive.date + '</div>'
-                + '<div class="col l6 right-align">' + drive.time + '</div>'
-              + '</div></li>'
-
-    }
-
-
-    function getUserRatingString(userRating) {
-      return '<h3 class="header center-align headerUserRating">'
-              + '<i class="medium material-icons">star</i> ' + userRating + '/5.0</h3>'
-    }
-
-    function getUserPictureString(pictureUrl) {
-      return '<img src="' + pictureUrl + '">'
-    }
-
-    function getUserNameString(userName) {
-      return '<h2 class="header center-align">' + userName + '</h2>'
-    }
-
+    //Prepares an ajax call to the website.
+    //The website responds with the data model for an user.
     function requestData(urlVarDriveId) {
       var data = {
         userId : urlVarDriveId
@@ -207,6 +139,88 @@
       });
     }
 
+    //Stores the data of the request on the html page.
+    //The sample text will be emptied out and the new html Strings will be generated.
+    function storeData(userInfo) {
+      $userHeaderName.empty();
+      $userHeaderName.append(getUserNameString(userInfo.userName));
+
+      $userHeaderPicture.empty();
+      $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
+
+      $userHeaderRating.empty();
+      $userHeaderRating.append(getUserRatingString(userInfo.userRating));
+
+      $drivingList.empty();
+      $drivingList.append(getDrivingListString(userInfo.asDriverList))
+
+      $commentaryList.empty();
+      $commentaryList.append(getCommentaryList(userInfo.commentList))
+
+      }
+
+      //Prepares the html String for the username.
+      function getUserNameString(userName) {
+        return '<h2 class="header center-align">' + userName + '</h2>'
+      }
+
+      //Prepares the html String for the pictureUrl.
+      function getUserPictureString(pictureUrl) {
+        return '<img src="' + pictureUrl + '">'
+      }
+
+      //Prepares the html String for the userRating.
+      function getUserRatingString(userRating) {
+        return '<h3 class="header center-align headerUserRating">'
+                + '<i class="medium material-icons">star</i> ' + userRating + '/5.0</h3>'
+      }
+
+      //Prepares the html String for the List of other drives of the driver.
+      function getDrivingListString(asDriverList) {
+        returnString = "";
+        for (var i = 0; i < asDriverList.length; i++) {
+          returnString += getDriveItemString(asDriverList[i])
+        }
+        return returnString;
+      }
+
+      //Prepares the html String for one List item of the asDriver List.
+      function getDriveItemString(drive) {
+        return '<li class="collection-item" onclick="' + 'window.location=\'' + driveUrl + '?driveId=' + drive.driveId +'\';"' + '">'
+                + '<div class="row">'
+                  + '<div class="col l6 left-align">' + drive.destination + '</div>'
+                  + '<div class="col l6 right-align">' + drive.arrival + '</div>'
+                + '</div>'
+                + '<div class="row">'
+                  + '<div class="col l6 left-align">' + drive.date + '</div>'
+                  + '<div class="col l6 right-align">' + drive.time + '</div>'
+                + '</div></li>'
+
+      }
+
+      //Prepares the html String for the Commentary List of the driver.
+      function getCommentaryList (commentaryList) {
+      var returnString = ""
+      for (var i = 0; i < commentaryList.length; i++) {
+        returnString += getCommentaryString(commentaryList[i])
+      }
+      return returnString
+      }
+
+      //Prepares the html String for one Commentary item in the Commentary List.
+      function getCommentaryString(commentary) {
+      return '<li class="collection-item">"' + commentary.comment + '"'
+            + '<div class="left-align">'
+              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
+            + '</div>'
+            + '<div class="right-align">'
+              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
+            + '</div>'
+            + '</li>'
+      }
+
+    //Gets the vars out of an url, when after the url a questionmark is followed.
+    //This Method is from http://stackoverflow.com
     function getUrlVars() {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
