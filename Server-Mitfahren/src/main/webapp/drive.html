@@ -137,6 +137,7 @@
 
 
     $(document).ready(function() {
+        //Gets the driveId out of the Url and request the data from the server.
         var urlVarDriveId = getUrlVars()['driveId'];
         if(urlVarDriveId != null) {
           requestData(urlVarDriveId)
@@ -146,12 +147,14 @@
 
     });
 
+    //Prepares a Rest request and then makes a ajax post to the server.
     function requestData(urlVarDriveId) {
+      //Prepare Data
       var data = {
         driveId : urlVarDriveId
       }
-
       data = JSON.stringify(data);
+      //Sends POST
       $.ajax({
         type: 'POST',
         url: destinationURL + '/Server-Mitfahren/apiv1/driveDetails',
@@ -167,6 +170,8 @@
       });
     }
 
+    //Stores the data of the request on the html page.
+    //The sample text will be emptied out and the new html Strings will be generated.
     function storeData(answer) {
       $destination.empty();
       $destination.append(getCityText(answer.destination
@@ -198,6 +203,25 @@
       $commentaryList.append(getCommentaryList(answer.userComments))
     }
 
+    //Prepares the html String for the city Text on the header.
+    function getCityText(cityName, pictureUrl) {
+      if(pictureUrl == null){
+        return cityName;
+      } else {
+      return '<img src="' + pictureUrl + '" class="circle cityPicture"/>'
+       + cityName;
+     }
+    }
+
+    //Prepares the html String for the Rating of the user.
+    function getDriverRatingText(rating) {
+      return '<i class="small material-icons">star</i> ' + rating + '/5.0</h3>'
+    }
+
+    //Prepares the html String for the Seat text.
+    function getSeatsText(seats, passengerList) {
+        return passengerList.length + "/" + seats;
+    }
     function getCommentaryList (commentaryList) {
       var returnString = ""
       for (var i = 0; i < commentaryList.length; i++) {
@@ -206,17 +230,7 @@
       return returnString
     }
 
-    function getCommentaryString(commentary) {
-      return '<li class="collection-item">"' + commentary.comment + '"'
-            + '<div class="left-align">'
-              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
-            + '</div>'
-            + '<div class="right-align">'
-              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
-            + '</div>'
-            + '</li>'
-    }
-
+    //Prepares the html String for the List of other passengers.
     function getPassengersList(passengersList) {
       if(passengersList.length == 0){
         $mitfahrerList.empty();
@@ -234,24 +248,20 @@
       return returnText;
     }
 
-    function getSeatsText(seats, passengerList) {
-        return passengerList.length + "/" + seats;
-
+    //Prepares the html String for the Commentary List of the user.
+    function getCommentaryString(commentary) {
+      return '<li class="collection-item">"' + commentary.comment + '"'
+            + '<div class="left-align">'
+              + '<i class="tiny material-icons">star</i> ' + commentary.commentRating + '/5.0'
+            + '</div>'
+            + '<div class="right-align">'
+              + '<a href="' + userUrl + '?userId=' + commentary.userId + '">' + commentary.username + '</a>'
+            + '</div>'
+            + '</li>'
     }
 
-    function getDriverRatingText(rating) {
-      return '<i class="small material-icons">star</i> ' + rating + '/5.0</h3>'
-    }
-
-    function getCityText(cityName, pictureUrl) {
-      if(pictureUrl == null){
-        return cityName;
-      } else {
-      return '<img src="' + pictureUrl + '" class="circle cityPicture"/>'
-       + cityName;
-     }
-    }
-
+    //Gets the vars out of an url, when after the url a questionmark is followed.
+    //This Method is from http://stackoverflow.com
     function getUrlVars() {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -263,8 +273,6 @@
         }
         return vars;
       }
-
-      console.log(getUrlVars());
     </script>
   </body>
 </html>
