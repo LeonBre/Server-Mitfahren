@@ -109,6 +109,17 @@ public class RestApi {
 	}
 	
 	@POST
+	@Path("/testAuthenticate")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public AuthenticateUserResponse postTestAuthenticate(AuthenticateUserModel request) {
+		AuthenticateUserResponse trueResponse = new AuthenticateUserResponse();
+		trueResponse.isAuthenticated = true;
+		trueResponse.userId = 1;
+		return trueResponse;
+	}
+	
+	@POST
 	@Path("/testHash")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
