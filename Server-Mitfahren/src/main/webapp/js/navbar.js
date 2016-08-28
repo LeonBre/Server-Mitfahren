@@ -1,8 +1,14 @@
-$navMobile = $('#nav-mobile')
 var destinationURL = "http://localhost:8080"
 
 var isLoggedIn = false;
+
 var $navbarRight = $('#nav-mobile')
+var $navbarLogin = $('#navbarLogin');
+var $navMobile = $('#nav-mobile')
+
+var $loginButton = $('#loginButton');
+var $loginUsername = $('#loginUsername');
+var $loginPassword = $('#loginPassword');
 
 if($navMobile.length == 0) {
   //console.log("Navbar is not online.");
@@ -94,5 +100,10 @@ if($navMobile.length == 0) {
     $navbarLogin.text('Login');
     makeToast("Erfolgreich ausgeloggt.")
     $('#navbarUsername').remove()
+  }
+
+  //Makes a toast for the website
+  function makeToast(toast) {
+    Materialize.toast(toast, 3000, 'rounded')
   }
 }
