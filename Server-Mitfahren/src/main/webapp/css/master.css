@@ -101,3 +101,11 @@ text-align: center;
 i.material-icons {
      vertical-align: middle;
 }
+
+.registerForm {
+  margin-top: 15%;
+  background-color: white;
+  padding: 12px;
+  padding-bottom: 0px;
+  border-radius: 15px;
+}
