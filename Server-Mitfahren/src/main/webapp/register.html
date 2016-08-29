@@ -25,6 +25,7 @@
 
     <div class="container">
       <div class="registerForm">
+        <h2 class="col m3 teal-text center-align"> Registrieren</h2>
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
@@ -40,15 +41,24 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col l6">
+          <div class="input-field col l6 tooltipped"data-position="top" data-delay="50" data-tooltip="Die Email wird nur zur Bestätigung gebraucht und sonst nicht angezeigt.">
             <i class="material-icons prefix">email</i>
-            <input type="email" id="registerMail">
+            <input type="email" id="registerMail" >
             <label for="registerMail">E-Mail</label>
           </div>
           <div class="input-field col l6">
             <i class="material-icons prefix">phone</i>
             <input type="tel" id="registerPhoneNumber">
             <label for="registerPhoneNumber">Telefonnummer</label>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Submit Buttom -->
+          <div class="registerSubmitButton center-align">
+            <button class="btn-large waves-effect waves-light" id="button-sendRegisterInformation"
+            type="submit" name="action">Bestätigen
+              <i class="material-icons right">send</i>
+            </button>
           </div>
         </div>
       </div>
@@ -89,7 +99,9 @@
   <script src="js/navbar.js"></script>
 
   <script type="text/javascript">
-
+    $(document).ready(function(){
+      $('.tooltipped').tooltip({delay: 50});
+    });
 
   </script>
 </html>
