@@ -99,9 +99,49 @@
   <script src="js/navbar.js"></script>
 
   <script type="text/javascript">
+  $registerUsername = $('#registerUsername');
+  $registerPassword = $('#registerPassword');
+  $registerMail = $('#registerMail');
+  $registerPhoneNumber = $('#registerPhoneNumber');
+  $btnSendRegisterInformation = $('#button-sendRegisterInformation');
+
+
     $(document).ready(function(){
       $('.tooltipped').tooltip({delay: 50});
     });
+
+    $btnSendRegisterInformation.on('click', function(){
+      registerUsername = $registerUsername.val();
+
+      hashWordArray = CryptoJS.SHA512($registerPassword.val());
+      registerPassword = hashWordArray.toString(CryptoJS.enc.Base64);
+
+      registerMail = $registerMail.val();
+      registerPhoneNumber = $registerPhoneNumber.val();
+
+      var data = {
+        username : registerUsername,
+        password : registerPassword,
+        mail : registerMail,
+        phone : registerPhoneNumber
+      }
+      data = JSON.stringify(data)
+
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/registerUser',
+        contentType: "application/json",
+        data: data,
+        success: function(response) {
+          console.log("From Server: ", JSON.stringify(response))
+          
+        },
+        error: function() {
+          console.log("Error");
+        }
+      });
+    });
+    })
 
   </script>
 </html>
