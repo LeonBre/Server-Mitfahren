@@ -36,11 +36,26 @@ public class MitfahrenUserService {
 	}
 	
 	public MitfahrenUser find(String username) {
-		// drive = (List<Drive>)em.createQuery("FROM Drive d WHERE d.destination.name)"
-		System.out.println(username);
+		@SuppressWarnings("unchecked")
 		List<MitfahrenUser> searchedUserList 
 			= (List<MitfahrenUser>) em.createQuery(
 					"FROM " + MitfahrenUser.class.getName() + " m WHERE m.username like '" + username + "'").getResultList();
+		return searchedUserList.get(0);
+	}
+
+	public MitfahrenUser findPhoneNumber(String phoneNumber) {
+		@SuppressWarnings("unchecked")
+		List<MitfahrenUser> searchedUserList 
+		= (List<MitfahrenUser>) em.createQuery(
+				"FROM " + MitfahrenUser.class.getName() + " m WHERE m.telephoneNumber like '" + phoneNumber + "'").getResultList();
+		return searchedUserList.get(0);
+	}
+
+	public MitfahrenUser findMail(String mail) {
+		@SuppressWarnings("unchecked")
+		List<MitfahrenUser> searchedUserList 
+		= (List<MitfahrenUser>) em.createQuery(
+				"FROM " + MitfahrenUser.class.getName() + " m WHERE m.userMail like '" + mail + "'").getResultList();
 		return searchedUserList.get(0);
 	}
 	

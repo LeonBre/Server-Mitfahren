@@ -13,6 +13,14 @@ public class RegistrationConverter {
 	}
 	
 	public RegisterUserResponse convert(RegisterUserModel userModel) {
+		boolean phoneIsValid = userService.findPhoneNumber(userModel.phone) == null;
+		
+		if(userService.find(userModel.username) == null 
+				&& userService.findMail(userModel.mail) == null 
+				&& phoneIsValid) {
+			
+		}
+		
 		return null;
 	}
 }

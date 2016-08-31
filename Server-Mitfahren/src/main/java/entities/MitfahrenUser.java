@@ -35,6 +35,8 @@ public class MitfahrenUser {
 	
 	private String pictureUrl;
 	
+	private String userMail;
+	
 	private float userRating;
 	
 	@OneToMany(cascade=CascadeType.ALL,
@@ -61,22 +63,24 @@ public class MitfahrenUser {
 	
 	public MitfahrenUser(){}
 
-	public MitfahrenUser(String username, String hashPassword, String telephoneNumber) {
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String userMail) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.userRating = 0;
+		this.userMail = userMail;
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
 	}
 	
-	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl) {
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl, String userMail) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.pictureUrl = pictureUrl;
 		this.userRating = 0;
+		this.userMail = userMail;
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
@@ -195,6 +199,20 @@ public class MitfahrenUser {
 	 */
 	public void setHashPassword(String hashPassword) {
 		this.hashPassword = hashPassword;
+	}
+
+	/**
+	 * @return the userMail
+	 */
+	public String getUserMail() {
+		return userMail;
+	}
+
+	/**
+	 * @param userMail the userMail to set
+	 */
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
 	}
 	
 	
