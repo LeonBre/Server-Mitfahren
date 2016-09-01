@@ -19,7 +19,11 @@ if($navMobile.length == 0) {
   //Checks if the user is already logged in.
   if(Cookies.get('username') != null && Cookies.get('password') != null){
     isLoggedIn = true;
+    makeLoginVisible(Cookies.get('username'),
+                      Cookies.get('password'),
+                      Cookies.get('userId'))
   }
+
 
   //Navbar Login Code.
   //When the user is not logged in, a click on login opens the login modal.
@@ -81,10 +85,15 @@ if($navMobile.length == 0) {
   function login(username, password, userId) {
     Cookies.set('username', username);
     Cookies.set('password', password)
+    Cookies.set('userId', userId)
     isLoggedIn = true;
     $('#loginModal').closeModal();
-    $navbarLogin.text('Logout');
     makeToast("Erfolgreich eingeloggt.")
+    makeLoginVisible(username, password, userId)
+  }
+
+  function makeLoginVisible(username, password, userId) {
+    $navbarLogin.text('Logout');
     $navbarRight.append('<li><a id="navbarUsername" '
                         + 'onclick="window.location=\'' + userUrl
                         + '?userId=' + userId +'\';">'
