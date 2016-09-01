@@ -24,6 +24,9 @@ public class RegistrationConverter {
 				&& userModel.phone != "112" 
 				&& userService.findPhoneNumber(userModel.phone) == null;
 		
+		System.out.println("username is valid: " + usernameIsValid);
+		System.out.println("mail is valid: " + mailIsValid);
+		System.out.println("phone is valid: " + phoneIsValid);
 		
 		boolean registrationIsPossible = usernameIsValid && phoneIsValid && mailIsValid;
 		

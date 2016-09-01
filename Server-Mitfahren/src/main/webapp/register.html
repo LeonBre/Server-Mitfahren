@@ -134,14 +134,26 @@
         data: data,
         success: function(response) {
           console.log("From Server: ", JSON.stringify(response))
-          
+          if(response.isRegistered) {
+            login(registerUsername, registerPassword, response.userId)
+          }else {
+            registrationFailed()
+          }
         },
         error: function() {
           console.log("Error");
+          registrationFailed()
         }
       });
     });
-    })
+
+    function registrationFailed () {
+      makeToast("Registrierung fehlgeschlagen.")
+      $registerUsername.val("");
+      $registerPassword.val("");;
+      $registerMail.val("");
+      $registerPhoneNumber.val("");
+    }
 
   </script>
 </html>

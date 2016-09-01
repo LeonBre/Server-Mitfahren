@@ -1,4 +1,5 @@
 var destinationURL = "http://localhost:8080"
+var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html"
 
 var isLoggedIn = false;
 
