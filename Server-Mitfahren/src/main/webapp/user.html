@@ -145,21 +145,23 @@
     //Stores the data of the request on the html page.
     //The sample text will be emptied out and the new html Strings will be generated.
     function storeData(userInfo) {
-      $userHeaderName.empty();
-      $userHeaderName.append(getUserNameString(userInfo.userName));
+      if(userInfo != null)
+        {
+        $userHeaderName.empty();
+        $userHeaderName.append(getUserNameString(userInfo.userName));
 
-      $userHeaderPicture.empty();
-      $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
+        $userHeaderPicture.empty();
+        $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
 
-      $userHeaderRating.empty();
-      $userHeaderRating.append(getUserRatingString(userInfo.userRating));
+        $userHeaderRating.empty();
+        $userHeaderRating.append(getUserRatingString(userInfo.userRating));
 
-      $drivingList.empty();
-      $drivingList.append(getDrivingListString(userInfo.asDriverList))
+        $drivingList.empty();
+        $drivingList.append(getDrivingListString(userInfo.asDriverList))
 
-      $commentaryList.empty();
-      $commentaryList.append(getCommentaryList(userInfo.commentList))
-
+        $commentaryList.empty();
+        $commentaryList.append(getCommentaryList(userInfo.commentList))
+        }
       }
 
       //Prepares the html String for the username.

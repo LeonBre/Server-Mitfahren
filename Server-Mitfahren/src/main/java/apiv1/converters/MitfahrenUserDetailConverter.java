@@ -39,6 +39,8 @@ public class MitfahrenUserDetailConverter {
 	public MitfahrenUserDetail convertIdToModel(String userId) {
 		MitfahrenUserDetail output = new MitfahrenUserDetail();
 		MitfahrenUser currentUser = userService.find(Integer.parseInt(userId));
+		if(currentUser == null)
+			return null;
 		output.userId = currentUser.getUserId() + "";
 		output.userName = currentUser.getUsername();
 		output.userRating = currentUser.getUserRating() + "";
