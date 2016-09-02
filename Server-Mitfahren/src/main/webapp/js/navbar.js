@@ -3,9 +3,15 @@ var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/
 
 var isLoggedIn = false;
 
-var $navbarRight = $('#nav-mobile')
+var $navbarRight = $('#nav-mobile');
+var $navMobile = $('#nav-mobile');
+var §navbarSearch = $('navbarSearch');
+var $navbarAbout = $('navbarAbout');
+var $navbarRegister = $('navbarRegister');
 var $navbarLogin = $('#navbarLogin');
-var $navMobile = $('#nav-mobile')
+
+
+
 
 var $loginButton = $('#loginButton');
 var $loginUsername = $('#loginUsername');
@@ -24,6 +30,23 @@ if($navMobile.length == 0) {
                       Cookies.get('userId'))
   }
 
+  //Checks which tab is currently active
+  if(websiteName != null) {
+    switch (websiteName) {
+      case 'drive':
+
+        break;
+      case 'user':
+
+        break;
+      case 'index':
+
+        break;
+
+      default:
+
+    }
+  }
 
   //Navbar Login Code.
   //When the user is not logged in, a click on login opens the login modal.
