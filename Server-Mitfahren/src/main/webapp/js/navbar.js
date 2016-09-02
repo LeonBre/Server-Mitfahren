@@ -5,13 +5,11 @@ var isLoggedIn = false;
 
 var $navbarRight = $('#nav-mobile');
 var $navMobile = $('#nav-mobile');
-var §navbarSearch = $('navbarSearch');
+var $navbarFirst = $('navbarFirst');
+var $narbarSearch= $('navbarSearch')
 var $navbarAbout = $('navbarAbout');
 var $navbarRegister = $('navbarRegister');
 var $navbarLogin = $('#navbarLogin');
-
-
-
 
 var $loginButton = $('#loginButton');
 var $loginUsername = $('#loginUsername');
@@ -33,13 +31,16 @@ if($navMobile.length == 0) {
   //Checks which tab is currently active
   if(websiteName != null) {
     switch (websiteName) {
-      case 'drive':
+      case 'index':
+
+        break;
+      case 'register':
 
         break;
       case 'user':
 
         break;
-      case 'index':
+      case 'drive':
 
         break;
 

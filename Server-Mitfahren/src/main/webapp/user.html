@@ -17,13 +17,15 @@
     <![endif]-->
   </head>
   <body>
-    <nav>
+    <<nav>
       <div class="nav-wrapper teal lighten-2">
-        <a href="#" class="brand-logo">Mitfahren</a>
+        <a href="index.html" class="brand-logo">Mitfahren</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
+          <li class="active"><a id="navbarFirst" href="index.html">Nutzer</a></li>
+          <li><a id="navbarSearch" href="index.html">Suchen</a></li>
+          <li><a id="navbarAbout" href="about.html">Über</a></li>
+          <li><a id="navbarRegister" href="register.html">Registrieren</a></li>
+          <li><a id="navbarLogin">Login</a></li>
         </ul>
       </div>
     </nav>
@@ -101,7 +103,7 @@
     var destinationURL = "http://localhost:8080"
     var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html";
     var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html";
-    var websiteName = "user"
+    websiteName = "user"
 
     var $userHeaderName = $('#userHeaderName')
     var $userHeaderPicture = $('#userHeaderPicture')
