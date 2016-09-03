@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Über</title>
+    <meta name="author" content="Leon Johann Brettin">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav>
+      <div class="nav-wrapper teal lighten-2">
+        <a href="index.html" class="brand-logo">Mitfahren</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a id="navbarSearch" href="index.html">Suchen</a></li>
+          <li class="active"><a id="navbarAbout" href="about.html">Über</a></li>
+          <li><a id="navbarRegister" href="register.html">Registrieren</a></li>
+          <li><a id="navbarLogin">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h3 class="header center teal-text">Über Mitfahren</h3>
+      <div class="row">
+        <div class="col l3">
+          <img src="https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/1384366_706349059394300_952128709_n.jpg?oh=1baee351fd5e67ef6c0faf3ecd44f7da&oe=5843E5AA" height="200" />
+        </div>
+        <div class="col l9">
+          <p>Die Seite wurde von mir geschrieben :-)</p>
+          <p>Ich bin ein Informatikstudent mit Schwerpunkt Software-Engineering an der Ostfalia Wolfenbüttel.</p>
+          <p>Geschrieben habe ich diese Seite, damit Leute sich auch ohne zusätliche Kosten zu Mitfahregemeinschaften absprechen können.</p>
+          </br>
+          <p>Zurzeit ist diese Seite noch in der Entwicklungsphase, bitte seid mir nicht böse, wenns mal irgendwo klemmt...</p>
+          <p>Schreibt mir einfach eine Email, wenn euch irgendwas stört oder irgend etwas nicht richtig funktioniert :-)</p>
+          <p>Meine Email-Adresse ist: noch@einfügen.de</p>
+          </br>
+          <p>Zum Inhaltlichen:</p>
+            <p><tab1>Die Website ist mit HTML, Javascript und CSS gestaltet.</tab1></p>
+            <p><tab1>Im Javascript Bereich habe ich folgende Technologien benutzt:</tab1></p>
+              <p><tab2> - <a href="http://materializecss.com/">Materializecss</a> zur Gestaltung der Website.</tab2></p>
+              <p><tab2> - <a href="https://jquery.com/">jQuery</a>Für erweiterte Javascript Funktionen wie Ajax.</tab2></p>
+              <p><tab2> - <a href="https://code.google.com/archive/p/crypto-js/">crypto-js</a>Für die Verschlüsselung.</tab2></p>
+          
+            <p><tab1>Der Server ist mit <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE</a> gestaltet.</tab1></p>
+          </br>
+          <p>Weiteres findet ihr sonst auf meiner <a href="https://github.com/LeonBre">Github Seite</a>.
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+  <!--Login Modal-->
+  <div id="loginModal" class="modal">
+    <div class="modal-content loginContent">
+            <h3 class="brand-logo teal-text">Einloggen</h3>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginUsername" type="text" class="validate">
+                <label for="username">Nutzername</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginPassword" type="password" class="validate">
+                <label for="password">Passwort</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col m6">
+                <button class="btn" id="loginButton"> Login
+                </button>
+              </div>
+          </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="resources/CryptoJS/rollups/sha512.js"></script>
+  <script src="resources/jquery-cookie/js.cookie.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <script type="text/javascript">
+  websiteName = "about"
+
+
+  </script>
+</html>

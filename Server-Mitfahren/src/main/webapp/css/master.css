@@ -109,3 +109,7 @@ i.material-icons {
   padding-bottom: 0px;
   border-radius: 15px;
 }
+
+tab1 { padding-left: 4em; }
+tab2 { padding-left: 8em; }
+tab3 { padding-left: 12em; }
