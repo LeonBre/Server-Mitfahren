@@ -31,6 +31,7 @@ public class MitfahrenUser {
 	private String username;
 	@NotNull
 	private String hashPassword;
+	private int activationNumber;
 	private String telephoneNumber;
 	
 	private String pictureUrl;
@@ -63,24 +64,26 @@ public class MitfahrenUser {
 	
 	public MitfahrenUser(){}
 
-	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String userMail) {
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String userMail, int activationNumber) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.userRating = 0;
 		this.userMail = userMail;
+		this.activationNumber = activationNumber;
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
 	}
 	
-	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl, String userMail) {
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl, String userMail, int activationNumber) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
 		this.pictureUrl = pictureUrl;
 		this.userRating = 0;
 		this.userMail = userMail;
+		this.activationNumber = activationNumber;
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();

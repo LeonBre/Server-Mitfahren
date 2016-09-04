@@ -1,9 +1,14 @@
 package apiv1.converters;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.internet.InternetAddress;
+
 import apiv1.models.request.RegisterUserModel;
 import apiv1.models.response.RegisterUserResponse;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
+import helper.MailHelper;
 
 public class RegistrationConverter {
 
@@ -32,9 +37,26 @@ public class RegistrationConverter {
 		
 		if(registrationIsPossible) 
 		{
+			int randomActivationNum = 0 + (int)(Math.random() * 10000); 
 			MitfahrenUser newUser = new MitfahrenUser(userModel.username, 
-					userModel.password, userModel.phone, userModel.mail);
+					userModel.password, userModel.phone, userModel.mail, randomActivationNum);
 			userService.persists(newUser);
+			
+			MailHelper mailHelper = new MailHelper();
+			
+			
+			try {
+				mailHelper.sendMail(new InternetAddress("leon@brettin.de", "Mitfahren Admin"), 
+						new InternetAddress(userModel.mail, userModel.username), 
+						"Mitfahren Registrierung", 
+						"Hallo " + userModel.username 
+						+ "\nIhr Aktivierungscode ist: \n " + randomActivationNum
+						+ "\nSie können ihren Code auf dieser Seite einlösen:"
+						+ "mitfahren.de/activate.html");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			response.isRegistered = true;
 			response.userId = newUser.getUserId();

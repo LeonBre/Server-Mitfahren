@@ -45,10 +45,10 @@ public class DatabaseHelper {
 		cityService.persists(lübeck);
 		cityService.persists(münchen);
 		
-		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567", "max@mustermann.de");
-		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344", "netter@fahrer.com");
-		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456", "klaus.kleber@wab.de");
-		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235", "karla.kol@googl.de");
+		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567", "max@mustermann.de", 1);
+		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344", "netter@fahrer.com", 2);
+		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456", "klaus.kleber@wab.de", 3);
+		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235", "karla.kol@googl.de", 4);
 		userService.persists(testUser1);
 		userService.persists(testUser2);
 		userService.persists(testUser3);
