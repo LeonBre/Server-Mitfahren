@@ -10,7 +10,8 @@ public class AuthenticationValidator {
 		if(user == null)
 			return false;
 		if(user.getUsername().equals(userModel.username) 
-				&& user.getHashPassword().equals(userModel.password))
+				&& user.getHashPassword().equals(userModel.password)
+				&& user.isActivated())
 			return true;
 		
 		return false;

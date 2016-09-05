@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registrieren</title>
+    <meta name="author" content="Leon Johann Brettin">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav>
+      <div class="nav-wrapper teal lighten-2">
+        <a href="index.html" class="brand-logo">Mitfahren</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="active"><a id="navbarActivate" href="activate.html">Aktivierung</a></li>
+          <li><a id="navbarSearch" href="index.html">Suchen</a></li>
+          <li><a id="navbarAbout" href="about.html">Über</a></li>
+          <li><a id="navbarRegister" href="register.html">Registrieren</a></li>
+          <li><a id="navbarLogin">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="registerForm">
+      <h2 class="col m3 teal-text center-align"> Aktivierung</h2>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="text" id="activateUsername">
+          <label for="activateUsername">Nutzername</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">credit_card</i>
+          <input type="password" id="activatePassword">
+          <label for="activatePassword">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input type="text" id="activateNumber">
+          <label for="activateNumber">Aktivierungsnummer</label>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Submit Buttom -->
+        <div class="SubmitButton center-align">
+          <button class="btn-large waves-effect waves-light" id="button-sendActivationInformation"
+          type="submit" name="action">Bestätigen
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </body>
+  <!--Login Modal-->
+  <div id="loginModal" class="modal">
+    <div class="modal-content loginContent">
+            <h3 class="brand-logo teal-text">Einloggen</h3>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginUsername" type="text" class="validate">
+                <label for="username">Nutzername</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginPassword" type="password" class="validate">
+                <label for="password">Passwort</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col m6">
+                <button class="btn" id="loginButton"> Login
+                </button>
+              </div>
+          </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="resources/CryptoJS/rollups/sha512.js"></script>
+  <script src="resources/jquery-cookie/js.cookie.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <script type="text/javascript">
+
+  </script>
+</html>

@@ -33,7 +33,7 @@ public class MitfahrenUser {
 	private String hashPassword;
 	private int activationNumber;
 	private String telephoneNumber;
-	
+	private boolean isActivated;
 	private String pictureUrl;
 	
 	private String userMail;
@@ -74,6 +74,7 @@ public class MitfahrenUser {
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
+		this.isActivated = false;
 	}
 	
 	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl, String userMail, int activationNumber) {
@@ -87,6 +88,7 @@ public class MitfahrenUser {
 		this.userComments = new HashSet<>();
 		this.asPassengerList = new LinkedList<>();
 		this.asDriverList = new HashSet<>();
+		this.isActivated = false;
 	}
 
 	/**
@@ -110,6 +112,14 @@ public class MitfahrenUser {
 	
 	public void addDrive(Drive drive) {
 		asDriverList.add(drive);
+	}
+	
+	public void activateUser() {
+		this.isActivated = true;
+	}
+	
+	public boolean isActivated(){
+		return this.isActivated;
 	}
 	
 	/**
