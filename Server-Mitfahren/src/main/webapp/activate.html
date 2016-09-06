@@ -95,6 +95,51 @@
   <script src="js/navbar.js"></script>
 
   <script type="text/javascript">
+  $activateUsername = $('#activateUsername');
+  $activatePassword = $('#activatePassword');
+  $activateNumber = $('#activateNumber');
+  $btnSendActivationInformation = $('button-sendActivationInformation')
 
+  $btnSendActivationInformation.on('click', function(){
+    activateUsername = $activateUsername.val();
+
+    hashWordArray = CryptoJS.SHA512($activatePassword.val());
+    activatePassword = hashWordArray.toString(CryptoJS.enc.Base64);
+
+    activateNumber = $activateNumber.val();
+
+    var data = {
+      username : activateUsername,
+      password : activatePassword,
+      number : activateNumber
+    }
+    data = JSON.stringify(data)
+
+    $.ajax({
+      type: 'POST',
+      url: destinationURL + '/Server-Mitfahren/apiv1/activateUser',
+      contentType: "application/json",
+      data: data,
+      success: function(response) {
+        console.log("From Server: ", JSON.stringify(response))
+        if(response.isActivated) {
+          login(registerUsername, registerPassword, response.userId)
+        }else {
+          registrationFailed()
+        }
+      },
+      error: function() {
+        console.log("Error");
+        activationFailed()
+      }
+    });
+  });
+
+  function registrationFailed () {
+    makeToast("Aktivierung fehlgeschlagen.")
+    $activateUsername.val("");
+    $activatePassword.val("");;
+    $activateNumber.val("");
+  }
   </script>
 </html>
