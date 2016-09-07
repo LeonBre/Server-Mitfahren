@@ -4,5 +4,5 @@ public class ActivationModel {
 
 	public String username;
 	public String password;
-	public String activationNumber;
+	public String number;
 }

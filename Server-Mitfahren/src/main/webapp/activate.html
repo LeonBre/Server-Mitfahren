@@ -95,10 +95,12 @@
   <script src="js/navbar.js"></script>
 
   <script type="text/javascript">
+  websiteName = "activate"
+
   $activateUsername = $('#activateUsername');
   $activatePassword = $('#activatePassword');
   $activateNumber = $('#activateNumber');
-  $btnSendActivationInformation = $('button-sendActivationInformation')
+  $btnSendActivationInformation = $('#button-sendActivationInformation')
 
   $btnSendActivationInformation.on('click', function(){
     activateUsername = $activateUsername.val();
@@ -123,9 +125,9 @@
       success: function(response) {
         console.log("From Server: ", JSON.stringify(response))
         if(response.isActivated) {
-          login(registerUsername, registerPassword, response.userId)
+          login(activateUsername, activatePassword, response.userId)
         }else {
-          registrationFailed()
+          activationFailed()
         }
       },
       error: function() {
@@ -135,7 +137,7 @@
     });
   });
 
-  function registrationFailed () {
+  function activationFailed () {
     makeToast("Aktivierung fehlgeschlagen.")
     $activateUsername.val("");
     $activatePassword.val("");;

@@ -11,16 +11,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import apiv1.converters.ActivationConverter;
 import apiv1.converters.AuthenticationConverter;
 import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.RegistrationConverter;
 import apiv1.converters.SearchConverter;
+import apiv1.models.request.ActivationModel;
 import apiv1.models.request.AuthenticateUserModel;
 import apiv1.models.request.RegisterUserModel;
 import apiv1.models.request.SearchDrive;
 import apiv1.models.request.SearchDriveDetail;
 import apiv1.models.request.SearchMitfahrenUserDetail;
+import apiv1.models.response.ActivationResponse;
 import apiv1.models.response.AnswerDrive;
 import apiv1.models.response.AuthenticateUserResponse;
 import apiv1.models.response.DriveDetail;
@@ -117,6 +120,15 @@ public class RestApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public RegisterUserResponse postRegisterUser(RegisterUserModel request) {
 		RegistrationConverter converter = new RegistrationConverter(userService);
+		return converter.convert(request);
+	}
+	
+	@POST
+	@Path("/activateUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ActivationResponse postActivateUser(ActivationModel request) {
+		ActivationConverter converter = new ActivationConverter(userService);
 		return converter.convert(request);
 	}
 	

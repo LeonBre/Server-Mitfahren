@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -114,6 +115,7 @@ public class MitfahrenUser {
 		asDriverList.add(drive);
 	}
 	
+	@OneToOne(cascade=CascadeType.ALL)
 	public void activateUser() {
 		this.isActivated = true;
 	}
@@ -226,6 +228,20 @@ public class MitfahrenUser {
 	 */
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
+	}
+
+	/**
+	 * @return the activationNumber
+	 */
+	public int getActivationNumber() {
+		return activationNumber;
+	}
+
+	/**
+	 * @param activationNumber the activationNumber to set
+	 */
+	public void setActivationNumber(int activationNumber) {
+		this.activationNumber = activationNumber;
 	}
 	
 	

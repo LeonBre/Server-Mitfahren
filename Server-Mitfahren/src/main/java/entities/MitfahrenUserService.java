@@ -58,5 +58,12 @@ public class MitfahrenUserService {
 				"FROM " + MitfahrenUser.class.getName() + " m WHERE m.userMail like '" + mail + "'").getResultList();
 		return searchedUserList.isEmpty() ? null:searchedUserList.get(0);
 	}
+
+	public void refresh(MitfahrenUser mitfahrenUser) {
+		em.merge(mitfahrenUser);
+	}
 	
+	public void flush() {
+		em.flush();
+	}
 }

@@ -28,26 +28,6 @@ if($navMobile.length == 0) {
                       Cookies.get('userId'))
   }
 
-  //Checks which tab is currently active
-  if(websiteName != null) {
-    switch (websiteName) {
-      case 'index':
-
-        break;
-      case 'register':
-
-        break;
-      case 'user':
-
-        break;
-      case 'drive':
-
-        break;
-
-      default:
-
-    }
-  }
 
   //Navbar Login Code.
   //When the user is not logged in, a click on login opens the login modal.
