@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fahrt erstellen</title>
+    <meta name="author" content="Leon Johann Brettin">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav>
+      <div class="nav-wrapper teal lighten-2">
+        <a href="index.html" class="brand-logo">Mitfahren</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a id="navbarSearch" href="index.html">Suchen</a></li>
+          <li class="active"><a id="navbarCreateDrive" href="createDrive.html">Erstellen</a></li>
+          <li><a id="navbarAbout" href="about.html">Über</a></li>
+          <li><a id="navbarRegister" href="register.html">Registrieren</a></li>
+          <li><a id="navbarLogin">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="standardForm">
+        <h2 class="col m3 teal-text center-align">Fahrt erstellen</h2>
+        <div class="row">
+          <div class="col l6">
+            <input type="text" id="autocomplete-input-von" class="autocomplete">
+            <label for="autocomplete-input-von">Von</label>
+          </div>
+          <div class="col l6">
+            <input type="text" id="autocomplete-input-nach" class="autocomplete">
+            <label for="autocomplete-input-nach">Nach</label>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col s6 offset-s3">
+          <input type="date" class="datepicker" id="datepicker-date">
+          <label for="datepicker">Abfahrtszeit</label>
+        </div>
+        <div class="row">
+          <div class="col l12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                <label for="textarea1">Kommentare</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <!-- Submit Buttom -->
+          <div class="standardSubmitButton center-align">
+            <button class="btn-large waves-effect waves-light" id="button-sendRegisterInformation"
+            type="submit" name="action">Bestätigen
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+  <!--Login Modal-->
+  <div id="loginModal" class="modal">
+    <div class="modal-content loginContent">
+            <h3 class="brand-logo teal-text">Einloggen</h3>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginUsername" type="text" class="validate">
+                <label for="username">Nutzername</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginPassword" type="password" class="validate">
+                <label for="password">Passwort</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col m6">
+                <button class="btn" id="loginButton"> Login
+                </button>
+              </div>
+          </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="resources/CryptoJS/rollups/sha512.js"></script>
+  <script src="resources/jquery-cookie/js.cookie.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <script type="text/javascript">
+  websiteName = "createDrive"
+
+  var $destination = $('#autocomplete-input-von');
+  var $arrival = $('#autocomplete-input-nach');
+
+  var possibleCities = new Array();
+
+  $(document).ready(function() {
+    //Initializes the characterCounter
+    $('input#input_text, textarea#textarea1').characterCounter();
+
+    //Starts the datepicker.
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 2
+    });
+
+    //Gets the information for the autocomplete texts from the server.
+    $.ajax({
+      type: 'GET',
+      url: destinationURL + '/Server-Mitfahren/apiv1/possibleCities',
+      success: function(cities){
+        console.log(cities)
+        $.each(cities, function(i, city) {
+          possibleCities[city.name] = city.pictureUrl;
+        })
+        $destination.autocomplete({
+           data : possibleCities
+         });
+       $arrival.autocomplete({
+          data : possibleCities
+        });
+      }
+    });
+  });
+
+
+  </script>
+</html>

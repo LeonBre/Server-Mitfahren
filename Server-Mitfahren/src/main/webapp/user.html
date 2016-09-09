@@ -23,6 +23,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li class="active"><a id="navbarFirst" href="index.html">Nutzer</a></li>
           <li><a id="navbarSearch" href="index.html">Suchen</a></li>
+          <li><a id="navbarCreateDrive" href="createDrive.html">Erstellen</a></li>
           <li><a id="navbarAbout" href="about.html">Über</a></li>
           <li><a id="navbarRegister" href="register.html">Registrieren</a></li>
           <li><a id="navbarLogin">Login</a></li>
@@ -157,7 +158,8 @@
         $userHeaderRating.append(getUserRatingString(userInfo.userRating));
 
         $drivingList.empty();
-        $drivingList.append(getDrivingListString(userInfo.asDriverList))
+        $drivingList.append(getDrivingListString(userInfo.asDriverList))          <li><a id="navbarCreateDrive" href="createDrive.html">Erstellen</a></li>
+
 
         $commentaryList.empty();
         $commentaryList.append(getCommentaryList(userInfo.commentList))
