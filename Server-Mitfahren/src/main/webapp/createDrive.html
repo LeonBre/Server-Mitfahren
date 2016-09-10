@@ -47,8 +47,8 @@
           <div class="col l12">
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
-                <label for="textarea1">Kommentare</label>
+                <textarea id="commentary" class="materialize-textarea" length="120"></textarea>
+                <label for="commentary">Kommentare</label>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
         <div class="row">
           <!-- Submit Buttom -->
           <div class="standardSubmitButton center-align">
-            <button class="btn-large waves-effect waves-light" id="button-sendRegisterInformation"
+            <button class="btn-large waves-effect waves-light" id="button-sendInformation"
             type="submit" name="action">Bestätigen
               <i class="material-icons right">send</i>
             </button>
@@ -105,10 +105,13 @@
 
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
+  var $date = $('#datepicker-date')
+  var $commentary = $('#commentary')
 
   var possibleCities = new Array();
 
   $(document).ready(function() {
+
     //Initializes the characterCounter
     $('input#input_text, textarea#textarea1').characterCounter();
 
@@ -137,6 +140,42 @@
     });
   });
 
+  $('#button-sendInformation').on('click', function() {
+    var dateIsValid = ($date.val() != null) && ($date.val() != "");
+    if(    $destination.val() != null
+        && $arrival.val() != null
+        && $commentary.val() != null
+        && dateIsValid) {
 
+      var data = {
+        destination: $destination.val(),
+        arrival: $arrival.val(),
+        date: $date.val(),
+        commentary: $commentary.val()
+      };
+
+      data = JSON.stringify(data)
+      console.log("To Server: " + JSON.stringify(data));
+
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/createDrive',
+        contentType: "application/json",
+        data: data,
+        success: function(possibleDrives) {
+          console.log("From Server: ", JSON.stringify(possibleDrives))
+          Materialize.toast('Fahrt erfolgreich erstellet.', 1500,'rounded',function(){window.location='index.html'})
+        },
+        error: function() {
+          console.log("Error");
+          makeToast("Leider war irgendwas falsch :-(")
+          $destination.val("");
+          $arrival.val("");
+          $date.val("");
+          $commentary.val("");
+        }
+      });
+  }
+  });
   </script>
 </html>
