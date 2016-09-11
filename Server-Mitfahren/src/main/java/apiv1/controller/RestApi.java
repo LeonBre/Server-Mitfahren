@@ -19,6 +19,7 @@ import apiv1.converters.RegistrationConverter;
 import apiv1.converters.SearchConverter;
 import apiv1.models.request.ActivationModel;
 import apiv1.models.request.AuthenticateUserModel;
+import apiv1.models.request.CreateDriveModel;
 import apiv1.models.request.RegisterUserModel;
 import apiv1.models.request.SearchDrive;
 import apiv1.models.request.SearchDriveDetail;
@@ -26,6 +27,7 @@ import apiv1.models.request.SearchMitfahrenUserDetail;
 import apiv1.models.response.ActivationResponse;
 import apiv1.models.response.AnswerDrive;
 import apiv1.models.response.AuthenticateUserResponse;
+import apiv1.models.response.CreateDriveResponse;
 import apiv1.models.response.DriveDetail;
 import apiv1.models.response.MitfahrenUserDetail;
 import apiv1.models.response.RegisterUserResponse;
@@ -131,6 +133,15 @@ public class RestApi {
 		ActivationConverter converter = new ActivationConverter(userService);
 		return converter.convert(request);
 	}
+	
+	@POST
+	@Path("/createDrive")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public CreateDriveResponse postCreateDrive(CreateDriveModel request) {
+		return null;
+	}
+	
 	
 	@POST
 	@Path("/testAuthenticate")
