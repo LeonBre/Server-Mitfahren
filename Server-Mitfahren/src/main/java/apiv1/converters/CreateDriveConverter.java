@@ -1,5 +1,7 @@
 package apiv1.converters;
 
+import java.util.Calendar;
+
 import apiv1.models.request.CreateDriveModel;
 import apiv1.models.response.CreateDriveResponse;
 import entities.City;
@@ -8,6 +10,7 @@ import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
+import helper.CalendarHelper;
 import helper.ValidationHelper;
 
 public class CreateDriveConverter {
@@ -28,7 +31,7 @@ public class CreateDriveConverter {
 			//Drive newDrive = new Drive(destination, arrival, calendar, driver, carSpace);
 			City destination = cityService.find(request.destination);
 			City arrival = cityService.find(request.arrival);
-			
+			//Calendar time = CalendarHelper.convertCalenderDayAndTime(calendarString);
 		} else {
 			return creationFailed();
 		}

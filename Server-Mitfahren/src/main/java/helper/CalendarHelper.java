@@ -29,6 +29,10 @@ public class CalendarHelper {
 		converted.set(year, month, day);
 		return converted;
 	}
+	
+	public static Calendar convertCalenderDayAndTime(String calendarString) {
+		return null;
+	}
 
 	/**
 	 * Returns the number of a month.
