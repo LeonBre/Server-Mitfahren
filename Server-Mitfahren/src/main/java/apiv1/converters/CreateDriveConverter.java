@@ -2,6 +2,7 @@ package apiv1.converters;
 
 import apiv1.models.request.CreateDriveModel;
 import apiv1.models.response.CreateDriveResponse;
+import entities.Drive;
 import entities.DriveService;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
@@ -20,7 +21,7 @@ public class CreateDriveConverter {
 	public CreateDriveResponse convert(CreateDriveModel request) {
 		
 		if(ValidationHelper.validateUser(userService, request.username, request.password, request.userId)) {
-			//Convert
+			//Drive newDrive = new Drive(destination, arrival, calendar, driver, carSpace);
 		} else {
 			return creationFailed();
 		}

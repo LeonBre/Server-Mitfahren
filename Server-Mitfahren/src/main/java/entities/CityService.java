@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,5 +34,17 @@ public class CityService {
 	 */
 	public City find(int id){
 		return em.find(entities.City.class, id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public City find(String cityName) {
+		List<City> cities = null;
+	    try {
+	      cities = (List<City>)em.createQuery("FROM city c WHERE c.name = '" + cityName + "' ")
+	        .getResultList();
+	    } catch (javax.persistence.NoResultException noResultException) {
+	      System.out.println("No Entity found");
+	    }
+	    return cities.get(0);
 	}
 }
