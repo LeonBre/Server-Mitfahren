@@ -45,6 +45,11 @@ public class CityService {
 	    } catch (javax.persistence.NoResultException noResultException) {
 	      System.out.println("No Entity found");
 	    }
+	    if (cities.get(0) == null) {
+	    	City newCity = new City(cityName);
+	    	em.persist(newCity);
+	    	return newCity;
+	    }
 	    return cities.get(0);
 	}
 }
