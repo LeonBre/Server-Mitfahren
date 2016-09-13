@@ -41,13 +41,24 @@
           </div>
         </div>
         <div class="row">
-        <div class="col s6">
-          <!-- Date -->
-          <input type="date" class="datepicker" id="datepicker-date">
-          <label for="datepicker">Abfahrtszeit</label>
+          <div class="col s6">
+            <!-- Date -->
+            <input type="date" class="datepicker" id="datepicker-date">
+            <label for="datepicker">Abfahrtstag</label>
+          </div>
+          <div class="col s6">
+            <!-- Time -->
+            <input id="datepicker-time"></input>
+            <label for="datepicker-time">Abfahrtszeit</label>
+          </div>
         </div>
-        <div class="col s6">
-          <input id="pick-a-time"></input>
+        <div class="row">
+          <div class="col l6 offset-l3">
+            <p class="range-field">
+            <input type="range" id="passengerCount" min="1" max="10" />
+            <label for="passengerCount">Anzahl möglicher Mitfahrer</label>
+          </p>
+          </div>
         </div>
         <div class="row">
           <div class="col l12">
@@ -58,9 +69,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-        <div class="row">
+        </div>        <div class="row">
           <!-- Submit Buttom -->
           <div class="standardSubmitButton center-align">
             <button class="btn-large waves-effect waves-light" id="button-sendInformation"
@@ -114,14 +123,18 @@
   var $destination = $('#autocomplete-input-von');
   var $arrival = $('#autocomplete-input-nach');
   var $date = $('#datepicker-date')
+  var $time = $('#datepicker-time')
+  var $passengerCount = $('#passengerCount')
   var $commentary = $('#commentary')
 
   var possibleCities = new Array();
 
   $(document).ready(function() {
 
+
+
     //Initializes the timepicker
-    $('#pick-a-time').lolliclock({autoclose:true});
+    $('#datepicker-time').lolliclock({autoclose:true});
 
     //Initializes the characterCounter
     $('input#input_text, textarea#textarea1').characterCounter();
@@ -157,13 +170,19 @@
     if(    $destination.val() != null
         && $arrival.val() != null
         && $commentary.val() != null
-        && dateIsValid) {
+        && dateIsValid
+        && time.val() != null
+        && passengerCount.val() != null) {
 
       var data = {
         destination: $destination.val(),
         arrival: $arrival.val(),
         date: $date.val(),
-        commentary: $commentary.val()
+        time: $time.val(),
+        passengerCount: $passengerCount.val(),
+        commentary: $commentary.val(),
+        username: Cookies.get('username'),
+        password: Cookies.get('password')
       };
 
       data = JSON.stringify(data)
