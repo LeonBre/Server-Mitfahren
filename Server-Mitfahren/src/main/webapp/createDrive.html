@@ -30,18 +30,24 @@
         <h2 class="col m3 teal-text center-align">Fahrt erstellen</h2>
         <div class="row">
           <div class="col l6">
+            <!-- Destination -->
             <input type="text" id="autocomplete-input-von" class="autocomplete">
             <label for="autocomplete-input-von">Von</label>
           </div>
           <div class="col l6">
+            <!-- Arrival -->
             <input type="text" id="autocomplete-input-nach" class="autocomplete">
             <label for="autocomplete-input-nach">Nach</label>
           </div>
         </div>
         <div class="row">
-        <div class="col s6 offset-s3">
+        <div class="col s6">
+          <!-- Date -->
           <input type="date" class="datepicker" id="datepicker-date">
           <label for="datepicker">Abfahrtszeit</label>
+        </div>
+        <div class="col s6">
+          <input id="pick-a-time"></input>
         </div>
         <div class="row">
           <div class="col l12">
@@ -98,6 +104,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script src="resources/CryptoJS/rollups/sha512.js"></script>
   <script src="resources/jquery-cookie/js.cookie.js"></script>
+  <script src="js/lolliclock.js"></script>
+  <link rel="stylesheet" href="css/lolliclock.css">
   <script src="js/navbar.js"></script>
 
   <script type="text/javascript">
@@ -111,6 +119,9 @@
   var possibleCities = new Array();
 
   $(document).ready(function() {
+
+    //Initializes the timepicker
+    $('#pick-a-time').lolliclock({autoclose:true});
 
     //Initializes the characterCounter
     $('input#input_text, textarea#textarea1').characterCounter();

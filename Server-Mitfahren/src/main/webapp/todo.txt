@@ -1,5 +1,4 @@
 TODO
 Füg den Kommentartext bei drive.html ein.
-Checke in createDrive.html ob der User eingeloggt ist.
 
 Füge bei createDrive.html frei plätze und einen Timepicker ein
