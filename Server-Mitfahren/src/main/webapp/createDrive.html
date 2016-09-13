@@ -171,8 +171,11 @@
         && $arrival.val() != null
         && $commentary.val() != null
         && dateIsValid
-        && time.val() != null
-        && passengerCount.val() != null) {
+        && $time.val() != null
+        && $passengerCount.val() != null) {
+      //Delete this one line later
+      }{
+      //-----
 
       var data = {
         destination: $destination.val(),
@@ -182,7 +185,8 @@
         passengerCount: $passengerCount.val(),
         commentary: $commentary.val(),
         username: Cookies.get('username'),
-        password: Cookies.get('password')
+        password: Cookies.get('password'),
+        userId: Cookies.get('userId')
       };
 
       data = JSON.stringify(data)

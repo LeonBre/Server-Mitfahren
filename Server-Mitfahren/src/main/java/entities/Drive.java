@@ -69,20 +69,21 @@ public class Drive {
 	
 	private int carSeats;
 	
+	private String commentary;
 	
 	/**
 	 * Need this for the Persistence API.
 	 */
 	public Drive(){}
 
-	public Drive(City destination, City arrival, Calendar calendar, MitfahrenUser driver, int carSpace) {
+	public Drive(City destination, City arrival, Calendar calendar, MitfahrenUser driver, int carSpace, String commentary) {
 		this.destination = destination;
 		this.arrival = arrival;
 		this.calendar = calendar;
 		this.driver = driver;
 		this.passengers = new LinkedList<>();
 		this.carSeats = carSpace;
-		
+		this.commentary = commentary;
 		driver.addDrive(this);
 	}
 	
@@ -196,5 +197,20 @@ public class Drive {
 		this.carSeats = carSpace;
 	}
 
+	/**
+	 * @return the commentary
+	 */
+	public String getCommentary() {
+		return commentary;
+	}
+
+	/**
+	 * @param commentary the commentary to set
+	 */
+	public void setCommentary(String commentary) {
+		this.commentary = commentary;
+	}
+
+	
 	
 }

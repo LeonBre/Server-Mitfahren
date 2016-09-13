@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import apiv1.converters.ActivationConverter;
 import apiv1.converters.AuthenticationConverter;
+import apiv1.converters.CreateDriveConverter;
 import apiv1.converters.DriveDetailConverter;
 import apiv1.converters.MitfahrenUserDetailConverter;
 import apiv1.converters.RegistrationConverter;
@@ -139,7 +140,8 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public CreateDriveResponse postCreateDrive(CreateDriveModel request) {
-		return null;
+		CreateDriveConverter converter = new CreateDriveConverter(driveService, userService, cityService);
+		return converter.convert(request);
 	}
 	
 	

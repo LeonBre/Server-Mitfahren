@@ -26,24 +26,39 @@ public class CreateDriveConverter {
 	}
 	
 	public CreateDriveResponse convert(CreateDriveModel request) {
-		
+		try {
 		if(ValidationHelper.validateUser(userService, request.username, request.password, request.userId)) {
-			//Drive newDrive = new Drive(destination, arrival, calendar, driver, carSpace);
+			
 			City destination = cityService.find(request.destination);
 			City arrival = cityService.find(request.arrival);
-			//Calendar time = CalendarHelper.convertCalenderDayAndTime(calendarString);
+			Calendar dateTime = CalendarHelper.convertCalendar(request.date, request.time);
+			int carSpace = Integer.parseInt(request.passengerCount);
+			MitfahrenUser driver = userService.find(Integer.parseInt(request.userId));
+			
+			Drive newDrive = new Drive(destination, arrival, dateTime, driver, carSpace, request.commentary);
+			driveSerive.persists(newDrive);
+			
+			return creationSucess(newDrive.getDriveId());
 		} else {
 			return creationFailed();
 		}
-		
-		return null;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return creationFailed();
+		}
 	}
-	
 	
 	private CreateDriveResponse creationFailed() {
 		CreateDriveResponse creationFailed = new CreateDriveResponse();
 		creationFailed.isCreated = false;
 		creationFailed.driveId = 0;
 		return creationFailed;
+	}
+	
+	private CreateDriveResponse creationSucess(int driveId) {
+		CreateDriveResponse creationSucess = new CreateDriveResponse();
+		creationSucess.isCreated = true;
+		creationSucess.driveId = driveId;
+		return creationSucess;
 	}
 }

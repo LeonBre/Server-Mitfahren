@@ -14,14 +14,14 @@ public class CalendarHelper {
 	
 	/**
 	 * 
-	 * @param calendarString is a String with the following form:
+	 * @param date is a String with the following form:
 	 * 24 August, 2016
 	 * @return Calendar Object with the stored values
 	 */
-	public static Calendar convertCalendar(String calendarString){
+	public static Calendar convertCalendar(String date){
 		Calendar converted = Calendar.getInstance();
 		
-		String [] splittetDate = calendarString.split(" ");
+		String [] splittetDate = date.split(" ");
 		int day = Integer.parseInt(splittetDate[0]);
 		int month = getMonthAsInt(removeLastComma(splittetDate[1]));
 		int year = Integer.parseInt(splittetDate[2]);
@@ -30,8 +30,24 @@ public class CalendarHelper {
 		return converted;
 	}
 	
-	public static Calendar convertCalenderDayAndTime(String calendarString) {
-		return null;
+	public static Calendar convertCalendar(String date, String time) {
+		Calendar converted = convertCalendar(date);
+		
+		String [] splittetDate = date.split(" ");
+		int day = Integer.parseInt(splittetDate[0]);
+		int month = getMonthAsInt(removeLastComma(splittetDate[1]));
+		int year = Integer.parseInt(splittetDate[2]);
+		
+		String [] splittedTime = time.split(" ");
+		int hour = Integer.parseInt(splittedTime[0].split(":")[0]);
+		int minute = Integer.parseInt(splittedTime[0].split(":")[1]);
+		
+		if(splittedTime[1].equals("PM")) {
+			hour += 12;
+		}
+		
+		converted.set(year, month, day, hour, minute);
+		return converted;
 	}
 
 	/**

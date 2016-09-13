@@ -42,9 +42,10 @@ public class DriveDetailConverter {
 		String time = CalendarHelper.getCalendarTimeAsString(currentDrive.getCalendar());
 		String userRating = currentDrive.getDriver().getUserRating() + "";
 		String seats = currentDrive.getCarSeats() + "";
+		String commentary = currentDrive.getCommentary();
 		
 		DriveDetail driveModel = new DriveDetail(username, destination, destinationPictureUrl, 
-				arrival, arrivalPictureUrl, date, time, userRating, seats);
+				arrival, arrivalPictureUrl, date, time, userRating, seats, commentary);
 		
 		for(MitfahrenUser passenger: currentDrive.getPassengers()) {
 			driveModel.addPassenger(passenger.getUsername(), passenger.getUserId(), passenger.getPictureUrl());

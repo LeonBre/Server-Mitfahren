@@ -9,6 +9,8 @@ public class CreateDriveModel {
 	public String destination;
 	public String arrival;
 	public String date;
+	public String time;
+	public String passengerCount;
 	public String commentary;
 	
 	public CreateDriveModel() {}

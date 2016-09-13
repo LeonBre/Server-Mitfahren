@@ -18,6 +18,7 @@ public class DriveDetail {
 	public String arrivalPictureUrl;
 	public String date;
 	public String time;
+	public String commentary;
 	
 	public String userRating; 
 	public String seats;
@@ -38,7 +39,7 @@ public class DriveDetail {
 	 * @param seats Number of free seats.
 	 */
 	public DriveDetail(String username, String destination, String destinationPictureUrl, String arrival,
-			String arrivalPictureUrl, String date, String time, String userRating, String seats) {
+			String arrivalPictureUrl, String date, String time, String userRating, String seats, String commentary) {
 		this.username = username;
 		this.destination = destination;
 		this.destinationPictureUrl = destinationPictureUrl;
@@ -48,6 +49,7 @@ public class DriveDetail {
 		this.time = time;
 		this.userRating = userRating;
 		this.seats = seats;
+		this.commentary = commentary;
 		
 		this.passengers = new LinkedList<>();
 		this.userComments = new LinkedList<>();
