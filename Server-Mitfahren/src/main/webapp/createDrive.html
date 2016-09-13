@@ -131,8 +131,12 @@
 
   $(document).ready(function() {
 
+    $destination.val("Braunschweig")
+    $arrival.val("Hannover")
 
 
+    $passengerCount.val("2")
+    $commentary.val("FIND ME")
     //Initializes the timepicker
     $('#datepicker-time').lolliclock({autoclose:true});
 
@@ -173,9 +177,7 @@
         && dateIsValid
         && $time.val() != null
         && $passengerCount.val() != null) {
-      //Delete this one line later
-      }{
-      //-----
+
 
       var data = {
         destination: $destination.val(),
@@ -199,7 +201,7 @@
         data: data,
         success: function(possibleDrives) {
           console.log("From Server: ", JSON.stringify(possibleDrives))
-          Materialize.toast('Fahrt erfolgreich erstellet.', 1500,'rounded',function(){window.location='index.html'})
+          //Materialize.toast('Fahrt erfolgreich erstellet.', 1500,'rounded',function(){window.location='index.html'})
         },
         error: function() {
           console.log("Error");

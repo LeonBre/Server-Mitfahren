@@ -49,10 +49,13 @@ public class DatabaseHelper {
 		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344", "netter@fahrer.com", 2);
 		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456", "klaus.kleber@wab.de", 3);
 		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235", "karla.kol@googl.de", 4);
+		MitfahrenUser testUser5 = new MitfahrenUser("asdf", "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429080fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1", "1234", "as@df.de", 5);
+		testUser5.activateUser();
 		userService.persists(testUser1);
 		userService.persists(testUser2);
 		userService.persists(testUser3);
 		userService.persists(testUser4);
+		userService.persists(testUser5);
 		testUser1.addComment("Fahrt war supi",testUser2.getUsername(), 5f, testUser2.getUserId());
 		testUser1.addComment("Ich fand die fahrt gewöhnungsbedürftig...",testUser4.getUsername(), 2f, testUser4.getUserId());
 		Calendar nowCalendar = Calendar.getInstance();

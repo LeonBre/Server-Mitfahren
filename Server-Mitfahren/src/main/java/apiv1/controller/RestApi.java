@@ -144,6 +144,14 @@ public class RestApi {
 		return converter.convert(request);
 	}
 	
+	@POST
+	@Path("/authenticate")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public AuthenticateUserResponse postAuthenticate(AuthenticateUserModel request) {
+		//Next Problem to fix is here
+		return null;
+	}
 	
 	@POST
 	@Path("/testAuthenticate")
