@@ -18,8 +18,13 @@ public class AuthenticationConverter {
 		MitfahrenUser user = userService.find(userModel.username);
 		AuthenticateUserResponse response = new AuthenticateUserResponse();
 		
+		
 		response.isAuthenticated = AuthenticationValidator.authenticateUser(user, userModel);
-		response.userId = user.getUserId();
+		if (response.isAuthenticated) {
+			response.userId = user.getUserId();
+		} else {
+			response.userId = 0;
+		}
 		
 		return response;
 	}

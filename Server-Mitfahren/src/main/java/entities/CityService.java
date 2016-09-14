@@ -40,12 +40,12 @@ public class CityService {
 	public City find(String cityName) {
 		List<City> cities = null;
 	    try {
-	      cities = (List<City>)em.createQuery("FROM city c WHERE c.name = '" + cityName + "' ")
+	      cities = (List<City>)em.createQuery("FROM " + City.class.getName() + " c WHERE c.name = '" + cityName + "' ")
 	        .getResultList();
 	    } catch (javax.persistence.NoResultException noResultException) {
 	      System.out.println("No Entity found");
 	    }
-	    if (cities.get(0) == null) {
+	    if (cities.isEmpty()) {
 	    	City newCity = new City(cityName);
 	    	em.persist(newCity);
 	    	return newCity;

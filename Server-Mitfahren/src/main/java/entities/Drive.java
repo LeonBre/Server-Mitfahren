@@ -44,17 +44,16 @@ public class Drive {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int driveId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
 	private City destination;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
 	private City arrival;
 	@NotNull
 	@Column(name = "calendar")
 	private Calendar calendar;
-	//@NotNull
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn
 	private MitfahrenUser driver;
@@ -151,8 +150,8 @@ public class Drive {
 	/**
 	 * @param arrivalId the arrivalId to set
 	 */
-	public void setArrival(City arrivalId) {
-		this.arrival = arrivalId;
+	public void setArrival(City arrival) {
+		this.arrival = arrival;
 	}
 
 	/**
@@ -161,14 +160,7 @@ public class Drive {
 	public Calendar getCalendar() {
 		return calendar;
 	}
-
-	/**
-	 * @param calendar the calendar to set
-	 */
-	public void setcalendar(Calendar calendar) {
-		this.calendar = calendar;
-	}
-
+	
 	/**
 	 * @return the driver
 	 */

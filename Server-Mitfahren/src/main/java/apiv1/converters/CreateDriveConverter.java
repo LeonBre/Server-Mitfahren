@@ -36,7 +36,7 @@ public class CreateDriveConverter {
 			MitfahrenUser driver = userService.find(Integer.parseInt(request.userId));
 			
 			Drive newDrive = new Drive(destination, arrival, dateTime, driver, carSpace, request.commentary);
-			driveSerive.persists(newDrive);
+			newDrive = driveSerive.merge(newDrive);
 			
 			return creationSucess(newDrive.getDriveId());
 		} else {

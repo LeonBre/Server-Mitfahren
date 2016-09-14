@@ -33,6 +33,7 @@ public class City {
 		this.pictureUrl = pictureUrl;
 	}
 	
+	
 	public String getName() {
 		return name;
 	}
@@ -44,8 +45,5 @@ public class City {
 	}
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
-		
-		String bla = "asdf";
-		City saäpdifj = new City("Broistedt", "google.de");
 	}
 }

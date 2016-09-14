@@ -37,6 +37,10 @@ public class DriveService {
 		em.persist(drive);
 	}
 	
+	public Drive merge(Drive drive) {
+		return em.merge(drive);
+	}
+	
 	/**
 	 * Finds a drive in the database with the help of the id.
 	 * @param id
