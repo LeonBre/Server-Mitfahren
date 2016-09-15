@@ -110,6 +110,10 @@ i.material-icons {
   border-radius: 15px;
 }
 
+.markupText{
+  background-color: lightgrey;
+}
+
 tab1 { padding-left: 4em; }
 tab2 { padding-left: 8em; }
 tab3 { padding-left: 12em; }

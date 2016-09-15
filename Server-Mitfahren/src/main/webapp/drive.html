@@ -94,14 +94,22 @@
          </ul>
         </div>
       </div>
+      <div class="row">
+        <div class="col m3">
+          <h3 class="teal-text">Kommentar</h3>
+        </div>
+      </div>
+        <div class="row markupText" id="commentary">
+          Ich möchte euch hiermit meine Fahrt anbieten weil ich euch alle so cool finde.
+        </div>
 
       <div class="row">
-        <div class="col m5 center-align">
+        <div class="col m5">
           <button class="btn buttonBuchen waves-effect waves-light" id="button-sendInformation"
           type="submit" name="action">Fahrt Buchen</button>
         </div>
         <div class="col m7 ">
-          <h3 class="teal-text"> Kommentare:</h3>
+          <h3 class="teal-text">Kommentare zum Fahrer:</h3>
           <ul class="collection" id="commentaryList">
 
             <li class="collection-item">"Die Fahrt war gut."
@@ -134,6 +142,7 @@
     var $time = $('#timeHeader')
     var $driverName = $('#driverName')
     var $driverRating = $('#driverRating')
+    var $commentary = $('#commentary')
     var $seats = $('#seats')
     var $passengers = $('#passengerCollection')
     var $mitfahrerList = $('#mitfahrerList')
@@ -193,6 +202,9 @@
 
       $driverName.empty();
       $driverName.append(answer.username);
+
+      $commentary.empty();
+      $commentary.append(answer.commentary)
 
       $driverRating.empty();
       $driverRating.append(getDriverRatingText(answer.userRating));
