@@ -1,4 +1,4 @@
 TODO
 Füg den Kommentartext bei drive.html ein.
-
-Erstelle den Code bei Authenticate in Rest.java
+Überprüfe das Einloggen, zurzeit kann man sich mit jedem Benutzernamen einloggen.
+suche nach falschen links(about.html wird in der navbar nicht überall unterstützt, die kommentare zum nutzer bei user.html sind noch falsch)
