@@ -53,7 +53,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col l6 offset-l3">
+          <div class="col l1 offset-l2">
+            <h4 class="teal-text" id="passengerCountText">2</h4>
+          </div>
+          <div class="col l6">
             <p class="range-field">
             <input type="range" id="passengerCount" min="1" max="10" />
             <label for="passengerCount">Anzahl möglicher Mitfahrer</label>
@@ -199,9 +202,10 @@
         url: destinationURL + '/Server-Mitfahren/apiv1/createDrive',
         contentType: "application/json",
         data: data,
-        success: function(possibleDrives) {
-          console.log("From Server: ", JSON.stringify(possibleDrives))
-          //Materialize.toast('Fahrt erfolgreich erstellet.', 1500,'rounded',function(){window.location='index.html'})
+        success: function(succesDrive) {
+          console.log("From Server: ", JSON.stringify(succesDrive))
+          Materialize.toast('Fahrt erfolgreich erstellet.', 1500,'rounded',
+          function() {window.location='drive.html' + '?driveId=' + succesDrive.driveId})
         },
         error: function() {
           console.log("Error");
@@ -214,5 +218,16 @@
       });
   }
   });
+
+//Slider function
+//Changes the Number next to the slider to the slider value
+var passengerCount = 2
+$('#passengerCountText').text(passengerCount)
+$passengerCount.on("change mousemove", function() {
+  if(passengerCount != $passengerCount.val()) {
+    passengerCount = $passengerCount.val();
+    $('#passengerCountText').text(passengerCount)
+  }
+})
   </script>
 </html>
