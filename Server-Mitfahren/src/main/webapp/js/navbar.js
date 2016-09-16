@@ -61,7 +61,7 @@ if($navMobile.length == 0) {
     //TODO Change the destinationURL from testAuthenticate to authenticate
     $.ajax({
       type: 'POST',
-      url: destinationURL + '/Server-Mitfahren/apiv1/testAuthenticate',
+      url: destinationURL + '/Server-Mitfahren/apiv1/authenticate',
       contentType: "application/json",
       data: data,
       success: function(response) {
