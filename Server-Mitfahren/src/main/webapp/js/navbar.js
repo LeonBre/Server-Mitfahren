@@ -8,26 +8,29 @@ var $navMobile = $('#nav-mobile');
 var $navbarFirst = $('navbarFirst');
 var $narbarSearch= $('navbarSearch')
 var $navbarAbout = $('navbarAbout');
-var $navbarRegister = $('navbarRegister');
+var $navbarRegister = $('#navbarRegister');
 var $navbarLogin = $('#navbarLogin');
 
 var $loginButton = $('#loginButton');
 var $loginUsername = $('#loginUsername');
 var $loginPassword = $('#loginPassword');
 
-if($navMobile.length == 0) {
-  //console.log("Navbar is not online.");
-}else {
-  //console.log("Navbar is online.");
-
+$(document).ready(function() {
   //Checks if the user is already logged in.
   if(Cookies.get('username') != null && Cookies.get('password') != null){
     isLoggedIn = true;
     makeLoginVisible(Cookies.get('username'),
                       Cookies.get('password'),
                       Cookies.get('userId'))
+  }else {
+    isLoggedIn = false;
   }
 
+  if(isLoggedIn == true){
+    $navbarRegister.empty();
+  }
+
+});
 
   //Navbar Login Code.
   //When the user is not logged in, a click on login opens the login modal.
@@ -101,7 +104,8 @@ if($navMobile.length == 0) {
     $navbarRight.append('<li><a id="navbarUsername" '
                         + 'onclick="window.location=\'' + userUrl
                         + '?userId=' + userId +'\';">'
-                        + username + '</a></li>')
+                        + username + '</a></li>');
+    $navbarRegister.empty();
   }
 
   //Makes the logout visible to the website.
@@ -112,6 +116,7 @@ if($navMobile.length == 0) {
     Cookies.remove('password')
     isLoggedIn = false;
     $navbarLogin.text('Login');
+    $navbarRegister.append('<li><a id="navbarRegister" href="register.html">Registrieren</a></li>')
     makeToast("Erfolgreich ausgeloggt.")
     $('#navbarUsername').remove()
   }
@@ -120,4 +125,3 @@ if($navMobile.length == 0) {
   function makeToast(toast) {
     Materialize.toast(toast, 3000, 'rounded')
   }
-}
