@@ -9,13 +9,13 @@ Author:
 * Leon Brettin
 
 * Main Technologies:
-⋅⋅* [JavaEE](http://www.oracle.com/technetwork/java/javaee/overview/index.html)
-⋅⋅* [jQuery](https://jquery.com/)
-⋅⋅* [Materializecss](http://materializecss.com/)
+  * [JavaEE](http://www.oracle.com/technetwork/java/javaee/overview/index.html)
+  * [jQuery](https://jquery.com/)
+  * [Materializecss](http://materializecss.com/)
 
 * External libraries I used:
-⋅⋅* [Crypto-js](http://www.oracle.com/technetwork/java/javaee/overview/index.html)
-⋅⋅* [Cookie JS](https://github.com/js-cookie/js-cookie)
-⋅⋅* [lolliclock](https://github.com/mattkrick/lolliclock)
+  * [Crypto-js](http://www.oracle.com/technetwork/java/javaee/overview/index.html)
+  * [Cookie JS](https://github.com/js-cookie/js-cookie)
+  * [lolliclock](https://github.com/mattkrick/lolliclock)
 
 * Target Project: WildFly
