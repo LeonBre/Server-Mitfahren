@@ -68,7 +68,7 @@ public class DatabaseHelper {
 		Drive drive4 = new Drive(braunschweig, hannover, 
 				nowCalendar,testUser1, 3, "");
 		Drive drive5 = new Drive(hannover, braunschweig, 
-				nowCalendar,testUser1, 2, "");
+				nowCalendar,testUser1, 2, "Ich möchte gern diese super tolle Fahrt anbieten damit ich viel Spaß haben kann.");
 		driveService.persists(drive1);
 		driveService.persists(drive2);
 		driveService.persists(drive3);

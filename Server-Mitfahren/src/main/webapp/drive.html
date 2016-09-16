@@ -82,12 +82,12 @@
           <ul class="collection" id="passengerCollection">
 
            <li class="collection-item avatar">
-             <img src="images/yuna.jpg" alt="" class="circle">
+             <img src="images/userPicture.jpg" alt="" class="circle">
              <h5 class="center-align">Karla Kolumna</h5>
            </li>
 
            <li class="collection-item avatar">
-             <img src="images/yuna.jpg" alt="" class="circle">
+             <img src="images/userPicture.jpg" alt="" class="circle">
              <h5 class="center-align">Netter Mitfahrer</h5>
            </li>
 
@@ -95,13 +95,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col m3">
-          <h3 class="teal-text">Kommentar</h3>
+        <div class="col m3" id="commentaryCollumn">
+          <h3 class="teal-text">Kommentar:</h3>
         </div>
       </div>
-        <div class="row markupText" id="commentary">
-          Ich möchte euch hiermit meine Fahrt anbieten weil ich euch alle so cool finde.
-        </div>
+        <ul class="collection markupText" id="commentary">
+          <li class="collection-item">Ich möchte euch hiermit meine Fahrt anbieten weil ich euch alle so cool finde.</li>
+        </ul>
 
       <div class="row">
         <div class="col m5">
@@ -203,8 +203,13 @@
       $driverName.empty();
       $driverName.append(answer.username);
 
-      $commentary.empty();
-      $commentary.append(answer.commentary)
+      if(answer.commentary == "") {
+        $commentary.empty();
+        $('#commentaryCollumn').empty()
+      } else {
+        $commentary.empty();
+        $commentary.append(answer.commentary)
+      }
 
       $driverRating.empty();
       $driverRating.append(getDriverRatingText(answer.userRating));
