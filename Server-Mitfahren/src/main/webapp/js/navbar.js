@@ -1,5 +1,5 @@
 var destinationURL = "http://localhost:8080"
-var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html"
+var userUrl = "user.html"
 
 var isLoggedIn = false;
 
@@ -26,6 +26,7 @@ $(document).ready(function() {
     isLoggedIn = false;
   }
 
+  //If the user is logged in the Register tab should disappear.
   if(isLoggedIn == true){
     $navbarRegister.empty();
   }
@@ -86,7 +87,6 @@ $(document).ready(function() {
     });
   });
 
-  //Makes the Login of a user visible to the website.
   //A Cookie will be set for the username and the password.
   //The modal will be closed and the website will change.
   function login(username, password, userId) {
@@ -99,6 +99,9 @@ $(document).ready(function() {
     makeLoginVisible(username, password, userId)
   }
 
+  //The Login changes will be made visible to the Website
+  //The Login Text changes to Logout and a tab for the username is visible
+  //The Register Button disappears
   function makeLoginVisible(username, password, userId) {
     $navbarLogin.text('Logout');
     $navbarRight.append('<li><a id="navbarUsername" '
