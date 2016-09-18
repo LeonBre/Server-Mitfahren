@@ -5,14 +5,31 @@ import apiv1.models.response.ActivationResponse;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
 
+/**
+ * Converter Clas for the Activation of an registered user.
+ * @author Leon Johann Brettin
+ *
+ */
 public class ActivationConverter {
 
 	private MitfahrenUserService userService;
 	
+	/**
+	 * Basic Constructor for the Activation Class.
+	 * @param userService Service to get a Mitfahrenuser out of the database.
+	 */
 	public ActivationConverter(MitfahrenUserService userService) {
 		this.userService = userService;
 	}
 	
+	/**
+	 * Converts an ActivationModel request to an ActivationResponse.
+	 * The activationnumber will be checked with the actual activation nuber of the user.
+	 * It will be checked if the user is already activated.
+	 * The password of the user will be checked.
+	 * @param request Activationmodel, the request model of the rest api.
+	 * @return ActivationResponse for the rest api.
+	 */
 	public ActivationResponse convert(ActivationModel request){
 		MitfahrenUser user = userService.find(request.username);
 		try {
