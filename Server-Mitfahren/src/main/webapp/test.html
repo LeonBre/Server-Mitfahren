@@ -11,46 +11,11 @@
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
   </head>
 <body>
-  <nav>
-    <div class="nav-wrapper teal lighten-2">
-      <a href="#" class="brand-logo">Mitfahren</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a id="navbarLogin">Login</a></li>
-      </ul>
-    </div>
-  </nav>
 
+  <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+  <div id="imgTest"></div>
 
-    <button type="button" name="button" id="button-testDatabase">Test Database</button>
   </body>
-
-
-    <!-- Modal Structure -->
-    <div id="loginModal" class="modal">
-      <div class="modal-content loginContent">
-              <h3 class="brand-logo teal-text">Einloggen</h3>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="username" type="text" class="validate">
-                  <label for="username">Nutzername</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="password" type="password" class="validate">
-                  <label for="password">Passwort</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col m6">
-                  <button type="submit" class="waves-effect waves-light btn teal"> Login
-                  </button>
-                </div>
-            </div>
-      </div>
-    </div>
 
 
 
@@ -61,43 +26,42 @@
   <script src="resources/jquery-cookie/js.cookie.js"></script>
 
   <script type="text/javascript">
-    var destinationURL = "http://localhost:8080";
-    var $testDatabase = $('#button-testDatabase');
+  function encodeImageFileAsURL() {
 
-    $(document).ready(function(){
- });
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
 
+      var fileReader = new FileReader();
 
-    $testDatabase.on('click', function() {
-      $('#loginModal').openModal();
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
 
-      Cookies.set('test', 'LeonBrettin');
-      console.log(Cookies.get());
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
 
-      console.log("Message is send");
-
-      var hashWordArray = CryptoJS.SHA512("");
-      var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
-      console.log(base64HashString);
-      data = {
-        userName : 'Max',
-        userHash : base64HashString
-      }
-
-      data = JSON.stringify(data)
-      $.ajax({
-        type: 'POST',
-        url: destinationURL + '/Server-Mitfahren/apiv1/testHash',
-        contentType: "application/json",
-        data: data,
-        success: function(answer) {
-          console.log("From Server: ", JSON.stringify(answer))
-        },
-        error: function() {
-          console.log("Error");
+        var data = {
+          data: srcData
         }
-      });
-    });
+        data = JSON.stringify(data)
+        $.ajax({
+          type: 'POST',
+          url: destinationURL + '/Server-Mitfahren/apiv1/testFileUpload',
+          contentType: "application/json",
+          data: data,
+          success: function(succesPicture) {
+            console.log("success");
+            document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+          },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+          }
+        });
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
   </script>
 
   <script type="text/javascript" src="js/navbar.js"></script>

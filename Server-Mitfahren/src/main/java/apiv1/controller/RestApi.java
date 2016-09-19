@@ -174,4 +174,19 @@ public class RestApi {
 		dbHelper.storeTestData();
 		return driveService.findByDestinationArrival("Braunschweig", "Hannover");
 	}
+	
+	@POST
+	@Path("/testFileUpload")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public TestingClass testFileUpload(TestingClass input) {
+		System.out.println(input.data);
+		return input;
+	}
+}
+
+class TestingClass{
+	public String data;
+	
+	public TestingClass(){}
 }
