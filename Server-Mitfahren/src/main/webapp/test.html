@@ -12,7 +12,7 @@
   </head>
 <body>
 
-  <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+  <input id="inputFileToLoad" type="file" onchange="test();" />
   <div id="imgTest"></div>
 
   </body>
@@ -26,7 +26,36 @@
   <script src="resources/jquery-cookie/js.cookie.js"></script>
 
   <script type="text/javascript">
+
+  function test(){
+    console.log(encodeImageFileAsURL());
+  }
+
+  function convertFileToDataURLviaFileReader(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.send();
+  }
+
+  
+
+
+
+
+
+
+
+
   function encodeImageFileAsURL() {
+    var workpls;
 
     var filesSelected = document.getElementById("inputFileToLoad").files;
     if (filesSelected.length > 0) {
@@ -40,8 +69,9 @@
         var newImage = document.createElement('img');
         newImage.src = srcData;
 
+        //----------------------------
         var data = {
-          data: srcData
+          data: newImage.outerHTML
         }
         data = JSON.stringify(data)
         $.ajax({
@@ -51,16 +81,18 @@
           data: data,
           success: function(succesPicture) {
             console.log("success");
-            document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+            document.getElementById("imgTest").innerHTML = succesPicture.data;
           },
           error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
             alert(err.Message);
           }
         });
+        //------------------------------
       }
       fileReader.readAsDataURL(fileToLoad);
     }
+    return workpls;
   }
   </script>
 
