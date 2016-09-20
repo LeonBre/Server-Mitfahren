@@ -1,4 +1,6 @@
 TODO
-Füge das hochladen von Bilder ein
+//Füge das hochladen von Bilder ein
+  ->Füge das Anzeigen von base64 Bildern auf der Website ein.
+  
 Füge eine Nutzerseite ein, wo daten zu fahrten verändert werden können
 Füge das Anzeigen der Telefonnummer bei drive.html ein
