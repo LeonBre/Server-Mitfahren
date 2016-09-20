@@ -35,7 +35,7 @@ public class MitfahrenUser {
 	private int activationNumber;
 	private String telephoneNumber;
 	private boolean isActivated;
-	private String pictureUrl;
+	private String pictureBase64;
 	
 	private String userMail;
 	
@@ -78,11 +78,11 @@ public class MitfahrenUser {
 		this.isActivated = false;
 	}
 	
-	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String pictureUrl, String userMail, int activationNumber) {
+	public MitfahrenUser(String username, String hashPassword, String telephoneNumber, String userMail, int activationNumber, String pictureBase64) {
 		this.username = username;
 		this.hashPassword = hashPassword;
 		this.telephoneNumber = telephoneNumber;
-		this.pictureUrl = pictureUrl;
+		this.pictureBase64 = pictureBase64;
 		this.userRating = 0;
 		this.userMail = userMail;
 		this.activationNumber = activationNumber;
@@ -153,17 +153,17 @@ public class MitfahrenUser {
 	}
 
 	/**
-	 * @return the pictureUrl
+	 * @return the pictureBase64
 	 */
-	public String getPictureUrl() {
-		return pictureUrl;
+	public String getPictureBase64() {
+		return pictureBase64;
 	}
 
 	/**
-	 * @param pictureUrl the pictureUrl to set
+	 * @param pictureBase64 the pictureBase64 to set
 	 */
-	public void setPictureUrl(String pictureUrl) {
-		this.pictureUrl = pictureUrl;
+	public void setPictureBase64(String pictureBase64) {
+		this.pictureBase64 = pictureBase64;
 	}
 
 	/**

@@ -48,7 +48,7 @@ public class DriveDetailConverter {
 				arrival, arrivalPictureUrl, date, time, userRating, seats, commentary);
 		
 		for(MitfahrenUser passenger: currentDrive.getPassengers()) {
-			driveModel.addPassenger(passenger.getUsername(), passenger.getUserId(), passenger.getPictureUrl());
+			driveModel.addPassenger(passenger.getUsername(), passenger.getUserId(), passenger.getPictureBase64());
 		}
 		for(UserComment comment: currentDrive.getDriver().getUserComments()) {
 			driveModel.addComment(comment.getComment(), comment.getCommentRating(), 

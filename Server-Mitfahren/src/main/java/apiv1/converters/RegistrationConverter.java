@@ -38,8 +38,16 @@ public class RegistrationConverter {
 		if(registrationIsPossible) 
 		{
 			int randomActivationNum = 0 + (int)(Math.random() * 10000); 
-			MitfahrenUser newUser = new MitfahrenUser(userModel.username, 
-					userModel.password, userModel.phone, userModel.mail, randomActivationNum);
+			
+			MitfahrenUser newUser;
+			if(userModel.picture != null) {
+				newUser =  new MitfahrenUser(userModel.username, 
+						userModel.password, userModel.phone, userModel.mail, randomActivationNum);
+			} else {
+				newUser = new MitfahrenUser(userModel.username, 
+						userModel.password, userModel.phone, userModel.mail, randomActivationNum, userModel.picture);
+			}
+			
 			userService.persists(newUser);
 			
 			MailHelper mailHelper = new MailHelper();

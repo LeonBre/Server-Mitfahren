@@ -47,7 +47,7 @@ public class SearchConverter {
 		ArrayList<AnswerDrive> answerDrives = new ArrayList<>();
 		for(Drive drive:matchingTimeResults) {
 			String driverName = drive.getDriver().getUsername();
-			String driverPictureUrl = drive.getDriver().getPictureUrl();
+			String driverPicture = drive.getDriver().getPictureBase64();
 			int driveId = drive.getDriveId();
 			
 			String date = CalendarHelper.getCalendaDateAsString(drive.getCalendar());
@@ -55,7 +55,7 @@ public class SearchConverter {
 			String time = CalendarHelper.getCalendarTimeAsString(drive.getCalendar());
 			
 			AnswerDrive matchingDrive = new AnswerDrive(driverName,
-					driverPictureUrl, 
+					driverPicture, 
 					driveId, 
 					searchDestination,
 					searchArrival,

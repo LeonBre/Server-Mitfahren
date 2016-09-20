@@ -6,6 +6,7 @@ public class RegisterUserModel {
 	public String password;
 	public String mail;
 	public String phone;
+	public String picture;
 	
 	public RegisterUserModel(){}
 }
