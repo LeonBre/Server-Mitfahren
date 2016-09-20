@@ -36,14 +36,25 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <i class="material-icons prefix">credit_card</i>
             <input type="password" id="registerPassword">
             <label for="registerPassword">Password</label>
           </div>
+          <div class="col s6">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Profilbild</span>
+                <input type="file" id="profilePicture">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row">
-          <div class="input-field col l6 tooltipped"data-position="top" data-delay="50" data-tooltip="Die Email wird nur zur Bestätigung gebraucht und sonst nicht angezeigt.">
+          <div class="input-field col l6 tooltipped" data-position="top" data-delay="50" data-tooltip="Die Email wird nur zur Bestätigung gebraucht und sonst nicht angezeigt.">
             <i class="material-icons prefix">email</i>
             <input type="email" id="registerMail" >
             <label for="registerMail">E-Mail</label>
@@ -99,15 +110,18 @@
   <script src="resources/CryptoJS/rollups/sha512.js"></script>
   <script src="resources/jquery-cookie/js.cookie.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/pictureHelper.js"></script>
 
   <script type="text/javascript">
   websiteName = "register"
+  var base64picture;
 
   $registerUsername = $('#registerUsername');
   $registerPassword = $('#registerPassword');
   $registerMail = $('#registerMail');
   $registerPhoneNumber = $('#registerPhoneNumber');
   $btnSendRegisterInformation = $('#button-sendRegisterInformation');
+  $profilePicture = $('#profilePicture');
 
 
     $(document).ready(function(){
@@ -122,6 +136,13 @@
 
       registerMail = $registerMail.val();
       registerPhoneNumber = $registerPhoneNumber.val();
+
+      base64($profilePicture, function(data) {
+        base64picture = data.base64
+        console.log(base64picture);
+      })
+
+      if(registerUsername != null && hashWordArray != null && registerPassword != null && registerMail != null && registerPhoneNumber != null && base64picture != null) {
 
       var data = {
         username : registerUsername,
@@ -149,6 +170,9 @@
           registrationFailed()
         }
       });
+    } else {
+      makeToast("Eingabe vergessen.")
+    }
     });
 
     function registrationFailed () {
