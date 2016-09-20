@@ -26,74 +26,41 @@
   <script src="resources/jquery-cookie/js.cookie.js"></script>
 
   <script type="text/javascript">
+  var asdf;
+
 
   function test(){
-    console.log(encodeImageFileAsURL());
+    base64( $('#inputFileToLoad'), function(data){
+      console.log(data.base64)
+      showPicture(data.base64, $('#imgTest'))
+      asdf = data.base64
+    })
   }
 
-  function convertFileToDataURLviaFileReader(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function() {
-      var reader = new FileReader();
-      reader.onloadend = function() {
-        callback(reader.result);
-      }
-      reader.readAsDataURL(xhr.response);
+  function showPicture(base64picture, imgDiv) {
+    imgDiv.append('<img src="data:image/png;base64, ' + base64picture + '" alt="ProfilePicture" />')
+  }
+
+    //Author James Harrington 2014
+  function base64(file, callback){
+    var coolFile = {};
+    function readerOnload(e){
+      var base64 = btoa(e.target.result);
+      coolFile.base64 = base64;
+      callback(coolFile)
     };
-    xhr.open('GET', url);
-    xhr.send();
+
+    var reader = new FileReader();
+    reader.onload = readerOnload;
+
+    var file = file[0].files[0];
+    coolFile.filetype = file.type;
+    coolFile.size = file.size;
+    coolFile.filename = file.name;
+    reader.readAsBinaryString(file);
   }
 
-  
 
-
-
-
-
-
-
-
-  function encodeImageFileAsURL() {
-    var workpls;
-
-    var filesSelected = document.getElementById("inputFileToLoad").files;
-    if (filesSelected.length > 0) {
-      var fileToLoad = filesSelected[0];
-
-      var fileReader = new FileReader();
-
-      fileReader.onload = function(fileLoadedEvent) {
-        var srcData = fileLoadedEvent.target.result; // <--- data: base64
-
-        var newImage = document.createElement('img');
-        newImage.src = srcData;
-
-        //----------------------------
-        var data = {
-          data: newImage.outerHTML
-        }
-        data = JSON.stringify(data)
-        $.ajax({
-          type: 'POST',
-          url: destinationURL + '/Server-Mitfahren/apiv1/testFileUpload',
-          contentType: "application/json",
-          data: data,
-          success: function(succesPicture) {
-            console.log("success");
-            document.getElementById("imgTest").innerHTML = succesPicture.data;
-          },
-          error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-          }
-        });
-        //------------------------------
-      }
-      fileReader.readAsDataURL(fileToLoad);
-    }
-    return workpls;
-  }
   </script>
 
   <script type="text/javascript" src="js/navbar.js"></script>

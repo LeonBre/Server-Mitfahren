@@ -38,3 +38,45 @@ auto.css:
       <p>Here is some more information about this product that is only revealed once clicked on.</p>
     </div>
 </div>
+---------------------------------------------------------------
+function encodeImageFileAsURL() {
+  var workpls;
+
+  var filesSelected = document.getElementById("inputFileToLoad").files;
+  if (filesSelected.length > 0) {
+    var fileToLoad = filesSelected[0];
+
+    var fileReader = new FileReader();
+
+    fileReader.onload = function(fileLoadedEvent) {
+      var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+      var newImage = document.createElement('img');
+      newImage.src = srcData;
+
+      //----------------------------
+      var data = {
+        data: newImage.outerHTML
+      }
+      data = JSON.stringify(data)
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/testFileUpload',
+        contentType: "application/json",
+        data: data,
+        success: function(succesPicture) {
+          console.log("success");
+          document.getElementById("imgTest").innerHTML = succesPicture.data;
+        },
+        error: function(xhr, status, error) {
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+        }
+      });
+      //------------------------------
+    }
+    fileReader.readAsDataURL(fileToLoad);
+  }
+  return workpls;
+}
+-------------------------------------------------------------------
