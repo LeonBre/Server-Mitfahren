@@ -60,7 +60,7 @@
       <div class="row">
         <h3 class="col m3 teal-text"> Fahrer:</h3>
         <div class="card horizontal">
-          <div class="card-image">
+          <div class="card-image" id="userPicture">
             <img src="http://lorempixel.com/100/190/nature/10">
           </div>
           <div class="card-stacked">
@@ -131,6 +131,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="resources/jquery-cookie/js.cookie.js"></script>
+    <script src="js/pictureHelper.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
     var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html"
@@ -147,7 +148,7 @@
     var $passengers = $('#passengerCollection')
     var $mitfahrerList = $('#mitfahrerList')
     var $commentaryList = $('#commentaryList')
-
+    var $userPicture = $('#userPicture')
 
     $(document).ready(function() {
         //Gets the driveId out of the Url and request the data from the server.
@@ -200,6 +201,9 @@
       $time.empty();
       $time.append(answer.time);
 
+      $userPicture.empty();
+      $userPicture.append(getUserPictureString(answer.userPicture))
+
       $driverName.empty();
       $driverName.append(answer.username);
 
@@ -232,6 +236,11 @@
       return '<img src="' + pictureUrl + '" class="circle cityPicture"/>'
        + cityName;
      }
+    }
+
+    //Prepares the html String for the userPicture
+    function getUserPictureString(picture) {
+      return getPictureString(picture)
     }
 
     //Prepares the html String for the Rating of the user.

@@ -34,6 +34,7 @@ public class DriveDetailConverter {
 		}
 		
 		String username = currentDrive.getDriver().getUsername();
+		String userPicture = currentDrive.getDriver().getPictureBase64();
 		String destination = currentDrive.getDestination().getName();
 		String destinationPictureUrl = currentDrive.getDestination().getPictureUrl();
 		String arrival = currentDrive.getArrival().getName();
@@ -44,7 +45,7 @@ public class DriveDetailConverter {
 		String seats = currentDrive.getCarSeats() + "";
 		String commentary = currentDrive.getCommentary();
 		
-		DriveDetail driveModel = new DriveDetail(username, destination, destinationPictureUrl, 
+		DriveDetail driveModel = new DriveDetail(username, userPicture, destination, destinationPictureUrl, 
 				arrival, arrivalPictureUrl, date, time, userRating, seats, commentary);
 		
 		for(MitfahrenUser passenger: currentDrive.getPassengers()) {

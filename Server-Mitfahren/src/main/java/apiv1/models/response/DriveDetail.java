@@ -12,6 +12,7 @@ import java.util.List;
 public class DriveDetail {
 
 	public String username;
+	public String userPicture;
 	public String destination;
 	public String destinationPictureUrl;
 	public String arrival;
@@ -38,9 +39,10 @@ public class DriveDetail {
 	 * @param userRating Rating of the Driver
 	 * @param seats Number of free seats.
 	 */
-	public DriveDetail(String username, String destination, String destinationPictureUrl, String arrival,
+	public DriveDetail(String username, String userPicture, String destination, String destinationPictureUrl, String arrival,
 			String arrivalPictureUrl, String date, String time, String userRating, String seats, String commentary) {
 		this.username = username;
+		this.userPicture = userPicture;
 		this.destination = destination;
 		this.destinationPictureUrl = destinationPictureUrl;
 		this.arrival = arrival;
