@@ -44,7 +44,7 @@ public class MitfahrenUserDetailConverter {
 		output.userId = currentUser.getUserId() + "";
 		output.userName = currentUser.getUsername();
 		output.userRating = currentUser.getUserRating() + "";
-		output.pictureUrl = currentUser.getPictureBase64();
+		output.picture = currentUser.getPictureBase64();
 		
 		List<Comment> userComments = new LinkedList<>();
 		for(UserComment comment: currentUser.getUserComments()) {

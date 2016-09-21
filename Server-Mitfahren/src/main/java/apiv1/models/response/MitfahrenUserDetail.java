@@ -11,7 +11,7 @@ public class MitfahrenUserDetail {
 
 	public String userId;
 	public String userName;
-	public String pictureUrl;
+	public String picture;
 	
 	public String userRating;
 	public List<Comment> commentList;

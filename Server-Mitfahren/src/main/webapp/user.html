@@ -100,10 +100,11 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="js/pictureHelper.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
-    var driveUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/drive.html";
-    var userUrl = "/home/leon/development/git/Server-Mitfahren/Server-Mitfahren/src/main/webapp/user.html";
+    var driveUrl = "drive.html";
+    var userUrl = "user.html";
     websiteName = "user"
 
     var $userHeaderName = $('#userHeaderName')
@@ -152,14 +153,13 @@
         $userHeaderName.append(getUserNameString(userInfo.userName));
 
         $userHeaderPicture.empty();
-        $userHeaderPicture.append(getUserPictureString(userInfo.pictureUrl));
+        $userHeaderPicture.append(getUserPictureString(userInfo.picture));
 
         $userHeaderRating.empty();
         $userHeaderRating.append(getUserRatingString(userInfo.userRating));
 
         $drivingList.empty();
-        $drivingList.append(getDrivingListString(userInfo.asDriverList))          <li><a id="navbarCreateDrive" href="createDrive.html">Erstellen</a></li>
-
+        $drivingList.append(getDrivingListString(userInfo.asDriverList))
 
         $commentaryList.empty();
         $commentaryList.append(getCommentaryList(userInfo.commentList))
@@ -172,8 +172,8 @@
       }
 
       //Prepares the html String for the pictureUrl.
-      function getUserPictureString(pictureUrl) {
-        return '<img src="' + pictureUrl + '">'
+      function getUserPictureString(picture) {
+        return getPictureString(picture)
       }
 
       //Prepares the html String for the userRating.
