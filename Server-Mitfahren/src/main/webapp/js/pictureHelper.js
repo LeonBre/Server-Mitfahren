@@ -2,6 +2,10 @@ function showPicture(base64picture, imgDiv) {
   imgDiv.append('<img src="data:image/png;base64, ' + base64picture + '" alt="ProfilePicture" />')
 }
 
+function getPictureString(base64picture) {
+  return '<img src="data:image/png;base64, ' + base64picture + '" alt="ProfilePicture" />'
+}
+
   //Author James Harrington 2014
 function base64(file, callback){
   var coolFile = {};

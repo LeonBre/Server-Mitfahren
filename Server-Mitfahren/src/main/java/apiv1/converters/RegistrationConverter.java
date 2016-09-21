@@ -8,6 +8,7 @@ import apiv1.models.request.RegisterUserModel;
 import apiv1.models.response.RegisterUserResponse;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
+import helper.Data;
 import helper.MailHelper;
 
 public class RegistrationConverter {
@@ -42,7 +43,7 @@ public class RegistrationConverter {
 			MitfahrenUser newUser;
 			if(userModel.picture != null) {
 				newUser =  new MitfahrenUser(userModel.username, 
-						userModel.password, userModel.phone, userModel.mail, randomActivationNum);
+						userModel.password, userModel.phone, userModel.mail, randomActivationNum, Data.samplePicture);
 			} else {
 				newUser = new MitfahrenUser(userModel.username, 
 						userModel.password, userModel.phone, userModel.mail, randomActivationNum, userModel.picture);

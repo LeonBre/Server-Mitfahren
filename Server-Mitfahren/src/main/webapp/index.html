@@ -107,6 +107,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <script src="resources/CryptoJS/rollups/sha512.js"></script>
   <script src="resources/jquery-cookie/js.cookie.js"></script>
+  <script src="js/pictureHelper.js"></script>
   <script type="text/javascript">
   var destinationURL = "http://localhost:8080"
   var driveUrl = "drive.html"
@@ -200,7 +201,7 @@
     //Creates an html String for an matching drive.
     function createPossibleDriveListString(drive) {
 
-      var userPictureUrl = (drive.userPictureUrl == null) ? nullPictureUsername : drive.userPictureUrl
+      var userPicture = drive.userPicture
       var userName = drive.username
       var driveDestination = drive.destination
       var driveArrival = drive.arrival
@@ -212,7 +213,7 @@
                   + 'onclick="window.location=\'' + driveUrl + '?driveId=' + driveId +'\';">'
                     + '<div class="card-image">'
                       + '<div class="userpicture">'
-                        + '<img src="' + userPictureUrl + '">'
+                        + getPictureString(userPicture)
                       + '</div>'
                       + '<h5>' + userName + '</h5>'
                     + '</div>'

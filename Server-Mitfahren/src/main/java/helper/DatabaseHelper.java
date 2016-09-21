@@ -45,11 +45,11 @@ public class DatabaseHelper {
 		cityService.persists(lübeck);
 		cityService.persists(münchen);
 		
-		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567", "max@mustermann.de", 1);
-		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344", "netter@fahrer.com", 2);
-		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456", "klaus.kleber@wab.de", 3);
-		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235", "karla.kol@googl.de", 4);
-		MitfahrenUser testUser5 = new MitfahrenUser("asdf", "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429080fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1", "1234", "as@df.de", 5);
+		MitfahrenUser testUser1 = new MitfahrenUser("Max Mustermann", "1234", "046334567", "max@mustermann.de", 1, Data.samplePicture);
+		MitfahrenUser testUser2 = new MitfahrenUser("Netter Fahrer", "5678", "017011223344", "netter@fahrer.com", 2, Data.samplePicture);
+		MitfahrenUser testUser3 = new MitfahrenUser("Klaus Kleber", "91011", "0160123456", "klaus.kleber@wab.de", 3, Data.samplePicture);
+		MitfahrenUser testUser4 = new MitfahrenUser("Karla Kolumna", "1357", "18027235", "karla.kol@googl.de", 4, Data.samplePicture);
+		MitfahrenUser testUser5 = new MitfahrenUser("asdf", "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429080fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1", "1234", "as@df.de", 5 , Data.samplePicture);
 		testUser5.activateUser();
 		userService.persists(testUser1);
 		userService.persists(testUser2);

@@ -35,6 +35,7 @@ public class MitfahrenUser {
 	private int activationNumber;
 	private String telephoneNumber;
 	private boolean isActivated;
+	@Column(columnDefinition="TEXT")
 	private String pictureBase64;
 	
 	private String userMail;

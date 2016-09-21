@@ -3,7 +3,7 @@ package apiv1.models.response;
 public class AnswerDrive {
 
 	private String username;
-	private String userPictureUrl;
+	private String userPicture;
 	
 	private int driveId;
 	private String destination;
@@ -11,10 +11,10 @@ public class AnswerDrive {
 	private String date;
 	private String time;
 	
-	public AnswerDrive(String username, String userPictureUrl, int driveId, String destination, String arrival,
+	public AnswerDrive(String username, String userPicture, int driveId, String destination, String arrival,
 			String date, String time) {
 		this.username = username;
-		this.userPictureUrl = userPictureUrl;
+		this.userPicture = userPicture;
 		this.driveId = driveId;
 		this.destination = destination;
 		this.arrival = arrival;
@@ -39,15 +39,15 @@ public class AnswerDrive {
 	/**
 	 * @return the userPictureUrl
 	 */
-	public String getUserPictureUrl() {
-		return userPictureUrl;
+	public String getUserPicture() {
+		return userPicture;
 	}
 
 	/**
-	 * @param userPictureUrl the userPictureUrl to set
+	 * @param userPicture the userPicture to set
 	 */
-	public void setUserPictureUrl(String userPictureUrl) {
-		this.userPictureUrl = userPictureUrl;
+	public void setUserPicture(String userPicture) {
+		this.userPicture = userPicture;
 	}
 
 	/**
