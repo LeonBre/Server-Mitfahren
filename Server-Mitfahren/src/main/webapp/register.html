@@ -123,6 +123,12 @@
   $btnSendRegisterInformation = $('#button-sendRegisterInformation');
   $profilePicture = $('#profilePicture');
 
+  $profilePicture.on('change', function() {
+    base64($profilePicture, function(data) {
+      base64picture = data.base64
+    })
+  })
+
 
     $(document).ready(function(){
       $('.tooltipped').tooltip({delay: 50});
@@ -136,11 +142,6 @@
 
       registerMail = $registerMail.val();
       registerPhoneNumber = $registerPhoneNumber.val();
-
-      base64($profilePicture, function(data) {
-        base64picture = data.base64
-        console.log(base64picture);
-      })
 
       if(registerUsername != null && hashWordArray != null && registerPassword != null && registerMail != null && registerPhoneNumber != null && base64picture != null) {
 
@@ -171,6 +172,8 @@
           registrationFailed()
         }
       });
+
+
     } else {
       makeToast("Eingabe vergessen.")
     }
