@@ -43,10 +43,10 @@ public class RegistrationConverter {
 			MitfahrenUser newUser;
 			if(userModel.picture != null) {
 				newUser =  new MitfahrenUser(userModel.username, 
-						userModel.password, userModel.phone, userModel.mail, randomActivationNum, Data.samplePicture);
+						userModel.password, userModel.phone, userModel.mail, randomActivationNum, userModel.picture);
 			} else {
 				newUser = new MitfahrenUser(userModel.username, 
-						userModel.password, userModel.phone, userModel.mail, randomActivationNum, userModel.picture);
+						userModel.password, userModel.phone, userModel.mail, randomActivationNum, Data.samplePicture);
 			}
 			
 			userService.persists(newUser);
