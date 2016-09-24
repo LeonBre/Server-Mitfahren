@@ -95,11 +95,34 @@
     </div>
   </div>
 
-
+  <div id="loginModal" class="modal">
+    <div class="modal-content loginContent">
+            <h3 class="brand-logo teal-text">Einloggen</h3>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginUsername" type="text" class="validate">
+                <label for="username">Nutzername</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="loginPassword" type="password" class="validate">
+                <label for="password">Passwort</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col m6">
+                <button class="btn" id="loginButton"> Login
+                </button>
+              </div>
+          </div>
+    </div>
+  </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="js/pictureHelper.js"></script>
+    <script src="js/navbar.js"></script>
     <script type="text/javascript">
     var destinationURL = "http://localhost:8080"
     var driveUrl = "drive.html";
