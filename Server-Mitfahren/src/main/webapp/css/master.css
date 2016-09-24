@@ -117,6 +117,14 @@ i.material-icons {
   border-radius: 15px;
 }
 
+.green-line{
+  background-color: #4db6ac;
+  padding: 2px;
+}
+
+.userPageColButton{
+  margin: 1%;
+}
 tab1 { padding-left: 4em; }
 tab2 { padding-left: 8em; }
 tab3 { padding-left: 12em; }

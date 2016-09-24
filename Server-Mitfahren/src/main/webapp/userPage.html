@@ -28,8 +28,86 @@
     </nav>
 
     <div class="container">
+      <div class="userHeader">
+        <div class="row">
+          <div class="col l3">
+            <div class="userpicture userHeaderPicture" id="userHeaderPicture">
+            </div>
+          </div>
+          <div class="col l9">
+            <div class="row" id="userHeaderName">
+              <h2 class="header center-align">Max Mustermann</h2>
+            </div>
+            <div class="row" id="userHeaderRating">
+              <h3 class="header center-align headerUserRating">
+                <i class="medium material-icons">star</i> 4.5/5.0</h3>
+            </div>
+          </div>
+        </div>
+      </div>
 
+
+    <div class="row">
+      <div class="col s6">
+        <!-- Telephone number -->
+        <h4>Telefon: </h4>
+        <h4 class="teal-text center-align">
+        042413546</h4>
+      </div>
+      <div class="col s5">
+        <!-- Mail -->
+        <h4>Mail: </h4>
+        <h4 class="teal-text center-align">
+        test@user.de</h4>
+      </div>
     </div>
+    <div class="row">
+      <div class="col s6">
+        <!-- Change Telephone number -->
+        <a class="waves-effect waves-light btn">Ändere Telefonnummer</a>
+      </div>
+      <div class="col s6">
+        <!-- Change Mail -->
+        <a class="waves-effect waves-light btn">Ändere Mail Adresse</a>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col s6">
+      <a class="waves-effect waves-light btn">Ändere Profilbild</a>
+    </div>
+    <div class="col s6">
+      <a class="waves-effect waves-light btn">Ändere Passwort</a>
+    </div>
+  </div>
+
+  <div class="green-line"></div>
+
+  <div class="col m7 ">
+    <h3 class="teal-text">Angebotene Fahrten:</h3>
+    <ul class="collection" id="driving list">
+
+      <li class="collection-item">
+        <div class="row">
+          <div class="col s2">
+            Braunschweig </br>
+            Hannover </br>
+            2 Mitfahrer
+          </div>
+          <div class="col s4 offset-s6">
+            <a class="waves-effect waves-light btn userPageColButton">Mitfahrer hinzufügen</a> </br>
+            <a class="waves-effect waves-light btn userPageColButton">Mitfahrer entfernen</a> </br>
+            <a class="waves-effect waves-light btn userPageColButton">Fahrt löschen</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+  </div>
 
 
   <div id="loginModal" class="modal">
@@ -58,9 +136,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="js/pictureHelper.js"></script>
-    <script src="js/navbar.js">
-
-    </script>
+    <script src="js/navbar.js"></script>
+    <script src="resources/jquery-cookie/js.cookie.js"></script>
     <script type="text/javascript">
 
     </script>
