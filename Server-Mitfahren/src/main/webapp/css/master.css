@@ -122,9 +122,22 @@ i.material-icons {
   padding: 2px;
 }
 
+.green-line-margin{
+  background-color: #4db6ac;
+  padding: 2px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+
 .userPageColButton{
   margin: 1%;
 }
+
+.userPageContent{
+  margin-top: 4%;
+}
+
 tab1 { padding-left: 4em; }
 tab2 { padding-left: 8em; }
 tab3 { padding-left: 12em; }

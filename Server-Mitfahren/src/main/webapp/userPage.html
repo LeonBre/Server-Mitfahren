@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <<nav>
+    <nav>
       <div class="nav-wrapper teal lighten-2">
         <a href="index.html" class="brand-logo">Mitfahren</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -27,7 +27,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container userPageContent">
       <div class="userHeader">
         <div class="row">
           <div class="col l3">
@@ -95,9 +95,7 @@
             2 Mitfahrer
           </div>
           <div class="col s4 offset-s6">
-            <a class="waves-effect waves-light btn userPageColButton">Mitfahrer hinzufügen</a> </br>
-            <a class="waves-effect waves-light btn userPageColButton">Mitfahrer entfernen</a> </br>
-            <a class="waves-effect waves-light btn userPageColButton">Fahrt löschen</a>
+             <button data-target="changeDrive" class="btn modal-trigger">Bearbeuteb</button>
           </div>
         </div>
       </li>
@@ -106,9 +104,67 @@
   </div>
 
 
-
   </div>
 
+
+  <div id="changeDrive" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12">
+
+
+      <div class="row">
+        <div class="col s6">
+          <h4 class="teal-text">Fahrt bearbeiten</h4>
+        </div>
+      </div>
+      <div class="green-line-margin"></div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="newPassenger" type="text" class="validate">
+          <label for="newPassenger">Mitfahrer hinzufügen</label>
+        </div>
+        <div class="col s2 center-align">
+          <a class="waves-effect waves-light btn">+</a>
+        </div>
+
+        <div class="input-field col s4">
+          <select>
+            <option value="" disabled selected>Mitfahrer entfernen</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Mitfahrer entfernen</label>
+        </div>
+        <div class="col s2 center-align">
+          <a class="waves-effect waves-light btn">-</a>
+        </div>
+      </div>
+      <div class="green-line-margin"></div>
+      <div class="row">
+        <div class="col s3 offset-s1">
+          Aktueller Preis:
+          <h4 class="teal-text" id="price">15€</h4>
+        </div>
+        <div class="col s5">
+          <input id="newPrice" type="text" class="validate">
+          <label for="newPrice">Preis ändern</label>
+        </div>
+        <div class="col s3">
+          <a class="waves-effect waves-light btn">Ändern</a>
+        </div>
+      </div>
+      <div class="green-line-margin"></div>
+      <div class="row">
+        <div class="col s6 offset-s4">
+          <a class="waves-effect waves-light btn">Fahrt entfernen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
 
   <div id="loginModal" class="modal">
     <div class="modal-content loginContent">
@@ -139,6 +195,12 @@
     <script src="js/navbar.js"></script>
     <script src="resources/jquery-cookie/js.cookie.js"></script>
     <script type="text/javascript">
+
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal-trigger').leanModal();
+      $('select').material_select();
+    });
 
     </script>
   </body>
