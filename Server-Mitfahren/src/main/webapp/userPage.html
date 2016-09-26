@@ -95,7 +95,7 @@
             2 Mitfahrer
           </div>
           <div class="col s4 offset-s6">
-             <button data-target="changeDrive" class="btn modal-trigger">Bearbeuteb</button>
+             <button data-target="changeDrive" class="btn modal-trigger">Bearbeuten</button>
           </div>
         </div>
       </li>
@@ -195,12 +195,53 @@
     <script src="js/navbar.js"></script>
     <script src="resources/jquery-cookie/js.cookie.js"></script>
     <script type="text/javascript">
+    var destinationURL = "http://localhost:8080"
 
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
       $('.modal-trigger').leanModal();
       $('select').material_select();
+
+      authenticateUser();
+
+
     });
+
+    function authenticateUser () {
+      var usernameCookie = Cookies.get('username')
+      var passwordCookie = Cookies.get('password')
+
+      if(usernameCookie != null && passwordCookie != null){
+
+      var data = {
+        username : usernameCookie,
+        password : passwordCookie
+      };
+
+      data = JSON.stringify(data)
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/authenticate',
+        contentType: "application/json",
+        data: data,
+        success: function(authentication) {
+          console.log("From Server: ", JSON.stringify(possibleDrives))
+          if(authentication.isAuthenticated) {
+            requestData()
+          } else {
+            Materialize.toast('Beim Einloggen scheint etwas schief gelaufen zu sein.', 4000,'',function(){logout();window.location.href = "index.html";})
+          }
+        },
+        error: function() {
+          console.log("Error");
+          Materialize.toast('Beim Einloggen scheint etwas schief gelaufen zu sein.', 4000,'',function(){logout();window.location.href = "index.html";})
+        }
+      });
+
+    } else {
+      Materialize.toast('Du bist leider nicht eingeloggt und kannst nicht auf diese Daten zugreifen.', 4000,'',function(){window.location.href = "index.html";})
+    }
+    }
 
     </script>
   </body>
