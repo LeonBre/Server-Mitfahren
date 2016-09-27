@@ -210,12 +210,14 @@
     function authenticateUser () {
       var usernameCookie = Cookies.get('username')
       var passwordCookie = Cookies.get('password')
+      var userIdCookie = Cookies.get('userId')
 
       if(usernameCookie != null && passwordCookie != null){
 
       var data = {
         username : usernameCookie,
-        password : passwordCookie
+        password : passwordCookie,
+        userId : userIdCookie
       };
 
       data = JSON.stringify(data)
@@ -243,6 +245,11 @@
     }
     }
 
+    function requestData() {
+      var data = {
+
+      }
+    }
     </script>
   </body>
 </html>

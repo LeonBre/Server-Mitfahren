@@ -33,16 +33,32 @@ public class AuthenticationConverter {
 	 * @return AuthenticationUserRespond of the Authentication of the user.
 	 */
 	public AuthenticateUserResponse convertModelToResponse(AuthenticateUserModel userModel) {
-		MitfahrenUser user = userService.find(userModel.username);
-		AuthenticateUserResponse response = new AuthenticateUserResponse();
-		
-		response.isAuthenticated = AuthenticationValidator.authenticateUser(user, userModel);
-		if (response.isAuthenticated) {
-			response.userId = user.getUserId();
-		} else {
-			response.userId = 0;
+		try {
+			MitfahrenUser user;
+			if(userModel.userId != null) {
+				int userId = Integer.parseInt(userModel.userId);
+				user = userService.find(userId);
+			} else {
+				user = userService.find(userModel.username);
+			}
+			
+			AuthenticateUserResponse response = new AuthenticateUserResponse();
+			response.isAuthenticated = AuthenticationValidator.authenticateUser(user, userModel);
+			if (response.isAuthenticated) {
+				response.userId = user.getUserId();
+				return response;
+			}
+		} catch(NumberFormatException e) {
+			System.out.println("String " + userModel.userId + " is no number.");
 		}
 		
+		return authenticationFailed();
+	}
+	
+	private AuthenticateUserResponse authenticationFailed() {
+		AuthenticateUserResponse response = new AuthenticateUserResponse();
+		response.isAuthenticated = false;
+		response.userId = 0;
 		return response;
 	}
 }

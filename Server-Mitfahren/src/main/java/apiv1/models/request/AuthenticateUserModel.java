@@ -4,6 +4,7 @@ public class AuthenticateUserModel {
 
 	public String username;
 	public String password;
+	public String userId;
 	
 	public AuthenticateUserModel(){}
 }
