@@ -241,14 +241,40 @@
       });
 
     } else {
-      Materialize.toast('Du bist leider nicht eingeloggt und kannst nicht auf diese Daten zugreifen.', 4000,'',function(){window.location.href = "index.html";})
+      //Materialize.toast('Du bist leider nicht eingeloggt und kannst nicht auf diese Daten zugreifen.', 4000,'',function(){window.location.href = "index.html";})
     }
     }
 
     function requestData() {
-      var data = {
+      var usernameCookie = Cookies.get('username')
+      var passwordCookie = Cookies.get('password')
+      var userIdCookie = Cookies.get('userId')
 
+      var data = {
+        username : usernameCookie,
+        password : passwordCookie,
+        userId : userIdCookie
       }
+      data = JSON.stringify(data)
+      $.ajax({
+        type: 'POST',
+        url: destinationURL + '/Server-Mitfahren/apiv1/userPageInfo',
+        contentType: "application/json",
+        data: data,
+        success: function(userPageInfo) {
+          console.log("From Server: ", JSON.stringify(possibleDrives))
+          showData(userPageInfo)
+        },
+        error: function() {
+          console.log("Error");
+          Materialize.toast('Beim Abrufen scheint etwas schief gelaufen zu sein.', 4000,'',function(){logout();window.location.href = "index.html";})
+        }
+      });
+
+    }
+
+    function showData(data) {
+
     }
     </script>
   </body>
