@@ -93,24 +93,47 @@ public class RestApi {
 		return convert.getSearchedDrives(request);
 	}
 	
+	/**
+	 * Method to send Details of a drive chosen drive.
+	 * When the User clicks on a drive icon on a page, he starts a post request to get more 
+	 * information about it.
+	 * It searches for all informations of that drive in the database.
+	 * @param request input Json with the id of the drive.
+	 * @return All Informations about a drive.
+	 */
 	@POST
 	@Path("/driveDetails")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public DriveDetail postDriveDetails(SearchDriveDetail driveId) {
+	public DriveDetail postDriveDetails(SearchDriveDetail request) {
 		DriveDetailConverter convert = new DriveDetailConverter(driveService);
-		return convert.convertDriveIdtoAnswerDrive(driveId.getDriveId());
+		return convert.convertDriveIdtoAnswerDrive(request.getDriveId());
 	}
 	
+	
+	/**
+	 * Method to send Detail of a user.
+	 * When a User wants to get more information about a user, he can click on a picture of him,
+	 * then this post is called and the information will be searched out of the database.
+	 * @param request JSON-Model with the userId of the user.
+	 * @return All showable information about the user in a JSON-Model.
+	 */
 	@POST
 	@Path("/userDetails")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public MitfahrenUserDetail postMitfahrenUserDetails(SearchMitfahrenUserDetail userId) {
+	public MitfahrenUserDetail postMitfahrenUserDetails(SearchMitfahrenUserDetail request) {
 		MitfahrenUserDetailConverter convert = new MitfahrenUserDetailConverter(userService);
-		return convert.convertIdToModel(userId.userId);
+		return convert.convertIdToModel(request.userId);
 	}
 	
+	/**
+	 * Method to validate an authentication onto the website.
+	 * The matching hashed password on the database will be matched against the send password.
+	 * If it is valid the server will return a succesfully authentication.
+	 * @param request JSON-Model with the username and the password, if possible with the userId too.
+	 * @return JSON-Model with the authentication result.
+	 */
 	@POST
 	@Path("/authenticate")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -120,6 +143,13 @@ public class RestApi {
 		return converter.convertModelToResponse(request);
 	}
 	
+	/**
+	 * Registers a new user on the server.
+	 * The data will be checked on the server, if eg. the username is already taken, the user gets a wrong response.
+	 * If everything is finde, the new user gets a validation mail and the user will be registered.
+	 * @param request JSON-Model with the registration data.
+	 * @return JSON-Model if everything is fine or not.
+	 */
 	@POST
 	@Path("/registerUser")
 	@Produces(MediaType.APPLICATION_JSON)
