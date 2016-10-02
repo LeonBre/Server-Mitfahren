@@ -159,6 +159,13 @@ public class RestApi {
 		return converter.convert(request);
 	}
 	
+	/**
+	 * Activates an already registered user on the server.
+	 * The user gets a activation link after he is registered. 
+	 * When he enters the right number his account will be activated and he is able to log in.
+	 * @param request JSON-Model with the activation data.
+	 * @return A positive activation response, when the activation works right.
+	 */
 	@POST
 	@Path("/activateUser")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -168,6 +175,13 @@ public class RestApi {
 		return converter.convert(request);
 	}
 	
+	/**
+	 * Creates a new Drive on the server.
+	 * The data of of the website will be stored in the database 
+	 * and a new drive entry will be created.
+	 * @param request JSON-Model with the drive creation data.
+	 * @return A positive response is everything works right, and the id of the drive.
+	 */
 	@POST
 	@Path("/createDrive")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -177,7 +191,7 @@ public class RestApi {
 		return converter.convert(request);
 	}
 	
-	
+	//TODO Write the converter.
 	@POST
 	@Path("/userPageInfo")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -187,7 +201,8 @@ public class RestApi {
 		return converter.convert(request);
 	}
 	
-	
+	//Everything down here are testing methods.
+	//TODO delete these methods at the end.
 	@POST
 	@Path("/testAuthenticate")
 	@Produces(MediaType.APPLICATION_JSON)
