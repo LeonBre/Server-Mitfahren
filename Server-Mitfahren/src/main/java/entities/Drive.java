@@ -70,12 +70,14 @@ public class Drive {
 	
 	private String commentary;
 	
+	private int price;
+
 	/**
 	 * Need this for the Persistence API.
 	 */
 	public Drive(){}
 
-	public Drive(City destination, City arrival, Calendar calendar, MitfahrenUser driver, int carSpace, String commentary) {
+	public Drive(City destination, City arrival, Calendar calendar, MitfahrenUser driver, int carSpace, String commentary, int price) {
 		this.destination = destination;
 		this.arrival = arrival;
 		this.calendar = calendar;
@@ -203,6 +205,18 @@ public class Drive {
 		this.commentary = commentary;
 	}
 
-	
+	/**
+	 * @return the price
+	 */
+	public int getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	
 }

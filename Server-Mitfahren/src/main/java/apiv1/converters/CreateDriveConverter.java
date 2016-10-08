@@ -34,8 +34,9 @@ public class CreateDriveConverter {
 			Calendar dateTime = CalendarHelper.convertCalendar(request.date, request.time);
 			int carSpace = Integer.parseInt(request.passengerCount);
 			MitfahrenUser driver = userService.find(Integer.parseInt(request.userId));
+			int price = Integer.parseInt(request.price);
 			
-			Drive newDrive = new Drive(destination, arrival, dateTime, driver, carSpace, request.commentary);
+			Drive newDrive = new Drive(destination, arrival, dateTime, driver, carSpace, request.commentary, price);
 			newDrive = driveSerive.merge(newDrive);
 			
 			return creationSucess(newDrive.getDriveId());
