@@ -197,7 +197,7 @@ public class RestApi {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public UserPageInfoResponse postUserPageInfo(UserPageInfoRequest request) {
-		UserPageInfoConverter converter = new UserPageInfoConverter();
+		UserPageInfoConverter converter = new UserPageInfoConverter(userService);
 		return converter.convert(request);
 	}
 	

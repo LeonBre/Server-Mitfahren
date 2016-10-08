@@ -12,6 +12,6 @@ public class UserPageInfoResponse {
 	public String rating;
 	public String phoneNumber;
 	public String mail;
-	public List <UserPageInfoDrive> drive;
+	public List <UserPageInfoDrive> drives;
 }
 

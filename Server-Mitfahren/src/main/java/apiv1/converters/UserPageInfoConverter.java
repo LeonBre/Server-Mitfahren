@@ -7,6 +7,7 @@ import apiv1.models.request.UserPageInfoRequest;
 import apiv1.models.response.UserPageInfoResponse;
 import apiv1.models.response.helpermodel.UserPageInfoDrive;
 import apiv1.validator.AuthenticationValidator;
+import entities.Drive;
 import entities.MitfahrenUser;
 import entities.MitfahrenUserService;
 
@@ -33,8 +34,15 @@ public class UserPageInfoConverter {
 		response.mail = user.getUserMail();
 		
 		List<UserPageInfoDrive> infoList = new LinkedList<>();
-		
-		//TODO finish
-		return null;
+		for (Drive drive:user.getAsDriverList()) {
+			UserPageInfoDrive entry = new UserPageInfoDrive();
+			entry.arrival = drive.getArrival().getName();
+			entry.destination = drive.getDestination().getName();
+			entry.driverCount = drive.getPassengers().size() + "";
+			entry.price = drive.getPrice() + "";
+			infoList.add(entry);
+		}
+		response.drives = infoList;
+		return response;
 	}
 }
