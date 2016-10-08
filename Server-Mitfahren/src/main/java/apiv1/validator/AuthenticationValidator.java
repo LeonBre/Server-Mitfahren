@@ -22,11 +22,11 @@ public class AuthenticationValidator {
 	 * @param userModel Usermodel of the request.
 	 * @return True, when the authentication is succesfull, false if not.
 	 */
-	public static boolean authenticateUser(MitfahrenUser user, AuthenticateUserModel userModel) {
+	public static boolean authenticateUser(MitfahrenUser user, String username, String password) {
 		if(user == null)
 			return false;
-		if(user.getUsername().equals(userModel.username) 
-				&& user.getHashPassword().equals(userModel.password)
+		if(user.getUsername().equals(username) 
+				&& user.getHashPassword().equals(password)
 				&& user.isActivated())
 			return true;
 		

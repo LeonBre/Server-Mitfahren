@@ -6,6 +6,8 @@ import apiv1.models.response.helpermodel.UserPageInfoDrive;
 
 public class UserPageInfoResponse {
 
+	public boolean success;
+	
 	public String username;
 	public String rating;
 	public String phoneNumber;

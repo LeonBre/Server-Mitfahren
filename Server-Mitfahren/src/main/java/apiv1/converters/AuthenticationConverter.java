@@ -43,7 +43,7 @@ public class AuthenticationConverter {
 			}
 			
 			AuthenticateUserResponse response = new AuthenticateUserResponse();
-			response.isAuthenticated = AuthenticationValidator.authenticateUser(user, userModel);
+			response.isAuthenticated = AuthenticationValidator.authenticateUser(user, userModel.username, userModel.password);
 			if (response.isAuthenticated) {
 				response.userId = user.getUserId();
 				return response;
