@@ -60,15 +60,15 @@ public class DatabaseHelper {
 		testUser1.addComment("Ich fand die fahrt gewöhnungsbedürftig...",testUser4.getUsername(), 2f, testUser4.getUserId());
 		Calendar nowCalendar = Calendar.getInstance();
 		Drive drive1 = new Drive(braunschweig, hannover, 
-				nowCalendar,testUser1, 4, "");
+				nowCalendar,testUser1, 4, "", 5);
 		Drive drive2 = new Drive(braunschweig, lübeck, 
-				nowCalendar,testUser1, 4, "");
+				nowCalendar,testUser1, 4, "", 5);
 		Drive drive3 = new Drive(berlin, münchen, 
-				nowCalendar,testUser1, 4, "");
+				nowCalendar,testUser1, 4, "", 10);
 		Drive drive4 = new Drive(braunschweig, hannover, 
-				nowCalendar,testUser1, 3, "");
+				nowCalendar,testUser1, 3, "", 16);
 		Drive drive5 = new Drive(hannover, braunschweig, 
-				nowCalendar,testUser1, 2, "Ich möchte gern diese super tolle Fahrt anbieten damit ich viel Spaß haben kann.");
+				nowCalendar,testUser1, 2, "Ich möchte gern diese super tolle Fahrt anbieten damit ich viel Spaß haben kann.", 20);
 		driveService.persists(drive1);
 		driveService.persists(drive2);
 		driveService.persists(drive3);

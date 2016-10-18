@@ -12,6 +12,7 @@ public class CreateDriveModel {
 	public String time;
 	public String passengerCount;
 	public String commentary;
+	public String price;
 	
 	public CreateDriveModel() {}
 }

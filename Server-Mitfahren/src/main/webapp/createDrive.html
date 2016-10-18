@@ -41,15 +41,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s6">
+          <div class="col s4">
             <!-- Date -->
             <input type="date" class="datepicker" id="datepicker-date">
             <label for="datepicker">Abfahrtstag</label>
           </div>
-          <div class="col s6">
+          <div class="col s4">
             <!-- Time -->
             <input id="datepicker-time"></input>
             <label for="datepicker-time">Abfahrtszeit</label>
+          </div>
+          <div class="col s4">
+            <!-- Price -->
+            <input id="price"></input>
+            <label for="price">Preis</label>
           </div>
         </div>
         <div class="row">
@@ -129,6 +134,7 @@
   var $time = $('#datepicker-time')
   var $passengerCount = $('#passengerCount')
   var $commentary = $('#commentary')
+  var $price = $('price')
 
   var possibleCities = new Array();
 
@@ -179,7 +185,8 @@
         && $commentary.val() != null
         && dateIsValid
         && $time.val() != null
-        && $passengerCount.val() != null) {
+        && $passengerCount.val() != null
+        && $price.val() != null) {
 
 
       var data = {
@@ -189,6 +196,7 @@
         time: $time.val(),
         passengerCount: $passengerCount.val(),
         commentary: $commentary.val(),
+        price: $price.val(),
         username: Cookies.get('username'),
         password: Cookies.get('password'),
         userId: Cookies.get('userId')

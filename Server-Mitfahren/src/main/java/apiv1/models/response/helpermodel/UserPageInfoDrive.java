@@ -4,7 +4,7 @@ public class UserPageInfoDrive {
 
 	public String destination;
 	public String arrival;
-	public int driverCount;
+	public String driverCount;
 	public String price;
 	
 	public UserPageInfoDrive() {}
