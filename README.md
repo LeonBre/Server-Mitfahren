@@ -1,5 +1,7 @@
 Lift Server and Website
 ========================
+[![Build Status](https://travis-ci.org/LeonBre/Server-Mitfahren.svg?branch=master)](https://travis-ci.org/LeonBre/Server-Mitfahren)
+
 This Project is a Lift Website, where user can share lifts and where they can
 contact peoble who drive the route they are searching for.
 
